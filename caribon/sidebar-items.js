@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Word","`Word` type."]],"fn":[["words_to_html","Display the words to HTML"]],"struct":[["Parser","Parser type"]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Parser","Parser type"]]});
