@@ -45,24 +45,40 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-233' class='srclink' href='../src/caribon/parser.rs.html#15-28' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct Parser&lt;'a&gt; {
+        </span><a id='src-213' class='srclink' href='../src/caribon/parser.rs.html#29-42' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Parser {
     // some fields omitted
 }</pre><div class='docblock'><p>Parser type</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.list_languages' class='method'><code>fn <a href='#method.list_languages' class='fnname'>list_languages</a>() -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;&amp;'static <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h3><div class='impl-items'><h4 id='method.list_languages' class='method'><code>fn <a href='#method.list_languages' class='fnname'>list_languages</a>() -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;&amp;'static <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
 <div class='docblock'><p>Returns a vector containing all languages implemented</p>
+</div><h4 id='method.get_ignored_from_string' class='method'><code>fn <a href='#method.get_ignored_from_string' class='fnname'>get_ignored_from_string</a>(list: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Returns a vector of ignored words from a string</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<ul>
+<li><code>list</code> – A space or comma separated string</li>
+</ul>
+</div><h4 id='method.get_ignored_from_lang' class='method'><code>fn <a href='#method.get_ignored_from_lang' class='fnname'>get_ignored_from_lang</a>(lang: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Returns a vector containing ignored words for this language</p>
 </div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(lang: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&gt;</code></h4>
 <div class='docblock'><p>Returns Some(Parser) if language is ok, None else</p>
-</div><h4 id='method.with_max_distance' class='method'><code>fn <a href='#method.with_max_distance' class='fnname'>with_max_distance</a>(self, max_dist: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&lt;'a&gt;</code></h4>
+</div><h4 id='method.with_max_distance' class='method'><code>fn <a href='#method.with_max_distance' class='fnname'>with_max_distance</a>(self, max_dist: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
 <div class='docblock'><p>Sets max distance for repetition (default 50)</p>
-</div><h4 id='method.with_html' class='method'><code>fn <a href='#method.with_html' class='fnname'>with_html</a>(self, html: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&lt;'a&gt;</code></h4>
+</div><h4 id='method.with_html' class='method'><code>fn <a href='#method.with_html' class='fnname'>with_html</a>(self, html: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
 <div class='docblock'><p>Sets HTML detection in input (default true)</p>
-</div><h4 id='method.with_ignore_proper' class='method'><code>fn <a href='#method.with_ignore_proper' class='fnname'>with_ignore_proper</a>(self, proper: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&lt;'a&gt;</code></h4>
+</div><h4 id='method.with_ignore_proper' class='method'><code>fn <a href='#method.with_ignore_proper' class='fnname'>with_ignore_proper</a>(self, proper: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
 <div class='docblock'><p>Sets ignore_proper flag (default false)</p>
-</div><h4 id='method.with_leak' class='method'><code>fn <a href='#method.with_leak' class='fnname'>with_leak</a>(self, leak: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&lt;'a&gt;</code></h4>
+</div><h4 id='method.with_leak' class='method'><code>fn <a href='#method.with_leak' class='fnname'>with_leak</a>(self, leak: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
 <div class='docblock'><p>Sets the leak (default 0.98)</p>
-</div><h4 id='method.with_ignored' class='method'><code>fn <a href='#method.with_ignored' class='fnname'>with_ignored</a>(self, ignored: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a [</a>&amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&lt;'a&gt;</code></h4>
-<div class='docblock'><p>Sets the ignored keyword</p>
+</div><h4 id='method.with_ignored' class='method'><code>fn <a href='#method.with_ignored' class='fnname'>with_ignored</a>(self, list: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
+<div class='docblock'><p>Sets the ignored list to a list contained in the string</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<ul>
+<li><code>list</code> – A comma or whitespace separated list of words</li>
+</ul>
 </div><h4 id='method.tokenize' class='method'><code>fn <a href='#method.tokenize' class='fnname'>tokenize</a>(&amp;self, s: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
 <div class='docblock'><p>Tokenize a string into a list of words</p>
 
@@ -92,6 +108,19 @@ two occurences.</p>
 <ul>
 <li><code>vec</code> – A vector of <code>Word</code></li>
 <li><code>is_relative</code> – If true, divide the number of occurences by total number of words</li>
+</ul>
+</div><h4 id='method.words_to_html' class='method'><code>fn <a href='#method.words_to_html' class='fnname'>words_to_html</a>(&amp;self, words: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, threshold: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>, standalone: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Display the words to HTML</p>
+
+<p>Use some basic CSS/Js for underlining repetitions and highlighting the
+over occurrences of the word under the mouse.</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<ul>
+<li><code>words</code> – A vector containing all words</li>
+<li><code>threshold</code> – The threshold above which words must be highlighted</li>
+<li><code>standalone</code> –  If true, generate a standalone HTML file.</li>
 </ul>
 </div></div></section>
     <section id='search' class="content hidden"></section>
