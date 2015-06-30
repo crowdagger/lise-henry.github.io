@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Word","`Word` type."]],"struct":[["Parser","Parser type"]]});
+initSidebarItems({"enum":[["Word","`Word` type: some inner representation used by `Parser`."]],"struct":[["Error","Parser error type"],["Parser","Parser which can load a string, detects repetition on it and outputs an HTML file"]],"type":[["Result","Result from tokenize"]]});

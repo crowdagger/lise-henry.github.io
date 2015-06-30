@@ -45,72 +45,134 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-213' class='srclink' href='../src/caribon/parser.rs.html#29-42' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-341' class='srclink' href='../src/caribon/parser.rs.html#65-76' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Parser {
     // some fields omitted
-}</pre><div class='docblock'><p>Parser type</p>
+}</pre><div class='docblock'><p>Parser which can load a string, detects repetition on it and outputs an HTML file</p>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h3><div class='impl-items'><h4 id='method.list_languages' class='method'><code>fn <a href='#method.list_languages' class='fnname'>list_languages</a>() -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;&amp;'static <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
-<div class='docblock'><p>Returns a vector containing all languages implemented</p>
+<div class='docblock'><p>Returns a vector containing all languages implemented.</p>
+
+<p>These values are correct values to give to <code>Parser::new</code>.</p>
 </div><h4 id='method.get_ignored_from_string' class='method'><code>fn <a href='#method.get_ignored_from_string' class='fnname'>get_ignored_from_string</a>(list: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
-<div class='docblock'><p>Returns a vector of ignored words from a string</p>
+<div class='docblock'><p>Returns a vector of ignored words from a string.</p>
 
 <h1 id="arguments" class='section-header'><a
                            href="#arguments">Arguments</a></h1>
 <ul>
-<li><code>list</code> – A space or comma separated string</li>
+<li><code>list</code> – A space or comma separated string, containing words that
+should be ignored (i.e., don&#39;t count repetitions on them).</li>
 </ul>
 </div><h4 id='method.get_ignored_from_lang' class='method'><code>fn <a href='#method.get_ignored_from_lang' class='fnname'>get_ignored_from_lang</a>(lang: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
-<div class='docblock'><p>Returns a vector containing ignored words for this language</p>
-</div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(lang: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&gt;</code></h4>
-<div class='docblock'><p>Returns Some(Parser) if language is ok, None else</p>
+<div class='docblock'><p>Returns a vector containing the default ignored words for this language.</p>
+</div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(lang: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../caribon/type.Result.html' title='caribon::Result'>Result</a>&lt;<a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a>&gt;</code></h4>
+<div class='docblock'><p>Returns <code>Ok(Parser)</code> if language is <code>ok</code>, Err(Error) else.</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<p><code>lang</code> – The input text language. This will be used to create the
+         stemmer; it also determines what list of ignored words to use.</p>
+
+<h1 id="example" class='section-header'><a
+                           href="#example">Example</a></h1><pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>caribon</span>::<span class='ident'>Parser</span>::<span class='ident'>new</span>(<span class='string'>&quot;english&quot;</span>);
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>result</span>.<span class='ident'>is_ok</span>());
+</pre>
+<pre class='rust rust-example-rendered'>
+<span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>caribon</span>::<span class='ident'>Parser</span>::<span class='ident'>new</span>(<span class='string'>&quot;incorrect language&quot;</span>);
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>result</span>.<span class='ident'>is_err</span>());
+</pre>
 </div><h4 id='method.with_max_distance' class='method'><code>fn <a href='#method.with_max_distance' class='fnname'>with_max_distance</a>(self, max_dist: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
-<div class='docblock'><p>Sets max distance for repetition (default 50)</p>
+<div class='docblock'><p>Sets max distance for repetitions (default 50).</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<p><code>max_dist</code> – A number corresponding to a number of words. If two
+             occurences of a same word are separated by more than
+             this distance, it will not be counted as a repetition.</p>
 </div><h4 id='method.with_html' class='method'><code>fn <a href='#method.with_html' class='fnname'>with_html</a>(self, html: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
-<div class='docblock'><p>Sets HTML detection in input (default true)</p>
+<div class='docblock'><p>Sets HTML detection in input (default true).</p>
+
+<p>You should set it to <code>false</code> if a text is text-formatted, and to
+<code>true</code> if it contains HTML. </p>
 </div><h4 id='method.with_ignore_proper' class='method'><code>fn <a href='#method.with_ignore_proper' class='fnname'>with_ignore_proper</a>(self, proper: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
-<div class='docblock'><p>Sets ignore_proper flag (default false)</p>
-</div><h4 id='method.with_leak' class='method'><code>fn <a href='#method.with_leak' class='fnname'>with_leak</a>(self, leak: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
-<div class='docblock'><p>Sets the leak (default 0.98)</p>
+<div class='docblock'><p>Sets whether repetition detection should ignore proper nouns (default false).</p>
+
+<p>Basically, if set to <code>true</code>, words that start with a capital and are not at the beginning of
+a sentence won&#39;t be counted for repetitions. Currently, there are still counted if they are in the beginning of
+a sentence, but with most texts it won&#39;t be enough to highligth them as repetitions.</p>
 </div><h4 id='method.with_ignored' class='method'><code>fn <a href='#method.with_ignored' class='fnname'>with_ignored</a>(self, list: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
-<div class='docblock'><p>Sets the ignored list to a list contained in the string</p>
+<div class='docblock'><p>Sets the ignored list with a list of words contained in the argument string.</p>
 
 <h1 id="arguments" class='section-header'><a
                            href="#arguments">Arguments</a></h1>
 <ul>
-<li><code>list</code> – A comma or whitespace separated list of words</li>
+<li><code>list</code> – A comma or whitespace separated list of words that should be ignored.</li>
 </ul>
-</div><h4 id='method.tokenize' class='method'><code>fn <a href='#method.tokenize' class='fnname'>tokenize</a>(&amp;self, s: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
-<div class='docblock'><p>Tokenize a string into a list of words</p>
+</div><h4 id='method.tokenize' class='method'><code>fn <a href='#method.tokenize' class='fnname'>tokenize</a>(&amp;self, s: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../caribon/type.Result.html' title='caribon::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Tokenize a string into a list of words.</p>
+
+<p>This is the step that converts a string to some inner representation.</p>
 
 <h1 id="arguments" class='section-header'><a
                            href="#arguments">Arguments</a></h1>
 <ul>
-<li><code>s</code> – The string to tokenize</li>
+<li><code>s</code> – The string to tokenize.</li>
 </ul>
-</div><h4 id='method.detect_leak' class='method'><code>fn <a href='#method.detect_leak' class='fnname'>detect_leak</a>(&amp;self, vec: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
-<div class='docblock'><p>Detect the local repetitions, using a leak value</p>
+</div><h4 id='method.detect_leak' class='method'><code>fn <a href='#method.detect_leak' class='fnname'>detect_leak</a>(&amp;self, vec: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, threshold: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
+<div class='docblock'><p>Detect the local repetitions using a leak value.</p>
 
 <p>Basically, each time a word occurs, increase value by 1.0
-and each time it does not, multiply by leak (default: 0.98)</p>
-</div><h4 id='method.detect_local' class='method'><code>fn <a href='#method.detect_local' class='fnname'>detect_local</a>(&amp;self, vec: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
+and each time it does not, multiply by leak (default: 0.98).</p>
+
+<p>This algorithm give results that are not as good than <code>detect_local</code>:
+instead of underlining a cluster a repeting words, it will only underline
+the &#39;offending&#39; ones, i.e. not the first ones.</p>
+
+<p>On the other hand, this method is faster and should use less memory, so
+it might be useful for very long texts.</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<p><code>vec</code> – A list of words
+<code>threshold</code> – The threshold to consider a repetition (e.g. 1.5)</p>
+</div><h4 id='method.detect_local' class='method'><code>fn <a href='#method.detect_local' class='fnname'>detect_local</a>(&amp;self, vec: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, threshold: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
 <div class='docblock'><p>Detect the local number of repetitions.</p>
 
-<p>For each word, value is set to the total number of occurences of this word
-but it is reset to zero if there is more than <code>self.max_distance</code> between
-two occurences.</p>
-</div><h4 id='method.detect_global' class='method'><code>fn <a href='#method.detect_global' class='fnname'>detect_global</a>(&amp;self, vec: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, is_relative: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
+<p>For each word, the repetition value is set to the total number of occurences of this word
+since there has been hat least <code>self.max_distance</code> between two occurences.</p>
+
+<p>It is the default algorithm, and probably the one you want to use.</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<p><code>vec</code> – A list of words
+<code>threshold</code> – The threshold to consider a repetition (e.g. 1.9)</p>
+</div><h4 id='method.words_stats' class='method'><code>fn <a href='#method.words_stats' class='fnname'>words_stats</a>(&amp;self, words: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='http://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html' title='std::collections::hash::map::HashMap'>HashMap</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>&gt;, <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</a></code></h4>
+<div class='docblock'><p>Returns stats about the words</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<p><code>words</code> – A reference to a list of words</p>
+
+<h1 id="returns" class='section-header'><a
+                           href="#returns">Returns</a></h1>
+<p>This method retuns a tuple:
+* the first element is a hashmap between stemmed strings and the number of occurences of this word
+* the second element is the total number of (valid) words in the list (non counting whitespace, HTML tags...)</p>
+</div><h4 id='method.detect_global' class='method'><code>fn <a href='#method.detect_global' class='fnname'>detect_global</a>(&amp;self, vec: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, threshold: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;</code></h4>
 <div class='docblock'><p>Detect the global number of repetitions.</p>
 
-<p>For each word, value is set to the total number of occurences of this word.</p>
+<p>For each word, repetition value is set to the total number of occurences of this word in whole text,
+divided by total number of words in the text</p>
 
 <h1 id="arguments" class='section-header'><a
                            href="#arguments">Arguments</a></h1>
 <ul>
-<li><code>vec</code> – A vector of <code>Word</code></li>
-<li><code>is_relative</code> – If true, divide the number of occurences by total number of words</li>
+<li><code>vec</code> – A vector of <code>Word</code>.</li>
+<li><code>threshold</code> – A threshold to highlight repetitions (e.g. 0.01)</li>
 </ul>
-</div><h4 id='method.words_to_html' class='method'><code>fn <a href='#method.words_to_html' class='fnname'>words_to_html</a>(&amp;self, words: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, threshold: <a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>, standalone: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
-<div class='docblock'><p>Display the words to HTML</p>
+</div><h4 id='method.words_to_html' class='method'><code>fn <a href='#method.words_to_html' class='fnname'>words_to_html</a>(&amp;self, words: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, standalone: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Display the words to HTML, higlighting the repetitions.</p>
 
 <p>Use some basic CSS/Js for underlining repetitions and highlighting the
 over occurrences of the word under the mouse.</p>
@@ -118,8 +180,7 @@ over occurrences of the word under the mouse.</p>
 <h1 id="arguments" class='section-header'><a
                            href="#arguments">Arguments</a></h1>
 <ul>
-<li><code>words</code> – A vector containing all words</li>
-<li><code>threshold</code> – The threshold above which words must be highlighted</li>
+<li><code>words</code> – A vector containing repetitions.</li>
 <li><code>standalone</code> –  If true, generate a standalone HTML file.</li>
 </ul>
 </div></div></section>

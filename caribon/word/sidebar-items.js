@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Word","`Word` type."]]});
+initSidebarItems({"enum":[["Word","`Word` type: some inner representation used by `Parser`."]]});
