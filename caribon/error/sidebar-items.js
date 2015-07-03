@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Error","Caribon error type (just a String for now)"]],"type":[["Result","Result from Caribon functions"]]});

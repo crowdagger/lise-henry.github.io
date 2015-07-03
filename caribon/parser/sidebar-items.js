@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Error","Parser error type"],["Parser","Parser which can load a string, detects repetition on it and outputs an HTML file"]],"type":[["Result","Result from tokenize"]]});
+initSidebarItems({"struct":[["Parser","Parser which can load a string, detects repetition on it and outputs an HTML file"]]});

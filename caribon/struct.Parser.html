@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-341' class='srclink' href='../src/caribon/parser.rs.html#65-76' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-485' class='srclink' href='../src/caribon/parser.rs.html#51-64' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Parser {
     // some fields omitted
 }</pre><div class='docblock'><p>Parser which can load a string, detects repetition on it and outputs an HTML file</p>
@@ -81,6 +81,19 @@ should be ignored (i.e., don&#39;t count repetitions on them).</li>
 <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>caribon</span>::<span class='ident'>Parser</span>::<span class='ident'>new</span>(<span class='string'>&quot;incorrect language&quot;</span>);
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>result</span>.<span class='ident'>is_err</span>());
 </pre>
+</div><h4 id='method.with_fuzzy' class='method'><code>fn <a href='#method.with_fuzzy' class='fnname'>with_fuzzy</a>(self, fuzzy: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>&gt;) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
+<div class='docblock'><p>Sets fuzzy string matching (default None)</p>
+
+<p>If sets to Some(x), instead of just using equality to compare string,
+the Parser will use Levenhstein distance.</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<ul>
+<li><code>fuzzy</code> – <code>None</code> to deactivate fuzzy matching, or <code>Some(x)</code> to activate it. x must be between
+0.0 and 1.0 as it corresponds to the relative distance, e.g &quot;Caribon&quot; has a length of 7 so if
+fuzzy is set with <code>Some(0.5)</code>, it will requires a maximal distance of 3 (actually 3.5 but distance is Integer)</li>
+</ul>
 </div><h4 id='method.with_max_distance' class='method'><code>fn <a href='#method.with_max_distance' class='fnname'>with_max_distance</a>(self, max_dist: <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>) -&gt; <a class='struct' href='../caribon/struct.Parser.html' title='caribon::Parser'>Parser</a></code></h4>
 <div class='docblock'><p>Sets max distance for repetitions (default 50).</p>
 
@@ -170,6 +183,28 @@ divided by total number of words in the text</p>
 <ul>
 <li><code>vec</code> – A vector of <code>Word</code>.</li>
 <li><code>threshold</code> – A threshold to highlight repetitions (e.g. 0.01)</li>
+</ul>
+</div><h4 id='method.words_to_terminal' class='method'><code>fn <a href='#method.words_to_terminal' class='fnname'>words_to_terminal</a>(&amp;self, words: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Display the words to terminal, higlighting the repetitions.</p>
+
+<p>Use terminal colour codes to highlight the repetitions</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<ul>
+<li><code>words</code> – A vector containing repetitions.</li>
+</ul>
+</div><h4 id='method.words_to_markdown' class='method'><code>fn <a href='#method.words_to_markdown' class='fnname'>words_to_markdown</a>(&amp;self, words: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Display the words to markdown, emphasizing the repetitions.</p>
+
+<p>This is more limited than HTML or even terminal output, as it completely discards
+colour information that have been passed by <code>detect_*</code> methods, but it might be useful
+if e.g. you want to generate some files later with Pandoc (or any other program).</p>
+
+<h1 id="arguments" class='section-header'><a
+                           href="#arguments">Arguments</a></h1>
+<ul>
+<li><code>words</code> – A vector containing repetitions.</li>
 </ul>
 </div><h4 id='method.words_to_html' class='method'><code>fn <a href='#method.words_to_html' class='fnname'>words_to_html</a>(&amp;self, words: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;, standalone: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
 <div class='docblock'><p>Display the words to HTML, higlighting the repetitions.</p>
