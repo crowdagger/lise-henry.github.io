@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Ast` struct in crate `caribon`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Ast">
+
+    <title>caribon::Ast - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>caribon</a></p><script>window.sidebarCurrent = {name: 'Ast', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>caribon</a>::<wbr><a class='struct' href=''>Ast</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-336' class='srclink' href='../src/caribon/word.rs.html#59-68' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Ast {
+    pub words: <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;,
+    pub begin_head: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
+    pub begin_body: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
+    pub end_body: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
+}</pre><div class='docblock'><p>The internal representation of the document.</p>
+
+<p>Technically the name AST is not really well chosen, since it is not a tree, but mainly a vector of
+<code>Word</code>s plus some additonal informations for HTML parsing, but the idea is the same.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.words'><code>words</code></td><td><div class='docblock'><p>Vector of <code>Word</code>s. The main data of the structure.</p>
+</div></td></tr><tr class='stab '>
+                                  <td id='structfield.begin_head'><code>begin_head</code></td><td><div class='docblock'><p>Position of <head> tag, if any</p>
+</div></td></tr><tr class='stab '>
+                                  <td id='structfield.begin_body'><code>begin_body</code></td><td><div class='docblock'><p>position of <body> tag, if any</p>
+</div></td></tr><tr class='stab '>
+                                  <td id='structfield.end_body'><code>end_body</code></td><td><div class='docblock'><p>position of </body> tag, if any</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../caribon/struct.Ast.html' title='caribon::Ast'>Ast</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../caribon/struct.Ast.html' title='caribon::Ast'>Ast</a></code></h4>
+<div class='docblock'><p>Creates a new, empty AST</p>
+</div><h4 id='method.mark_begin_head' class='method'><code>fn <a href='#method.mark_begin_head' class='fnname'>mark_begin_head</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Sets begin_head to current last position of words</p>
+
+<p>This should be called <em>before</em> inserting the corresponding element.</p>
+</div><h4 id='method.mark_begin_body' class='method'><code>fn <a href='#method.mark_begin_body' class='fnname'>mark_begin_body</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Sets begin_body to current last position of words</p>
+
+<p>This should be called <em>before</em> inserting the corresponding element.</p>
+</div><h4 id='method.mark_end_body' class='method'><code>fn <a href='#method.mark_end_body' class='fnname'>mark_end_body</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Sets end_body to current last position of words</p>
+
+<p>This should be called <em>before</em> inserting the corresponding element.</p>
+</div><h4 id='method.get_body' class='method'><code>fn <a href='#method.get_body' class='fnname'>get_body</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+<div class='docblock'><p>Get only the words contained between <body> and </body></p>
+
+<p>If body_begin and body_end are both set (and the first one is before the second),
+returns a slice that contains only words in this part; else, returns all words.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../caribon/struct.Ast.html' title='caribon::Ast'>Ast</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../caribon/struct.Ast.html' title='caribon::Ast'>Ast</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../caribon/struct.Ast.html' title='caribon::Ast'>Ast</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "caribon";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

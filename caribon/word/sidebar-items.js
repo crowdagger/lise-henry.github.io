@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Word","`Word` type: some inner representation used by `Parser`."]]});
+initSidebarItems({"enum":[["Word","`Word` type: some inner representation used by `Parser`."]],"struct":[["Ast","The internal representation of the document."]]});
