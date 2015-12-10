@@ -45,12 +45,12 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-336' class='srclink' href='../src/caribon/word.rs.html#64-73' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-85' class='srclink' href='../src/caribon/word.rs.html#64-73' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Ast {
     pub words: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a>&gt;,
-    pub begin_head: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
-    pub begin_body: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
-    pub end_body: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
+    pub begin_head: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
+    pub begin_body: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
+    pub end_body: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
 }</pre><div class='docblock'><p>The internal representation of the document.</p>
 
 <p>Technically the name AST is not really well chosen, since it is not a tree, but mainly a vector of
@@ -79,12 +79,12 @@ representation of the documentation.</p>
 <div class='docblock'><p>Sets end_body to current last position of words</p>
 
 <p>This should be called <em>before</em> inserting the corresponding element.</p>
-</div><h4 id='method.get_body' class='method'><code>fn <a href='#method.get_body' class='fnname'>get_body</a>(&amp;self) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a><a href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+</div><h4 id='method.get_body' class='method'><code>fn <a href='#method.get_body' class='fnname'>get_body</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
 <div class='docblock'><p>Get only the words contained between <body> and </body></p>
 
 <p>If body_begin and body_end are both set (and the first one is before the second),
 returns a slice that contains only words in this part; else, returns all words.</p>
-</div><h4 id='method.get_body_mut' class='method'><code>fn <a href='#method.get_body_mut' class='fnname'>get_body_mut</a>(&amp;mut self) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a><a href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+</div><h4 id='method.get_body_mut' class='method'><code>fn <a href='#method.get_body_mut' class='fnname'>get_body_mut</a>(&amp;mut self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
 <div class='docblock'><p>Get only the words contained between <body> and </body>, mutable version</p>
 
 <p>Same as get_body, but takes and return a mutable reference.</p>

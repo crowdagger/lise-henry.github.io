@@ -48,10 +48,10 @@
         </span><a id='src-11' class='srclink' href='../src/stemmer/stemmer.rs.html#7-9' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Stemmer {
     // some fields omitted
-}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../stemmer/struct.Stemmer.html' title='stemmer::Stemmer'>Stemmer</a></code></h3><div class='impl-items'><h4 id='method.list' class='method'><code>fn <a href='#method.list' class='fnname'>list</a>() -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;&amp;'static <a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../stemmer/struct.Stemmer.html' title='stemmer::Stemmer'>Stemmer</a></code></h3><div class='impl-items'><h4 id='method.list' class='method'><code>fn <a href='#method.list' class='fnname'>list</a>() -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
 <div class='docblock'><p>Lists all existing algorithms, returning a vector of valid algorithms
 that can be used as argument for <code>Stemmer::new</code></p>
-</div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(algorithm: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../stemmer/struct.Stemmer.html' title='stemmer::Stemmer'>Stemmer</a>&gt;</code></h4>
+</div><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(algorithm: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../stemmer/struct.Stemmer.html' title='stemmer::Stemmer'>Stemmer</a>&gt;</code></h4>
 <div class='docblock'><p>Creates a new stemmer, provided <code>algorithm</code> is a valid one.</p>
 
 <h1 id='arguments' class='section-header'><a href='#arguments'>Arguments</a></h1>
@@ -74,7 +74,7 @@ algorithms can be obtained with <code>Stemmer::list()</code></li>
 <span class='kw'>use</span> <span class='ident'>stemmer</span>::<span class='ident'>Stemmer</span>;
 <span class='kw'>let</span> <span class='ident'>stemmer</span> <span class='op'>=</span> <span class='ident'>Stemmer</span>::<span class='ident'>new</span>(<span class='string'>&quot;foobar&quot;</span>);
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>stemmer</span>.<span class='ident'>is_none</span>());</pre>
-</div><h4 id='method.stem' class='method'><code>fn <a href='#method.stem' class='fnname'>stem</a>(&amp;mut self, word: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+</div><h4 id='method.stem' class='method'><code>fn <a href='#method.stem' class='fnname'>stem</a>(&amp;mut self, word: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
 <div class='docblock'><p>Stems the <code>word</code>.</p>
 
 <p>Returns an owned string containing the stemmed version of the word.</p>
@@ -83,7 +83,7 @@ algorithms can be obtained with <code>Stemmer::list()</code></li>
 <span class='kw'>use</span> <span class='ident'>stemmer</span>::<span class='ident'>Stemmer</span>;
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stemmer</span> <span class='op'>=</span> <span class='ident'>Stemmer</span>::<span class='ident'>new</span>(<span class='string'>&quot;french&quot;</span>).<span class='ident'>unwrap</span>();
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='string'>&quot;éternu&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>stemmer</span>.<span class='ident'>stem</span>(<span class='string'>&quot;éternuerai&quot;</span>));</pre>
-</div><h4 id='method.stem_str' class='method'><code>fn <a href='#method.stem_str' class='fnname'>stem_str</a>(&amp;mut self, word: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
+</div><h4 id='method.stem_str' class='method'><code>fn <a href='#method.stem_str' class='fnname'>stem_str</a>(&amp;mut self, word: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
 <div class='docblock'><p>Stems the word and returns a str</p>
 
 <p>The <code>str</code> reference it returns is only valid as long as you don&#39;t

@@ -45,11 +45,11 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-103' class='srclink' href='../src/caribon/word.rs.html#23-33' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-44' class='srclink' href='../src/caribon/word.rs.html#23-33' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Word {
     Untracked(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
     Ignored(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
-    Tracked(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>, <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'static <a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    Tracked(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>, <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
 }</pre><div class='docblock'><p><code>Word</code> type: some inner representation used by <code>Parser</code>.</p>
 
 <p>You probably should not use this type directly.</p>
@@ -62,7 +62,7 @@ string, some value corresponding to the degree of repetitions and
 an option to a highlighting colour</p>
 </div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h3><div class='impl-items'><h4 id='method.set_stemmed' class='method'><code>fn <a href='#method.set_stemmed' class='fnname'>set_stemmed</a>(&amp;mut self, s: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
 <div class='docblock'><p>Sets the stemmed value of a word.</p>
-</div><h4 id='method.set_count' class='method'><code>fn <a href='#method.set_count' class='fnname'>set_count</a>(&amp;mut self, x: <a href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>)</code></h4>
+</div><h4 id='method.set_count' class='method'><code>fn <a href='#method.set_count' class='fnname'>set_count</a>(&amp;mut self, x: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>)</code></h4>
 <div class='docblock'><p>Sets the repetition value of a word.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h4>
 <h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
