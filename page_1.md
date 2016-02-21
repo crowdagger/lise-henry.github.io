@@ -6,8 +6,9 @@ Not much here, except a list of projects I have on github.
 Crowbook
 --------
 
-[![GitHub release](https://img.shields.io/github/release/lise-henry/crowbook.svg)]()
-[![GitHub license](https://img.shields.io/github/license/lise-henry/crowbook.svg)]()
+[![Crates.io](https://img.shields.io/crates/v/crowbook.svg)]()
+[![Crates.io](https://img.shields.io/crates/d/crowbook.svg)]()
+[![Crates.io](https://img.shields.io/crates/l/crowbook.svg)]()
 [![Travis](https://img.shields.io/travis/lise-henry/crowbook.svg)]()
 
 Renders a Markdown book in various formats: HTML, Epub, PDF. Though
@@ -15,12 +16,14 @@ it was not really made to make a website, this page was rendered using
 this software.
 
 * [Source code on Github](https://github.com/lise-henry/crowbook)
+* [Crates.io](https://crates.io/crates/crowbook)
 
 Caribon
 -------
 
-[![GitHub release](https://img.shields.io/github/release/lise-henry/caribon.svg)]()
-[![GitHub license](https://img.shields.io/github/license/lise-henry/caribon.svg)]()
+[![Crates.io](https://img.shields.io/crates/v/caribon.svg)]()
+[![Crates.io](https://img.shields.io/crates/d/caribon.svg)]()
+[![Crates.io](https://img.shields.io/crates/l/caribon.svg)]()
 [![Travis](https://img.shields.io/travis/lise-henry/caribon.svg)]()
 
 A repetition detector written in Rust. Code is
@@ -35,8 +38,9 @@ as a Webservice.
 Stemmer-rs
 ----------
 
-[![GitHub release](https://img.shields.io/github/release/lise-henry/stemmer-rs.svg)]()
-[![GitHub license](https://img.shields.io/github/license/lise-henry/stemmer-rs.svg)]()
+[![Crates.io](https://img.shields.io/crates/v/stemmer.svg)]()
+[![Crates.io](https://img.shields.io/crates/d/stemmer.svg)]()
+[![Crates.io](https://img.shields.io/crates/l/stemmer.svg)]()
 [![Travis](https://img.shields.io/travis/lise-henry/stemmer-rs.svg)]()
 
 Rust bindings to the Snowball C implementation, allowing you to stem a

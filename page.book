@@ -5,10 +5,7 @@ lang: en
 # Uncomment and fill to generate files
 output.html: index.html
 # output.epub: some_file.epub
-output.pdf: index.pdf
-
-# Uncomment and fill to set cover image (for Epub)
-# cover: some_cover.png
+#output.pdf: index.pdf
 
 # List of chapters
 ! page_1.md
