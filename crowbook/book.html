@@ -104,6 +104,8 @@ body {
     </header>
     <h1>1. Crowbook</h1>
 <p>Render a markdown book in HTML, Epub or PDF.</p>
+<p>Crowbook's purpose is to allow you to automatically generate multiple outputs formats from a book written in Markdown. Its main focus is novels, and the default settings should (hopefully) generate readables book with correct typography.</p>
+<p>It is also possible to use <code>crowbook</code> for e.g. technical documentation, but it might not be the best tool for that.</p>
 <p><a href = "https://travis-ci.org/lise-henry/crowbook"><img src = "https://travis-ci.org/lise-henry/crowbook.svg?branch=master" title = "" alt = "Build Status" /></a></p>
 <h2>Building and installing</h2>
 <p>Youl'll need to have the <a href = "https://www.rust-lang.org/">Rust</a> compiler on your machine first; you can <a href = "https://www.rust-lang.org/downloads.html">download and install it here</a>. Once it is down:</p>
@@ -114,8 +116,15 @@ body {
 <p>The simplest command is:</p>
 <pre><code class = "language-bash">$ crowbook &lt;BOOK&gt;
 </code></pre>
-<p>Where <code>BOOK</code> is a configuration file. Crowbook will then parse the config file and generate book in HTML, Epub, LaTeX, and/or PDF, according to the setting in the configuration file.</p>
-<p>This configuration file contains some metadata, options, and list the Markdown files. Here is a basic example:</p>
+<p>Where <code>BOOK</code> is a configuration file. Crowbook will then parse the config file and generate book in HTML, Epub, LaTeX, and/or PDF, according to the setting in the configuration file. So if you clone this repository and run</p>
+<pre><code class = "language-bash">$ crowbook book_example/config.book
+</code></pre>
+<p>(or <code>cargo run -- book_example/config.book</code> if you don't want to install it), you'll generate the example book in various format. The HTML version should look <a href = "http://lise-henry.github.io/crowbook/book.html">like that</a>.</p>
+<p>Now, let's say you want to make your own book. Assuming you have a list of Markdown files, you can generate a template configuration file with the <code>--create</code> argument:</p>
+<pre><code class = "language-bash">$ crowbook --create my.book chapter_*.md
+</code></pre>
+<p>This will generate a default <code>my.book</code> file, which you'll need to complete.</p>
+<p>This configuration file contains some metadata, options, and lists the Markdown files. Here is a basic example:</p>
 <pre><code>author: Joan Doe
 title: Some book
 lang: en
@@ -127,52 +136,22 @@ output_html: some_book.html
 + chapter_3.md
 + ...
 </code></pre>
-<p>For more information see <a href = "book_example/config.md">the configuration file</a>, or the whole <a href = "book_example">book_example</a> directory.</p>
-<p>It is also possible to give additional parameters to <code>crowbook</code>; arguments set from the command line will override the ones set in the <code>BOOK</code> configuration file.</p>
-<pre><code>USAGE:
-        crowbook [FLAGS] [OPTIONS] &lt;BOOK&gt;
-
-FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
-    -v, --verbose    Activate verbose mode
-
-OPTIONS:
-        --autoclean &lt;BOOL&gt;    Try to clean input markdown [values: true, false]
-        --numbering &lt;BOOL&gt;    Number chapters or not [values: true, false]
-    -o, --output &lt;FILE&gt;       Specify output file
-    -t, --to &lt;FORMAT&gt;         Generate specific format [values: epub, epub, pdf, html, tex]
-
-ARGS:
-    &lt;BOOK&gt;    A file containing the book configuration
-
-Command line options allow to override options defined in &lt;BOOK&gt; configuration file. 
-E.g., even if this file specifies 'verbose: false', calling 'crowbook --verbose &lt;BOOK&gt;' 
-will activate verbose mode.
-
-Note that Crowbook generates output files relatively to the directory where &lt;BOOK&gt; is:
-$ crowbook foo/bar.book --to pdf --output baz.pdf
-will thus generate baz.pdf in directory foo and not in current
-directory.
-</code></pre>
-<h2>Features</h2>
-<h3>Done</h3>
+<p>For more information see <a href = "book_example/config.md">the configuration file page</a>, or the whole <a href = "book_example">book_example</a> directory. (A (not necessarily up-to-date) <a href = "http://lise-henry.github.io/crowbook/book.html">rendered version is available in HTML here</a>).</p>
+<p>It is also possible to give additional parameters to <code>crowbook</code>; we have already seen <code>--create</code>, but if you want the full list, see <a href = "book_example/arguments.md">the arguments page</a>.</p>
+<h2>Current features</h2>
+<h3>Output formats</h3>
+<p>Crowbook (to my knowledge) correctly supports HTML and EPUB (either version 2 or 3) as output formats: rendered files should pass respectively the <a href = "https://validator.w3.org/">W3C validator</a> and the <a href = "http://validator.idpf.org/">IDPF EPUB validator</a> for a wide range of (correctly Markdown formatted) input files. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.html">HTML</a> and <a href = "http://lise-henry.github.io/crowbook/book.epub">EPUB</a> on github.io.</p>
+<p>LaTeX output is more tricky: it should work reasonably well for novels (the primary target of Crowbook), but <code>pdflatex</code> might occasionally choke on some « weird » unicode character. Moreover, the rendering of code blocks is not satisfactory and images are not yet implemented. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.pdf">PDF</a> on github.io to get an idea of the problems you might encounter.</p>
+<p>ODT output is experimental at best. It might work if your inputs files only include very basic formatting (basically, headers, emphasis and bold), it will probably look ugly in the rest of the cases, and it might miserably fail in some. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.odt">ODT</a> on github.io if you want to hurt your eyes.</p>
+<h3>Input format</h3>
+<p>Crowbook uses <a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a> and thus should support most of commonmark Markdown. There are, however, a few features that that are not supported:</p>
 <ul>
-<li>Support for some simple format configuration files to list chapters and metadatas, so you just run <code>crowbook some_file</code> and you don't have to pass more options, it generates the rest.</li>
-<li>Support for Epub2 and Epub3 format as output.</li>
-<li>Support for HTML format as output.</li>
-<li>Partial support for LaTeX format as output, and PDF through it.</li>
-<li>Experimental support for Odt format as output.</li>
-<li>Support for basic french typography (i.e. non-breaking spaces) in HTML/Epub format.</li>
-<li>Some configuration for HTML/Epub templates and CSS.</li>
+<li>Tables and Footnotes are not yet implemented. Tables might be implemented soon, but footnotes are a bit more tricky.</li>
+<li>HTML in markdown is not implemented, and probably won't be, as the goal is to have books that can also be generated in PDF (and maybe ODT).</li>
 </ul>
-<h3>ToDo</h3>
-<ul>
-<li>Allow more customization.</li>
-<li>Support for easily embedding custom fonts (and other files) in Epub/HTML.</li>
-<li>Improve LaTeX and Odt generation.</li>
-<li>Correct support for technical books.</li>
-</ul>
+<p>Maybe the most specific "feature" of Crowbook is that (by default, it can be deactivated) tries to "clean" the input files. By default this doesn't do much (except removing superfluous spaces), but if the book's language is set to french it tries to respect french typography, replacing spaces with non-breaking ones when it is appropriate (e.g. in french you are supposed to put a non-breaking space before '?', '!', ';' or ':'). This feature is relatively limited at the moment, but I might try to add more options and support for more languages.</p>
+<h3>Table of Contents</h3>
+<p>Crowbook currently only supports a table of contents for first-level headers (e.g. chapters). There is currently no option to integrate it in the document, so it is only generated in the EPUB format.</p>
 <p>See also <a href = "Bugs.md">Bugs</a>.</p>
 <h2>Acknowledgements</h2>
 <p>Besides the Rust compiler and standard library, Crowbook uses the following libraries:</p>
@@ -368,6 +347,95 @@ output.html: some_book.html
 <p>crowbook might create a temporary directory <code>/tmp/7fcbe41e-1676-46ba-b1a7-40c2fa37a3a7</code>.</p>
 <p>By default, this temporary directory is created where the config file is.</p>
 <p><b>default</b>: <code>.</code></p>
+<h1>3. Arguments</h1>
+<p>Crowbook can takes a list of arguments:</p>
+<pre><code class = "language-bash">Render a markdown book in Epub, PDF or HTML.
+
+USAGE:
+        crowbook [OPTIONS] &lt;BOOK&gt; [--] [ARGS]
+
+OPTIONS:
+        --autoclean &lt;BOOL&gt;    Try to clean input markdown [values: true, false]
+        --create              Creates a new book file with existing markdown files
+    -h, --help                Prints help information
+        --numbering &lt;BOOL&gt;    Number chapters or not [values: true, false]
+    -o, --output &lt;FILE&gt;       Specify output file
+    -t, --to &lt;FORMAT&gt;         Generate specific format [values: epub, pdf, html, tex, odt]
+    -V, --version             Prints version information
+    -v, --verbose             Activate verbose mode
+
+ARGS:
+    &lt;BOOK&gt;     A file containing the book configuration
+    &lt;FILES&gt;...    Files to put in book when using --create
+
+Command line options allow to override options defined in &lt;BOOK&gt; configuration file. 
+E.g., even if this file specifies 'verbose: false', calling 'crowbook --verbose &lt;BOOK&gt;' 
+will activate verbose mode.
+
+Note that Crowbook generates output files relatively to the directory where &lt;BOOK&gt; is:
+$ crowbook foo/bar.book --to pdf --output baz.pdf
+will thus generate baz.pdf in directory foo and not in current
+directory.
+</code></pre>
+<p>The most important ones is obviously  , i.e. the file configuration book. It is mandatory: if you don't pass it, <code>crowbook</code> will simply display this help message. In a normal use case this is the only argument you'll need to pass, and <code>crowbook</code> will generate the book in all formats specified in the configuration file.</p>
+<p>It is, however, possible to pass more arguments to <code>crowbook</code>.</p>
+<h2><code>--create</code></h2>
+<p><b>Usage</b>: <code>crowbook --create &lt;BOOK&gt; file_1.md file_2.md ...</code></p>
+<p>Creates a new book from a list of Markdown files. It will generate the file <code>BOOK</code> (or abort if it already exists) with all file names specified added as chapters.</p>
+<p>Most other <code>crowbook</code> options have no impact when using <code>--create</code>, but if <code>--numbering</code> is set to <code>false</code>, the files will be included with <code>-</code> instead of <code>+</code> in the Markdown file.</p>
+<h3>Example</h3>
+<pre><code>crowbook --create foo.book README.md ChangeLog.md LICENSE.md
+</code></pre>
+<p>will generate a file <code>foo.book</code> containing:</p>
+<pre><code>author: Your name
+title: Your title
+lang: en
+
+# Uncomment and fill to generate files
+# output.html: some_file.html
+# output.epub: some_file.epub
+# output.pdf: some_file.pdf
+
+# Uncomment and fill to set cover image (for Epub)
+# cover: some_cover.png
+
+# List of chapters
++ README.md
++ ChangeLog.md
++ LICENSE.md
+</code></pre>
+<h2><code>--verbose</code></h2>
+<p><b>usage</b>: <code>crowbook --verbose &lt;BOOK&gt;</code></p>
+<p>If this flag is set, Crowbook will print some more messages.</p>
+<h2><code>--to</code></h2>
+<p><b>usage</b>: <code>crowbook --to &lt;FORMAT&gt; &lt;BOOK&gt;</code></p>
+<p>(or <code>crowbook -t &lt;FORMAT&gt; &lt;BOOK&gt;</code>)</p>
+<p>Generate only the specified format. <code>FORMAT</code> must be either <code>epub</code>, <code>pdf</code>, <code>html</code>, <code>odt</code> or <code>tex</code>.</p>
+<p>If an output file for the format is not specified in the book configuration file, <code>crowbook</code> will fail to render PDF, ODT and Epub (whereas it will print HTML and Tex files on stdout). It is however possible to specify a file with the <code>--output</code> option.</p>
+<h3>Examples</h3>
+<pre><code>crowbook --to html foo.book
+</code></pre>
+<p>will generate some HTML, and prints it either to the file specified by <code>output.html</code> in <code>foo.book</code>, or to stdout.</p>
+<pre><code>crowbook --to pdf --output foo.pdf foo.book
+</code></pre>
+<p>will (try to) generate a <code>foo.pdf</code> file,.</p>
+<h2><code>--output</code></h2>
+<p><b>usage</b>: <code>crowbook --to &lt;FORMAT&gt; --output &lt;FILE&gt; &lt;BOOK&gt;</code></p>
+<p>(or <code>crowbook -t &lt;FORMAT&gt; -o &lt;FILE&gt; &lt;BOOK&gt;</code>)</p>
+<p>Specifies an output file. Only valid when <code>--to</code> is used.</p>
+<p>Note that Crowbook generates output files relatively to the directory where <code>BOOK</code> is:</p>
+<pre><code>$ crowbook foo/bar.book --to pdf --output baz.pdf
+</code></pre>
+<p>will thus generate <code>baz.pdf</code> in directory <code>foo</code> and not in current directory.</p>
+<h2><code>--numbering</code></h2>
+<p><b>usage</b>: <code>crowbook --numbering &lt;BOOL&gt; &lt;BOOK&gt;</code></p>
+<p>Turns numbering on or off. Overrides the option set in <code>BOOK</code> configuration file.</p>
+<h3>Example</h3>
+<pre><code>crowbook --numbering false foo.book
+</code></pre>
+<h2><code>--autoclean</code></h2>
+<p><b>usage</b>: <code>crowbook --autoclean &lt;BOOL&gt; &lt;BOOK&gt;</code></p>
+<p>Turns autoclean on or off. Overrides the option set in <code>BOOK</code> configuration file.</p>
 
   </body>
 </html>
