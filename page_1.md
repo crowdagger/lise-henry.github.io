@@ -52,7 +52,7 @@ word in various language. Used by Caribon.
 Tiny 'Nux Tarot
 ---------------
 
-[![GitHub tag](https://img.shields.io/github/tag/lise-henry/tnt.svg)
+[![GitHub tag](https://img.shields.io/github/tag/lise-henry/tnt.svg)]()
 [![GitHub license](https://img.shields.io/github/license/lise-henry/tnt.svg)]()
 
 
