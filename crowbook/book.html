@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="crowbook">
+    <meta name="author" content="Élisabeth Henry">
+    <title>Crowbook</title>
+    <style type = "text/css">
+      body {
+    font-family: "Linux Libertine", "Georgia", serif;
+    margin-left: 5%; 
+    margin-right: 5%; 
+    margin-top: 5%; 
+    margin-bottom: 5%; 
+    text-align: justify;
+    font-size: 100%;
+}
+p {
+    text-indent: 1.25em;
+    font-size: 1em;
+    margin:0;
+    hyphens: auto;
+}
+blockquote {
+    margin: 1em;
+    font-style: italic;
+}
+code {
+    font-size: .8em;
+    font-family: "Linux Libertine Mono", monospace;
+    background-color: #F0F0F0;
+}
+pre {
+    font-family: "Linux Libertine Mono", monospace;
+    margin: 1em;
+    padding-top: 0;
+    background-color: #F0F0F0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+h1, h2, h3, h4, h5, h5 {
+    adobe-hyphenate: none;
+    -ms-hyphens: none; /* Trident (Windows) */
+    -moz-hyphens: none; /* Gecko (Firefox) */
+    -webkit-hyphens: none; /* Webkit */
+    -epub-hyphens: none; /* EPUB 3 */
+    hyphens: none; /* Futur standard */
+}
+
+h1 {
+    text-align: left;
+    font-family: Linux Biolinum, sans-serif;
+    font-variant: small-caps;
+}
+h2 {
+    text-align: left;
+    font-family: Linux Biolinum, sans-serif;
+    font-variant: small-caps;
+}
+h3 {
+    text-align: left;
+    font-family: Linux Biolinum, sans-serif;
+    font-variant: small-caps;
+}
+h4 { text-align: left; }
+h5 { text-align: left; }
+h6 { text-align: left; }
+h1.title {
+    text-align: center;
+    font-size: 300%;
+}
+h2.author {
+    text-align: right;
+    font-size:  200%;
+}
+h3.date { }
+ol.toc { padding: 0; margin-left: 1em; }
+ol.toc li { list-style-type: none; margin: 0; padding: 0; }
+p img {
+}
+#cover img {
+    width: 100%;
+}
+.rule {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+
+body {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+    </style>
+
+
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Crowbook</h1>
+      <h2 class="author">Élisabeth Henry</h2>
+    </header>
+    <h1>1. Crowbook</h1>
+<p>Render a markdown book in HTML, Epub or PDF.</p>
+<p><a href = "https://travis-ci.org/lise-henry/crowbook"><img src = "https://travis-ci.org/lise-henry/crowbook.svg?branch=master" title = "" alt = "Build Status" /></a></p>
+<h2>Building and installing</h2>
+<p>Youl'll need to have the <a href = "https://www.rust-lang.org/">Rust</a> compiler on your machine first; you can <a href = "https://www.rust-lang.org/downloads.html">download and install it here</a>. Once it is down:</p>
+<pre><code>$ cargo install crowbook
+</code></pre>
+<p>will download <code>crowbook</code> and install it.</p>
+<h2>Usage</h2>
+<p>The simplest command is:</p>
+<pre><code class = "language-bash">$ crowbook &lt;BOOK&gt;
+</code></pre>
+<p>Where <code>BOOK</code> is a configuration file. Crowbook will then parse the config file and generate book in HTML, Epub, LaTeX, and/or PDF, according to the setting in the configuration file.</p>
+<p>This configuration file contains some metadata, options, and list the Markdown files. Here is a basic example:</p>
+<pre><code>author: Joan Doe
+title: Some book
+lang: en
+
+output_html: some_book.html
+
++ chapter_1.md
++ chapter_2.md
++ chapter_3.md
++ ...
+</code></pre>
+<p>For more information see <a href = "book_example/config.md">the configuration file</a>, or the whole <a href = "book_example">book_example</a> directory.</p>
+<p>It is also possible to give additional parameters to <code>crowbook</code>; arguments set from the command line will override the ones set in the <code>BOOK</code> configuration file.</p>
+<pre><code>USAGE:
+        crowbook [FLAGS] [OPTIONS] &lt;BOOK&gt;
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+    -v, --verbose    Activate verbose mode
+
+OPTIONS:
+        --autoclean &lt;BOOL&gt;    Try to clean input markdown [values: true, false]
+        --numbering &lt;BOOL&gt;    Number chapters or not [values: true, false]
+    -o, --output &lt;FILE&gt;       Specify output file
+    -t, --to &lt;FORMAT&gt;         Generate specific format [values: epub, epub, pdf, html, tex]
+
+ARGS:
+    &lt;BOOK&gt;    A file containing the book configuration
+
+Command line options allow to override options defined in &lt;BOOK&gt; configuration file. 
+E.g., even if this file specifies 'verbose: false', calling 'crowbook --verbose &lt;BOOK&gt;' 
+will activate verbose mode.
+
+Note that Crowbook generates output files relatively to the directory where &lt;BOOK&gt; is:
+$ crowbook foo/bar.book --to pdf --output baz.pdf
+will thus generate baz.pdf in directory foo and not in current
+directory.
+</code></pre>
+<h2>Features</h2>
+<h3>Done</h3>
+<ul>
+<li>Support for some simple format configuration files to list chapters and metadatas, so you just run <code>crowbook some_file</code> and you don't have to pass more options, it generates the rest.</li>
+<li>Support for Epub2 and Epub3 format as output.</li>
+<li>Support for HTML format as output.</li>
+<li>Partial support for LaTeX format as output, and PDF through it.</li>
+<li>Experimental support for Odt format as output.</li>
+<li>Support for basic french typography (i.e. non-breaking spaces) in HTML/Epub format.</li>
+<li>Some configuration for HTML/Epub templates and CSS.</li>
+</ul>
+<h3>ToDo</h3>
+<ul>
+<li>Allow more customization.</li>
+<li>Support for easily embedding custom fonts (and other files) in Epub/HTML.</li>
+<li>Improve LaTeX and Odt generation.</li>
+<li>Correct support for technical books.</li>
+</ul>
+<p>See also <a href = "Bugs.md">Bugs</a>.</p>
+<h2>Acknowledgements</h2>
+<p>Besides the Rust compiler and standard library, Crowbook uses the following libraries:</p>
+<ul>
+<li><a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a> (for parsing markdown)</li>
+<li><a href = "https://crates.io/crates/mustache">mustache</a> (for templating)</li>
+<li><a href = "https://github.com/kbknapp/clap-rs">clap</a> (for parsing command line arguments)</li>
+<li><a href = "https://crates.io/crates/chrono">chrono</a> (date and time library)</li>
+<li><a href = "https://crates.io/crates/uuid">uuid</a> (to generate uuid)</li>
+</ul>
+<p>While Crowbook directly doesn't use them, there was also inspiration from <a href = "http://pandoc.org/">Pandoc</a> and <a href = "https://github.com/azerupi/mdBook">mdBook</a>.</p>
+<h2>ChangeLog</h2>
+<p>See <a href = "ChangeLog.md">ChangeLog</a>.</p>
+<h2>Library</h2>
+<p>While the main purpose of Crowbook is to be runned as a command line, the code is written as a library so if you want to build on it you can use it as such. The code is currently badly documented (and badly in a general manner), but you can look at the generated documentation <a href = "http://lise-henry.github.io/rust/crowbook/">here</a>.</p>
+<h2>License</h2>
+<p>Crowbook is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License (LGPL), version 2.1 or (at your option) any ulterior version. See <a href = "LICENSE.md">LICENSE</a> file for more information.</p>
+<h1>2. The configuration file</h1>
+<p>If you want to use Crowbook for your book, this configuration file is all you'll have to add (assuming you'll already have the book in Markdown files; if you don't, you'll also have to write a book first, but that's besides the scope of this document).</p>
+<p>The format is not very complicated. This is an example of it:</p>
+<pre><code># metadata
+author: Joan Doe
+title: Some book
+lang: en
+
+output.html: some_book.html
+
+# list of chapters
+- preface.md
++ chapter_1.md
++ chapter_2.md
++ chapter_3.md
++ chapter_4.md
+- epilogue.md
+</code></pre>
+<p>Basically, it is divided in two parts:</p>
+<ul>
+<li>a list of options, under the form <code>key: value</code>;</li>
+<li>a list of Markdown files.</li>
+</ul>
+<p>Files starting with the <code>#</code> characters are comments and are discarded by Crowbook when parsing the files. Note that <code>#</code> must be at the <em>beginning</em> of the line, so e.g.:</p>
+<pre><code>author: John Smith # aka John Doe
+</code></pre>
+<p>will set the <code>author</code> key to <code>John Smith # aka John Doe</code>.</p>
+<h2>The list of files</h2>
+<p>There are various options to include a markdown file.</p>
+<ul>
+<li><code>+ file_name.md</code> includes a numbered chapter.</li>
+<li><code>- file_name.md</code> includes an unnumbered chapter.</li>
+<li><code>! file_name.md</code> includes a chapter whose title won't be displayed (except in the toc for epub); this is useful for e.g. including a copyright at the beginning or the book, or for short stories where there is only one chapter.</li>
+<li><code>42. file_name.md</code> specifies the number for a chapter.</li>
+</ul>
+<p>So a typical usage might look like this:</p>
+<pre><code>! copyright.md
+- preface.md
+# We want first chapter to be Chapter 0 because we are programmers!
+0. chapter_0.md
+# Next chapters can be numbered automatically
++ chapter_1.md
++ chapter_3.md
+...
+</code></pre>
+<p>There are two important things to note:</p>
+<ol>
+<li>you must <em>not</em> use quotes around the file names</li>
+<li>the path of these files are relative to the directory where your config file is, <em>not</em> to the directory where you are when running <code>crowbook</code>. E.g. you can run <code>crowbook books/my_trilogy/first_book/config.book</code> without being in the book's directory.</li>
+</ol>
+<p>Also note that you don't have to specify a title. This is because the title of the chapter is inferred from the Markdown document. To go back to our previous example:</p>
+<pre><code>+ chapter_1.md
+</code></pre>
+<p>does not specify a chapter title, because it will read it directly in <code>chapter_1.md</code>, e.g.:</p>
+<pre><code class = "language-markdown">The day I was born
+==================
+
+...
+</code></pre>
+<p>You should have one and only one level-one header (i.e. chapter title) in each markdown file.</p>
+<p>If you have more than one, Crowbook won't get too angry at you and will just print a warning and treat it as another chapter (numbered according to the scheme specified for including the file). It will however mess the table of contents if Crowbook tries to generate one (e.g. for Epub).</p>
+<p>It's also a problem if you do <em>not</em> have a level-1 header in a markdown file. If it is a numbered chapter Crowbook will still be able to infer a chapter name, but if it is not numbered Crowbook will fail to generate an Epub file.</p>
+<p class = "rule">***</p>
+<p>So, to sum it up. <em>please</em>: one file = one chapter, a chapter starts with a title, and this way this will work nice.</p>
+<h2>Crowbook options</h2>
+<p>The first part of the configuration file is dedicated to pass options to Crowbook. Each one is of the form <code>option: value</code>. Note that you don't have to put string in quotes, e.g.:</p>
+<pre><code>title: My title
+</code></pre>
+<p>If you <em>do</em> use quotes, Crowbook will actually put those quotes in the string, so basically don't do that.</p>
+<h3>Metadata</h3>
+<h4>author</h4>
+<p>Quite obviously, the author of the book. Note that it's currently just a single string, so if you want to have multiple authors, you'll have to do something like:</p>
+<pre><code>author: Jane Doe, John Smith
+</code></pre>
+<p><b>default</b>: <code>Anonymous</code></p>
+<h4>title</h4>
+<p>The title of the book.</p>
+<p><b>default</b>: <code>Untitled</code></p>
+<h4>lang</h4>
+<p>The language of the book, in a standard format. "en", "fr", and so on.</p>
+<p><b>default</b>: <code>en</code></p>
+<h4>cover</h4>
+<p>The file name of a cover image for the book. Note that, here again, you must not use quotes:</p>
+<pre><code>cover: cover.png
+</code></pre>
+<p><b>default</b>: <code>None</code></p>
+<h4>subject</h4>
+<p>What your book is about: e.g. Programming, Science-Fiction...</p>
+<p><b>default</b>: <code>None</code></p>
+<h4>description</h4>
+<p>A description of your book. Note that Crowbook does <em>not</em> support multi-line strings in configuration field, and it is a field where it might be a problem if you don't like very long lines.</p>
+<p><b>default</b>: <code>None</code></p>
+<h3>Output options</h3>
+<p>These options specify which files to generate. You must at least set one of this option, or Crowbook won't do anything.</p>
+<p>Recall that all file paths are relative to the directory where the config file is, not to the one where you run <code>crowbook</code>. So if you set</p>
+<pre><code>output.epub = foo.epub
+</code></pre>
+<p>and runs</p>
+<pre><code class = "language-bash">$ crowbook some/dir/config.book
+</code></pre>
+<p><code>foo.epub</code> will be generated in <code>some/dir</code>, not in your current directory.</p>
+<p>Crowbook will try to generate each of the <code>output.xxx</code> files that are specified. That means that you'll have to set at least one of those if you want a call to</p>
+<pre><code>$ crowbook my.book
+</code></pre>
+<p>to generate anything. (It's still possible to generate a specific format, and only this one, by using the <code>--to</code> argument on the command line).</p>
+<h4>output.epub</h4>
+<p>The name of the epub file you want to generate.</p>
+<p><b>default</b>: <code>None</code></p>
+<p>Crowbook use the <code>zip</code> command to generate the epub, so it won't work if this command is not installed on your system.</p>
+<h4>output.html</h4>
+<p>The name of the HTML file you want to generate. Note that this HTML file is self-contained, it doesn't require e.g. CSS from other files.</p>
+<p><b>default</b>: <code>None</code></p>
+<h4>output.tex</h4>
+<p>The name of the LaTeX file you want to generate.</p>
+<p><b>default</b>: <code>None</code></p>
+<h4>output.pdf</h4>
+<p>The name of the PDF file you want to generate. Crowbook uses LaTeX to generate it, so it won't work if it isn't installed on your computer. (See <code>tex_command</code> to specify which flavour of LaTeX you want to use.)</p>
+<p><b>default</b>: <code>None</code></p>
+<h3>output.odt</h3>
+<p>The name of the ODT (OpenOffice) file you want to generate. Beware: ODT support is still experimental.</p>
+<p><b>default</b>: <code>None</code></p>
+<p>As for Epub generation, Crowbook depends on the presence of the <code>zip</code> command to generate this file.</p>
+<h3>Generic options for rendering</h3>
+<h4>numbering</h4>
+<p>A boolean that sets whether or not you want numbering. Setting it to <code>false</code> is equivalent to including all your chapters with <code>- my_chapter.md</code>. Note that even if it is set to <code>true</code>, numbering will be desactivated for chapters that are included with <code>- my_chapter.md</code>.</p>
+<p><b>default</b>:: <code>true</code></p>
+<h4>numbering_template</h4>
+<p>A string will be used as chapter title. You can use <code>{{number}}</code> and <code>{{title}}</code> in this string, e.g.:</p>
+<pre><code>numbering_template: Chapter {{number}} {{title}}
+</code></pre>
+<p>Note that:</p>
+<ul>
+<li>this string isn't used for unnumbered chapters;</li>
+<li>this string isn't used for LaTeX, either.</li>
+</ul>
+<p><b>default</b>: <code>{{number}}. {{title}}</code></p>
+<h4>autoclean</h4>
+<p>This option cleans a bit the input markdown. With the default implementation, it only removes consecutive spaces, which has not real impact (they are ignored anyway both by HTML viewers and by LaTeX).</p>
+<p>However, if <code>lang</code> is set to <code>fr</code>, it also tries to add non-breaking spaces in front (or after) characters like '?', '!', ';' to respect french typography.</p>
+<p><b>default</b>: <code>true</code></p>
+<h4>nb_char</h4>
+<p>This option allows you to specify the non breaking character used by the french cleaning method (see above). Probably not really something you need to modify.</p>
+<p><b>default</b>: <code>' '</code> (i.e. narrrow non-breaking space)</p>
+<h3>Options for HTML rendering</h3>
+<h4>html.template</h4>
+<p>A file containing a (mustache) HTML template.</p>
+<p><b>default</b>: <code>None</code> (built-in template)</p>
+<h4>html.css</h4>
+<p>A file containing a stylesheet for the HTML file.</p>
+<p><b>default</b>: <code>None</code> (built-in)</p>
+<h3>Options for Epub rendering</h3>
+<h4>epub.template</h4>
+<p>A file containing a (mustache) xhtml template for the files generated for each chapter.</p>
+<p><b>default</b>: <code>None</code> (built-in template)</p>
+<h4>epub.css</h4>
+<p>A file containing a stylesheet for the Epub file.</p>
+<p><b>default</b>: <code>None</code> (built-in)</p>
+<h3>epub_version</h3>
+<p>Sets the version for generated Epub, either 2 or 3.</p>
+<p><b>default</b>: <code>2</code></p>
+<h3>Options for LaTeX / PDF rendering</h3>
+<h4>tex.template</h4>
+<p>Sets the LaTeX template.</p>
+<p><b>default</b>: <code>None</code> (builtin)</p>
+<h4>tex.command</h4>
+<p>The command used to generate a PDF file.</p>
+<p><b>default</b>: <code>pdflatex</code></p>
+<h4>tex.links_as_footnotes</h4>
+<p>Display the link in the document, using the <code>\footnote{}</code> command. This is useful if you want your readers to be able to see the URLs in a printed document.</p>
+<p><b>default</b>: <code>true</code></p>
+<h3>Additional options</h3>
+<h4>temp_dir</h4>
+<p>When it is generating epub or pdf files, Crowbook creates a temporary directory (which is then removed), named from a random uuid (so we can be pretty certain it's not gonna exist). This option specify where to create this directory. E.g., if you set:</p>
+<pre><code>temp_dir: /tmp
+</code></pre>
+<p>crowbook might create a temporary directory <code>/tmp/7fcbe41e-1676-46ba-b1a7-40c2fa37a3a7</code>.</p>
+<p>By default, this temporary directory is created where the config file is.</p>
+<p><b>default</b>: <code>.</code></p>
+
+  </body>
+</html>
