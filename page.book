@@ -2,6 +2,8 @@ author: Élisabeth Henry
 title: Lise Henry's github page
 lang: en
 
+numbering: 2
+
 # Uncomment and fill to generate files
 output.html: index.html
 # output.epub: some_file.epub
