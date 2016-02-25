@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["HtmlRenderer","Renderer for HTMLAlso used by Epub."]]});

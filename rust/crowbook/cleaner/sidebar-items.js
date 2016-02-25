@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["French","Implementation for french 'cleaning'"]],"trait":[["Cleaner","Trait for cleaning a string. This trait should be called for text that is e.g. in a paragraph, a title, NOT for code blocks, hyperlikns and so on!"]]});
