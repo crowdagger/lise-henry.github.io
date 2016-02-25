@@ -3,30 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="crowbook">
-    <meta name="author" content="Élisabeth Henry">
+    <meta name="author" content="Élisabeth Henry ">
     <title>Crowbook</title>
     <style type = "text/css">
       body {
     font-family: "Linux Libertine", "Georgia", serif;
-    margin-left: 5%; 
-    margin-right: 5%; 
-    margin-top: 5%; 
-    margin-bottom: 5%; 
+    margin-left: 2em; 
+    margin-right: 2em; 
+    margin-top: 1em; 
+    margin-bottom: 1em; 
     text-align: justify;
     font-size: 100%;
 }
 p {
     text-indent: 1.25em;
-    font-size: 1em;
     margin:0;
     hyphens: auto;
 }
+
 blockquote {
     margin: 1em;
     font-style: italic;
 }
 code {
-    font-size: .8em;
+    font-size: 80%;
     font-family: "Linux Libertine Mono", monospace;
     background-color: #F0F0F0;
 }
@@ -88,39 +88,408 @@ p img {
     font-weight: bold;
 }
 
-
-body {
-    margin-left: 15%;
-    margin-right: 15%;
+.sidenote {
+    display: block;
+    float: right;
+    width: 30%;
+    border: 1px solid black;
+    margin: 1em;
+    padding: .5em;
+    margin-right: -1.5em;
 }
-    </style>
+
+.note-number {
+    font-weight: bold;
+    margin-right: 1em;
+}
+
+.sidenote .note-number {
+    float: left;
+}
+
+.notes {
+    text-align: justify;
+    border: none;
+}
+
+table.notes td {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+                 
+
+.table {
+    margin: 1em;
+}
+
+.table table {
+    width: 60%;
+    margin: 0 auto;
+    border-style: solid thin;
+    border-color: black;
+    border-collapse: collapse;
+}
+
+.table table th, .table table td {
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+}
+
+.table table th {
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+ul li {
+    list-style-type: none;
+}
+ul li:before {
+    content: "– "; 
+}nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    overflow-y: auto;
+    font-size: 80%;
+    margin-left: 0;
+    background: #F0F0F0;
+}
+#content {
+    position: absolute;
+    overflow-y: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    transition: margin-left 1s;
+}
+#toc ul, #toc li, #nav ul, #nav li {
+    list-style-type: none;
+}
+
+#toc li:before {
+    content: none;
+}
+
+#nav li:before {
+    content: none;
+}
+                    
+                    
+#nav ul {
+    margin-left: 0;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+#menu {
+    position: fixed;
+    top: 0em;
+    left: 1em;
+    transition: left 1s;
+}
+#menu-button {
+    width: 1.5em;
+    padding: 0.5em;
+}
+
+#nav {
+    left: -20%;
+    transition: left 1s;
+}
+   </style>
+   <script>
+    var display_menu = false;
+function toggle() {
+    if (display_menu == true) {
+        display_menu = false;
+        //        document.getElementById("nav").style.display = "none";
+        document.getElementById("nav").style.left = "-20%";
+        document.getElementById("content").style.marginLeft = "10%";
+        document.getElementById("menu").style.left = "1em";
+    } else {
+        display_menu = true;
+        //        document.getElementById("nav").style.display = "block";
+        document.getElementById("nav").style.left = "0";
+        document.getElementById("content").style.marginLeft = "20%";
+        document.getElementById("menu").style.left = "20%";
+    }
+}
+   </script>
 
 
-  </head>
+  </head>  
   <body>
+
+  <nav id = "nav">
+    <h2>Menu</h2>
+    <ul>
+ <li><a href = "#link-1">1. Crowbook</a>
+ <ul>
+  <li><a href = "#link-2">1.1. Installing</a>
+  <ul>
+   <li><a href = "#link-3">1.1.1. Binaries</a>
+   </li>
+   <li><a href = "#link-4">1.1.2. Building</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-5">1.2. Usage</a>
+  </li>
+  <li><a href = "#link-6">1.3. Current features</a>
+  <ul>
+   <li><a href = "#link-7">1.3.1. Output formats</a>
+   </li>
+   <li><a href = "#link-8">1.3.2. Input format</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-9">1.4. Acknowledgements</a>
+  </li>
+  <li><a href = "#link-10">1.5. ChangeLog</a>
+  </li>
+  <li><a href = "#link-11">1.6. Library</a>
+  </li>
+  <li><a href = "#link-12">1.7. License</a>
+  </li>
+ </ul>
+ </li>
+ <li><a href = "#link-13">2. The configuration file</a>
+ <ul>
+  <li><a href = "#link-14">2.1. The list of files</a>
+  </li>
+  <li><a href = "#link-15">2.2. Crowbook options</a>
+  <ul>
+   <li><a href = "#link-16">2.2.1. Options summary</a>
+   </li>
+   <li><a href = "#link-17">2.2.2. Metadata</a>
+   </li>
+   <li><a href = "#link-18">2.2.3. Output options</a>
+   </li>
+   <li><a href = "#link-19">2.2.4. Misc options</a>
+   </li>
+   <li><a href = "#link-20">2.2.5. HTML options</a>
+   </li>
+   <li><a href = "#link-21">2.2.6. EPUB options</a>
+   </li>
+   <li><a href = "#link-22">2.2.7. LaTeX options</a>
+   </li>
+   <li><a href = "#link-23">2.2.8. Output options</a>
+   </li>
+   <li><a href = "#link-24">2.2.9. Generic options for rendering</a>
+   <ul>
+    <li><a href = "#link-25">2.2.9.1. numbering</a>
+    </li>
+    <li><a href = "#link-26">2.2.9.2. numbering_template</a>
+    </li>
+    <li><a href = "#link-27">2.2.9.3. autoclean</a>
+    </li>
+    <li><a href = "#link-28">2.2.9.4. nb_char</a>
+    </li>
+   </ul>
+   </li>
+   <li><a href = "#link-29">2.2.10. Additional options</a>
+   <ul>
+    <li><a href = "#link-30">2.2.10.1. temp_dir</a>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a href = "#link-31">3. Arguments</a>
+ <ul>
+  <li><a href = "#link-32">3.1. <code>--create</code></a>
+  <ul>
+   <li><a href = "#link-33">3.1.1. Examples</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-34">3.2. <code>--set</code></a>
+  <ul>
+   <li><a href = "#link-35">3.2.1. Examples</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-36">3.3. <code>--list-options</code></a>
+  </li>
+  <li><a href = "#link-37">3.4. <code>--print-template</code></a>
+  </li>
+  <li><a href = "#link-38">3.5. <code>--verbose</code></a>
+  </li>
+  <li><a href = "#link-39">3.6. <code>--to</code></a>
+  <ul>
+   <li><a href = "#link-40">3.6.1. Examples</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-41">3.7. <code>--output</code></a>
+  </li>
+ </ul>
+ </li>
+ <li><a href = "#link-42">ChangeLog</a>
+ <ul>
+  <li><a href = "#link-43">0.2.0 (unreleased)</a>
+  </li>
+  <li><a href = "#link-44">0.1.0 (2016-02-21)</a>
+  </li>
+ </ul>
+ </li>
+</ul>
+  </nav>
+
+  <div id = "content">
+    <div id = "menu">
+      <img id = "menu-button" onclick="toggle();"
+     src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiICAgd2lkdGg9IjIwMG1tIiAgIGhlaWdodD0iMjAwbW0iICAgdmlld0JveD0iMCAwIDcwOC42NjE0MiA3MDguNjYxNDEiICAgaWQ9InN2ZzIiICAgdmVyc2lvbj0iMS4xIiAgIGlua3NjYXBlOnZlcnNpb249IjAuOTEgcjEzNzI1IiAgIHNvZGlwb2RpOmRvY25hbWU9Im1lbnUuc3ZnIj4gIDxkZWZzICAgICBpZD0iZGVmczQiIC8+ICA8c29kaXBvZGk6bmFtZWR2aWV3ICAgICBpZD0iYmFzZSIgICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIgICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IiAgICAgYm9yZGVyb3BhY2l0eT0iMS4wIiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIgICAgIGlua3NjYXBlOnBhZ2VzaGFkb3c9IjIiICAgICBpbmtzY2FwZTp6b29tPSIwLjQ5NDk3NDc1IiAgICAgaW5rc2NhcGU6Y3g9IjEwNS42MTI3NSIgICAgIGlua3NjYXBlOmN5PSI0MDcuMDYzOTEiICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJsYXllcjEiICAgICBzaG93Z3JpZD0iZmFsc2UiICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjEzNjYiICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI3MDQiICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMCIgICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIgICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiIC8+ICA8bWV0YWRhdGEgICAgIGlkPSJtZXRhZGF0YTciPiAgICA8cmRmOlJERj4gICAgICA8Y2M6V29yayAgICAgICAgIHJkZjphYm91dD0iIj4gICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2Uvc3ZnK3htbDwvZGM6Zm9ybWF0PiAgICAgICAgPGRjOnR5cGUgICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+ICAgICAgICA8ZGM6dGl0bGU+PC9kYzp0aXRsZT4gICAgICA8L2NjOldvcms+ICAgIDwvcmRmOlJERj4gIDwvbWV0YWRhdGE+ICA8ZyAgICAgaW5rc2NhcGU6bGFiZWw9IkxheWVyIDEiICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIiAgICAgaWQ9ImxheWVyMSIgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTM0My43MDA3OSkiPiAgICA8cGF0aCAgICAgICBzdHlsZT0iZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiICAgICAgIGQ9Im0gMTA0LjMzMDcxLDQ2OS41MDUxIDUwMCwwIiAgICAgICBpZD0icGF0aDQxMzYiICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiIC8+ICAgIDxwYXRoICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjEwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIgICAgICAgZD0ibSAxMDQuMzMwNzEsNzA0LjUwNTEgNTAwLDAiICAgICAgIGlkPSJwYXRoNDEzNi01IiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIiAgICAgICBpbmtzY2FwZTp0cmFuc2Zvcm0tY2VudGVyLXg9IjcxLjQyODU3MiIgICAgICAgaW5rc2NhcGU6dHJhbnNmb3JtLWNlbnRlci15PSItMjQyLjg1NzE2IiAvPiAgICA8cGF0aCAgICAgICBzdHlsZT0iZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiICAgICAgIGQ9Im0gMTA0LjMzMDcxLDkzOS41MDUwNiA1MDAsMCIgICAgICAgaWQ9InBhdGg0MTM2LTUtMyIgICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgICAgICAgaW5rc2NhcGU6dHJhbnNmb3JtLWNlbnRlci14PSI3MS40Mjg1NzIiICAgICAgIGlua3NjYXBlOnRyYW5zZm9ybS1jZW50ZXIteT0iLTI0Mi44NTcxNiIgLz4gIDwvZz48L3N2Zz4=" alt =
+     "Menu" title = "Menu" />
+    </div>
     <header>
-      <h1 class="title">Crowbook</h1>
-      <h2 class="author">Élisabeth Henry</h2>
+    <h1 class="title">Crowbook</h1>
+      <h2 class="author">Élisabeth Henry </h2>
     </header>
-    <h1>1. Crowbook</h1>
+    
+    
+    <h1>Table of contents</h1>
+<div id = "toc">
+<ul>
+ <li><a href = "#link-1">1. Crowbook</a>
+ <ul>
+  <li><a href = "#link-2">1.1. Installing</a>
+  <ul>
+   <li><a href = "#link-3">1.1.1. Binaries</a>
+   </li>
+   <li><a href = "#link-4">1.1.2. Building</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-5">1.2. Usage</a>
+  </li>
+  <li><a href = "#link-6">1.3. Current features</a>
+  <ul>
+   <li><a href = "#link-7">1.3.1. Output formats</a>
+   </li>
+   <li><a href = "#link-8">1.3.2. Input format</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-9">1.4. Acknowledgements</a>
+  </li>
+  <li><a href = "#link-10">1.5. ChangeLog</a>
+  </li>
+  <li><a href = "#link-11">1.6. Library</a>
+  </li>
+  <li><a href = "#link-12">1.7. License</a>
+  </li>
+ </ul>
+ </li>
+ <li><a href = "#link-13">2. The configuration file</a>
+ <ul>
+  <li><a href = "#link-14">2.1. The list of files</a>
+  </li>
+  <li><a href = "#link-15">2.2. Crowbook options</a>
+  <ul>
+   <li><a href = "#link-16">2.2.1. Options summary</a>
+   </li>
+   <li><a href = "#link-17">2.2.2. Metadata</a>
+   </li>
+   <li><a href = "#link-18">2.2.3. Output options</a>
+   </li>
+   <li><a href = "#link-19">2.2.4. Misc options</a>
+   </li>
+   <li><a href = "#link-20">2.2.5. HTML options</a>
+   </li>
+   <li><a href = "#link-21">2.2.6. EPUB options</a>
+   </li>
+   <li><a href = "#link-22">2.2.7. LaTeX options</a>
+   </li>
+   <li><a href = "#link-23">2.2.8. Output options</a>
+   </li>
+   <li><a href = "#link-24">2.2.9. Generic options for rendering</a>
+   <ul>
+    <li><a href = "#link-25">2.2.9.1. numbering</a>
+    </li>
+    <li><a href = "#link-26">2.2.9.2. numbering_template</a>
+    </li>
+    <li><a href = "#link-27">2.2.9.3. autoclean</a>
+    </li>
+    <li><a href = "#link-28">2.2.9.4. nb_char</a>
+    </li>
+   </ul>
+   </li>
+   <li><a href = "#link-29">2.2.10. Additional options</a>
+   <ul>
+    <li><a href = "#link-30">2.2.10.1. temp_dir</a>
+    </li>
+   </ul>
+   </li>
+  </ul>
+  </li>
+ </ul>
+ </li>
+ <li><a href = "#link-31">3. Arguments</a>
+ <ul>
+  <li><a href = "#link-32">3.1. <code>--create</code></a>
+  <ul>
+   <li><a href = "#link-33">3.1.1. Examples</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-34">3.2. <code>--set</code></a>
+  <ul>
+   <li><a href = "#link-35">3.2.1. Examples</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-36">3.3. <code>--list-options</code></a>
+  </li>
+  <li><a href = "#link-37">3.4. <code>--print-template</code></a>
+  </li>
+  <li><a href = "#link-38">3.5. <code>--verbose</code></a>
+  </li>
+  <li><a href = "#link-39">3.6. <code>--to</code></a>
+  <ul>
+   <li><a href = "#link-40">3.6.1. Examples</a>
+   </li>
+  </ul>
+  </li>
+  <li><a href = "#link-41">3.7. <code>--output</code></a>
+  </li>
+ </ul>
+ </li>
+ <li><a href = "#link-42">ChangeLog</a>
+ <ul>
+  <li><a href = "#link-43">0.2.0 (unreleased)</a>
+  </li>
+  <li><a href = "#link-44">0.1.0 (2016-02-21)</a>
+  </li>
+ </ul>
+ </li>
+</ul>
+</div>
+<h1 id = "link-1">1. Crowbook</h1>
 <p>Render a markdown book in HTML, Epub or PDF.</p>
 <p>Crowbook's purpose is to allow you to automatically generate multiple outputs formats from a book written in Markdown. Its main focus is novels, and the default settings should (hopefully) generate readables book with correct typography.</p>
-<p>It is also possible to use <code>crowbook</code> for e.g. technical documentation, but it might not be the best tool for that.</p>
 <p><a href = "https://travis-ci.org/lise-henry/crowbook"><img src = "https://travis-ci.org/lise-henry/crowbook.svg?branch=master" title = "" alt = "Build Status" /></a></p>
-<h2>Building and installing</h2>
-<p>Youl'll need to have the <a href = "https://www.rust-lang.org/">Rust</a> compiler on your machine first; you can <a href = "https://www.rust-lang.org/downloads.html">download and install it here</a>. Once it is down:</p>
+<h2 id = "link-2">1.1. Installing</h2>
+<p>There are two ways to get <code>crowbook</code>: either use a precompiled binary or build it yourself.</p>
+<h3 id = "link-3">1.1.1. Binaries</h3>
+<p>See <img src = "https://github.com/lise-henry/crowbook/releases" title = "" alt = "the releases page" /> to download a precompiled binary for your architecture (currently: Linux, Windows and MacOSX). Just extract the archive and run <code>crowbook</code> (you might also want to copy the binary somewhere in your <code>PATH</code> for later usage).</p>
+<h3 id = "link-4">1.1.2. Building</h3>
+<p>You'll need to have the <a href = "https://www.rust-lang.org/">Rust</a> compiler on your machine first; you can <a href = "https://www.rust-lang.org/downloads.html">download and install it here</a>. Once it is down:</p>
 <pre><code>$ cargo install crowbook
 </code></pre>
-<p>will download <code>crowbook</code> and install it.</p>
-<h2>Usage</h2>
+<p>will automatically download the latest <code>crowbook</code> release on <img src = "https://crates.io/crates/crowbook" title = "" alt = "crates.io" /> and install it.</p>
+<h2 id = "link-5">1.2. Usage</h2>
 <p>The simplest command is:</p>
 <pre><code class = "language-bash">$ crowbook &lt;BOOK&gt;
 </code></pre>
-<p>Where <code>BOOK</code> is a configuration file. Crowbook will then parse the config file and generate book in HTML, Epub, LaTeX, and/or PDF, according to the setting in the configuration file. So if you clone this repository and run</p>
+<p>Where <code>BOOK</code> is a configuration file. Crowbook will then parse this file and generate a book in HTML, Epub, LaTeX, and/or PDF, according to the settings in the configuration file. So if you clone this repository and run</p>
 <pre><code class = "language-bash">$ crowbook book_example/config.book
 </code></pre>
-<p>(or <code>cargo run -- book_example/config.book</code> if you don't want to install it), you'll generate the example book in various format. The HTML version should look <a href = "http://lise-henry.github.io/crowbook/book.html">like that</a>.</p>
-<p>Now, let's say you want to make your own book. Assuming you have a list of Markdown files, you can generate a template configuration file with the <code>--create</code> argument:</p>
+<p>you'll generate the example book in various formats. The HTML version should look <a href = "http://lise-henry.github.io/crowbook/book.html">like that</a>.</p>
+<p>To create a new book, assuming you have a list of Markdown files, you can generate a template configuration file with the <code>--create</code> argument:</p>
 <pre><code class = "language-bash">$ crowbook --create my.book chapter_*.md
 </code></pre>
 <p>This will generate a default <code>my.book</code> file, which you'll need to complete.</p>
@@ -138,22 +507,16 @@ output_html: some_book.html
 </code></pre>
 <p>For more information see <a href = "book_example/config.md">the configuration file page</a>, or the whole <a href = "book_example">book_example</a> directory. (A (not necessarily up-to-date) <a href = "http://lise-henry.github.io/crowbook/book.html">rendered version is available in HTML here</a>).</p>
 <p>It is also possible to give additional parameters to <code>crowbook</code>; we have already seen <code>--create</code>, but if you want the full list, see <a href = "book_example/arguments.md">the arguments page</a>.</p>
-<h2>Current features</h2>
-<h3>Output formats</h3>
+<h2 id = "link-6">1.3. Current features</h2>
+<h3 id = "link-7">1.3.1. Output formats</h3>
 <p>Crowbook (to my knowledge) correctly supports HTML and EPUB (either version 2 or 3) as output formats: rendered files should pass respectively the <a href = "https://validator.w3.org/">W3C validator</a> and the <a href = "http://validator.idpf.org/">IDPF EPUB validator</a> for a wide range of (correctly Markdown formatted) input files. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.html">HTML</a> and <a href = "http://lise-henry.github.io/crowbook/book.epub">EPUB</a> on github.io.</p>
-<p>LaTeX output is more tricky: it should work reasonably well for novels (the primary target of Crowbook), but <code>pdflatex</code> might occasionally choke on some « weird » unicode character. Moreover, the rendering of code blocks is not satisfactory and images are not yet implemented. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.pdf">PDF</a> on github.io to get an idea of the problems you might encounter.</p>
+<p>LaTeX output is a bit more tricky: it should work reasonably well for novels (the primary target of Crowbook), but <code>pdflatex</code> might occasionally choke on some « weird » unicode character. Moreover, the rendering of code blocks is not satisfactory and images are not yet implemented. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.pdf">PDF</a> on github.io to get an idea of the problems you might encounter.</p>
 <p>ODT output is experimental at best. It might work if your inputs files only include very basic formatting (basically, headers, emphasis and bold), it will probably look ugly in the rest of the cases, and it might miserably fail in some. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.odt">ODT</a> on github.io if you want to hurt your eyes.</p>
-<h3>Input format</h3>
-<p>Crowbook uses <a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a> and thus should support most of commonmark Markdown. There are, however, a few features that that are not supported:</p>
-<ul>
-<li>Tables and Footnotes are not yet implemented. Tables might be implemented soon, but footnotes are a bit more tricky.</li>
-<li>HTML in markdown is not implemented, and probably won't be, as the goal is to have books that can also be generated in PDF (and maybe ODT).</li>
-</ul>
-<p>Maybe the most specific "feature" of Crowbook is that (by default, it can be deactivated) tries to "clean" the input files. By default this doesn't do much (except removing superfluous spaces), but if the book's language is set to french it tries to respect french typography, replacing spaces with non-breaking ones when it is appropriate (e.g. in french you are supposed to put a non-breaking space before '?', '!', ';' or ':'). This feature is relatively limited at the moment, but I might try to add more options and support for more languages.</p>
-<h3>Table of Contents</h3>
-<p>Crowbook currently only supports a table of contents for first-level headers (e.g. chapters). There is currently no option to integrate it in the document, so it is only generated in the EPUB format.</p>
+<h3 id = "link-8">1.3.2. Input format</h3>
+<p>Crowbook uses <a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a> and thus should support most of commonmark Markdown. Inline HTML, however, is not implemented, and probably won't be, as the goal is to have books that can also be generated in PDF (and maybe eventually ODT).</p>
+<p>Maybe the most specific "feature" of Crowbook is that (by default, it can be deactivated) it tries to "clean" the input files. By default this doesn't do much (except removing superfluous spaces), but if the book's language is set to french it tries to respect french typography, replacing spaces with non-breaking ones when it is appropriate (e.g. in french you are supposed to put a non-breaking space before '?', '!', ';' or ':'). This feature is relatively limited at the moment, but I might try to add more options and support for more languages.</p>
 <p>See also <a href = "Bugs.md">Bugs</a>.</p>
-<h2>Acknowledgements</h2>
+<h2 id = "link-9">1.4. Acknowledgements</h2>
 <p>Besides the Rust compiler and standard library, Crowbook uses the following libraries:</p>
 <ul>
 <li><a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a> (for parsing markdown)</li>
@@ -162,16 +525,17 @@ output_html: some_book.html
 <li><a href = "https://crates.io/crates/chrono">chrono</a> (date and time library)</li>
 <li><a href = "https://crates.io/crates/uuid">uuid</a> (to generate uuid)</li>
 </ul>
+<p>It also uses configuration files from <a href = "https://github.com/japaric/rust-everywhere">[rust-everywhere]</a> to use <a href = "https://travis-ci.org/">[Travis]</a> and <a href = "http://www.appveyor.com/">[Appveyor]</a> to generate binaries for various platforms on each release.</p>
 <p>While Crowbook directly doesn't use them, there was also inspiration from <a href = "http://pandoc.org/">Pandoc</a> and <a href = "https://github.com/azerupi/mdBook">mdBook</a>.</p>
-<h2>ChangeLog</h2>
+<h2 id = "link-10">1.5. ChangeLog</h2>
 <p>See <a href = "ChangeLog.md">ChangeLog</a>.</p>
-<h2>Library</h2>
-<p>While the main purpose of Crowbook is to be runned as a command line, the code is written as a library so if you want to build on it you can use it as such. The code is currently badly documented (and badly in a general manner), but you can look at the generated documentation <a href = "http://lise-henry.github.io/rust/crowbook/">here</a>.</p>
-<h2>License</h2>
+<h2 id = "link-11">1.6. Library</h2>
+<p>While the main purpose of Crowbook is to be runned as a command line, the code is written as a library, so if you want to build on it you can use it as such. The code is currently badly documented (and badly in a general manner), but you can look at the generated documentation <a href = "http://lise-henry.github.io/rust/crowbook/">here</a>.</p>
+<h2 id = "link-12">1.7. License</h2>
 <p>Crowbook is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License (LGPL), version 2.1 or (at your option) any ulterior version. See <a href = "LICENSE.md">LICENSE</a> file for more information.</p>
-<h1>2. The configuration file</h1>
+<h1 id = "link-13">2. The configuration file</h1>
 <p>If you want to use Crowbook for your book, this configuration file is all you'll have to add (assuming you'll already have the book in Markdown files; if you don't, you'll also have to write a book first, but that's besides the scope of this document).</p>
-<p>The format is not very complicated. This is an example of it:</p>
+<p>The format is not very complicated, and it looks a bit like YAML. This is an example of it:</p>
 <pre><code># metadata
 author: Joan Doe
 title: Some book
@@ -196,7 +560,7 @@ output.html: some_book.html
 <pre><code>author: John Smith # aka John Doe
 </code></pre>
 <p>will set the <code>author</code> key to <code>John Smith # aka John Doe</code>.</p>
-<h2>The list of files</h2>
+<h2 id = "link-14">2.1. The list of files</h2>
 <p>There are various options to include a markdown file.</p>
 <ul>
 <li><code>+ file_name.md</code> includes a numbered chapter.</li>
@@ -233,35 +597,203 @@ output.html: some_book.html
 <p>It's also a problem if you do <em>not</em> have a level-1 header in a markdown file. If it is a numbered chapter Crowbook will still be able to infer a chapter name, but if it is not numbered Crowbook will fail to generate an Epub file.</p>
 <p class = "rule">***</p>
 <p>So, to sum it up. <em>please</em>: one file = one chapter, a chapter starts with a title, and this way this will work nice.</p>
-<h2>Crowbook options</h2>
+<h2 id = "link-15">2.2. Crowbook options</h2>
 <p>The first part of the configuration file is dedicated to pass options to Crowbook. Each one is of the form <code>option: value</code>. Note that you don't have to put string in quotes, e.g.:</p>
 <pre><code>title: My title
 </code></pre>
 <p>If you <em>do</em> use quotes, Crowbook will actually put those quotes in the string, so basically don't do that.</p>
-<h3>Metadata</h3>
-<h4>author</h4>
-<p>Quite obviously, the author of the book. Note that it's currently just a single string, so if you want to have multiple authors, you'll have to do something like:</p>
-<pre><code>author: Jane Doe, John Smith
+<p>It is possible to use multiline strings with either <code>&gt;</code> or <code>|</code>, and then indenting the lines that are part of the string:</p>
+<pre><code>title: &gt;
+ A
+ long
+ title
+author: Joan Doe
 </code></pre>
-<p><b>default</b>: <code>Anonymous</code></p>
-<h4>title</h4>
-<p>The title of the book.</p>
-<p><b>default</b>: <code>Untitled</code></p>
-<h4>lang</h4>
-<p>The language of the book, in a standard format. "en", "fr", and so on.</p>
-<p><b>default</b>: <code>en</code></p>
-<h4>cover</h4>
-<p>The file name of a cover image for the book. Note that, here again, you must not use quotes:</p>
-<pre><code>cover: cover.png
+<p>will set <code>title</code> to <code>"A long title"</code>, whereas</p>
+<pre><code>title: &gt;
+ A
+ long
+ title
+author: Joan Doe
 </code></pre>
-<p><b>default</b>: <code>None</code></p>
-<h4>subject</h4>
-<p>What your book is about: e.g. Programming, Science-Fiction...</p>
-<p><b>default</b>: <code>None</code></p>
-<h4>description</h4>
-<p>A description of your book. Note that Crowbook does <em>not</em> support multi-line strings in configuration field, and it is a field where it might be a problem if you don't like very long lines.</p>
-<p><b>default</b>: <code>None</code></p>
-<h3>Output options</h3>
+<p>will set <code>title</code> to <code>"A\nlong\ntitle\n"</code> (replicating line returns).</p>
+<p>This feature is useful for options like <code>description</code> who may take a long string.</p>
+<h3 id = "link-16">2.2.1. Options summary</h3>
+<h3 id = "link-17">2.2.2. Metadata</h3>
+<ul>
+<li><b><code>author</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>Anonymous</code></li>
+<li>The author of the book</li>
+</ul>
+</li>
+<li><b><code>title</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>Untitled</code></li>
+<li>The title of the book</li>
+</ul>
+</li>
+<li><b><code>lang</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>en</code></li>
+<li>The language of the book</li>
+</ul>
+</li>
+<li><b><code>subject</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Subject of the book (used for EPUB metadata)</li>
+</ul>
+</li>
+<li><b><code>description</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Description of the book (used for EPUB metadata)</li>
+</ul>
+</li>
+<li><b><code>cover</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>File name of the cover of the book</li>
+</ul>
+</li>
+</ul>
+<h3 id = "link-18">2.2.3. Output options</h3>
+<ul>
+<li><b><code>output.epub</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Output file name for EPUB rendering</li>
+</ul>
+</li>
+<li><b><code>output.html</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Output file name for HTML rendering</li>
+</ul>
+</li>
+<li><b><code>output.tex</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Output file name for LaTeX rendering</li>
+</ul>
+</li>
+<li><b><code>output.pdf</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Output file name for PDF rendering</li>
+</ul>
+</li>
+<li><b><code>output.odt</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Output file name for ODT rendering</li>
+</ul>
+</li>
+</ul>
+<h3 id = "link-19">2.2.4. Misc options</h3>
+<ul>
+<li><b><code>numbering</code></b><ul>
+<li><b>type</b>: integer</li>
+<li><b>default value</b>: <code>1</code></li>
+<li>The maximum heading levels to number (0: no numbering, 1: only chapters, ..., 6: all)</li>
+</ul>
+</li>
+<li><b><code>autoclean</code></b><ul>
+<li><b>type</b>: boolean</li>
+<li><b>default value</b>: <code>true</code></li>
+<li>Toggles cleaning of input markdown (not used for LaTeX)</li>
+</ul>
+</li>
+<li><b><code>verbose</code></b><ul>
+<li><b>type</b>: boolean</li>
+<li><b>default value</b>: <code>false</code></li>
+<li>Toggle verbose mode</li>
+</ul>
+</li>
+<li><b><code>side_notes</code></b><ul>
+<li><b>type</b>: boolean</li>
+<li><b>default value</b>: <code>false</code></li>
+<li>Display footnotes as side notes in HTML/Epub</li>
+</ul>
+</li>
+<li><b><code>nb_char</code></b><ul>
+<li><b>type</b>: char</li>
+<li><b>default value</b>: <code>' '</code></li>
+<li>The non-breaking character to use for autoclean when lang is set to fr</li>
+</ul>
+</li>
+<li><b><code>temp_dir</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>.</code></li>
+<li>Path where to create a temporary directory</li>
+</ul>
+</li>
+<li><b><code>numbering_template</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>{{number}}. {{title}}</code></li>
+<li>Format of numbered titles</li>
+</ul>
+</li>
+</ul>
+<h3 id = "link-20">2.2.5. HTML options</h3>
+<ul>
+<li><b><code>html.template</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Path of an HTML template</li>
+</ul>
+</li>
+<li><b><code>html.css</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Path of a stylesheet to use with HTML rendering</li>
+</ul>
+</li>
+</ul>
+<h3 id = "link-21">2.2.6. EPUB options</h3>
+<ul>
+<li><b><code>epub.version</code></b><ul>
+<li><b>type</b>: integer</li>
+<li><b>default value</b>: <code>2</code></li>
+<li>The EPUB version to generate</li>
+</ul>
+</li>
+<li><b><code>epub.css</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Path of a stylesheet to use with EPUB rendering</li>
+</ul>
+</li>
+<li><b><code>epub.template</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Path of an epub template for chapter</li>
+</ul>
+</li>
+</ul>
+<h3 id = "link-22">2.2.7. LaTeX options</h3>
+<ul>
+<li><b><code>tex.links_as_footnotes</code></b><ul>
+<li><b>type</b>: boolean</li>
+<li><b>default value</b>: <code>true</code></li>
+<li>If set to true, will add foontotes to URL of links in LaTeX/PDF output</li>
+</ul>
+</li>
+<li><b><code>tex.command</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>pdflatex</code></li>
+<li>LaTeX flavour to use for generating PDF</li>
+</ul>
+</li>
+<li><b><code>tex.template</code></b><ul>
+<li><b>type</b>: string</li>
+<li><b>default value</b>: <code>not set</code></li>
+<li>Path of a LaTeX template file</li>
+</ul>
+</li>
+</ul>
+<h3 id = "link-23">2.2.8. Output options</h3>
 <p>These options specify which files to generate. You must at least set one of this option, or Crowbook won't do anything.</p>
 <p>Recall that all file paths are relative to the directory where the config file is, not to the one where you run <code>crowbook</code>. So if you set</p>
 <pre><code>output.epub = foo.epub
@@ -274,117 +806,67 @@ output.html: some_book.html
 <pre><code>$ crowbook my.book
 </code></pre>
 <p>to generate anything. (It's still possible to generate a specific format, and only this one, by using the <code>--to</code> argument on the command line).</p>
-<h4>output.epub</h4>
-<p>The name of the epub file you want to generate.</p>
-<p><b>default</b>: <code>None</code></p>
-<p>Crowbook use the <code>zip</code> command to generate the epub, so it won't work if this command is not installed on your system.</p>
-<h4>output.html</h4>
-<p>The name of the HTML file you want to generate. Note that this HTML file is self-contained, it doesn't require e.g. CSS from other files.</p>
-<p><b>default</b>: <code>None</code></p>
-<h4>output.tex</h4>
-<p>The name of the LaTeX file you want to generate.</p>
-<p><b>default</b>: <code>None</code></p>
-<h4>output.pdf</h4>
-<p>The name of the PDF file you want to generate. Crowbook uses LaTeX to generate it, so it won't work if it isn't installed on your computer. (See <code>tex_command</code> to specify which flavour of LaTeX you want to use.)</p>
-<p><b>default</b>: <code>None</code></p>
-<h3>output.odt</h3>
-<p>The name of the ODT (OpenOffice) file you want to generate. Beware: ODT support is still experimental.</p>
-<p><b>default</b>: <code>None</code></p>
-<p>As for Epub generation, Crowbook depends on the presence of the <code>zip</code> command to generate this file.</p>
-<h3>Generic options for rendering</h3>
-<h4>numbering</h4>
-<p>A boolean that sets whether or not you want numbering. Setting it to <code>false</code> is equivalent to including all your chapters with <code>- my_chapter.md</code>. Note that even if it is set to <code>true</code>, numbering will be desactivated for chapters that are included with <code>- my_chapter.md</code>.</p>
-<p><b>default</b>:: <code>true</code></p>
-<h4>numbering_template</h4>
-<p>A string will be used as chapter title. You can use <code>{{number}}</code> and <code>{{title}}</code> in this string, e.g.:</p>
+<p>Note that some formats depend on some commands being installed on your system. Most notably, Crowbook depends on LaTeX (<code>pdflatex</code> by default, though you can specify the command to use with <code>tex.command</code>) to generate a PDF file, so PDF rendering won't work if it is not installed on your system. Crowbook also uses the <code>zip</code> command to generate the EPUB and ODT, files. want to use.)</p>
+<h3 id = "link-24">2.2.9. Generic options for rendering</h3>
+<h4 id = "link-25">2.2.9.1. numbering</h4>
+<p>An integer that represents the maximum level of numbering for your book. E.g., <code>1</code> will only number chapters, while <code>2</code> will number chapters, sections, but not anything below that. <code>6</code> is the maximum level and turns numbering on for all headers.</p>
+<p><b>default</b>:: <code>1</code></p>
+<h4 id = "link-26">2.2.9.2. numbering_template</h4>
+<p>A string that will be used for chapter titles. You can use <code>{{number}}</code> and <code>{{title}}</code> in this string, e.g.:</p>
 <pre><code>numbering_template: Chapter {{number}} {{title}}
 </code></pre>
 <p>Note that:</p>
 <ul>
 <li>this string isn't used for unnumbered chapters;</li>
-<li>this string isn't used for LaTeX, either.</li>
+<li>this string isn't used by LaTeX, either.</li>
 </ul>
-<p><b>default</b>: <code>{{number}}. {{title}}</code></p>
-<h4>autoclean</h4>
+<h4 id = "link-27">2.2.9.3. autoclean</h4>
 <p>This option cleans a bit the input markdown. With the default implementation, it only removes consecutive spaces, which has not real impact (they are ignored anyway both by HTML viewers and by LaTeX).</p>
 <p>However, if <code>lang</code> is set to <code>fr</code>, it also tries to add non-breaking spaces in front (or after) characters like '?', '!', ';' to respect french typography.</p>
-<p><b>default</b>: <code>true</code></p>
-<h4>nb_char</h4>
+<h4 id = "link-28">2.2.9.4. nb_char</h4>
 <p>This option allows you to specify the non breaking character used by the french cleaning method (see above). Probably not really something you need to modify.</p>
-<p><b>default</b>: <code>' '</code> (i.e. narrrow non-breaking space)</p>
-<h3>Options for HTML rendering</h3>
-<h4>html.template</h4>
-<p>A file containing a (mustache) HTML template.</p>
-<p><b>default</b>: <code>None</code> (built-in template)</p>
-<h4>html.css</h4>
-<p>A file containing a stylesheet for the HTML file.</p>
-<p><b>default</b>: <code>None</code> (built-in)</p>
-<h3>Options for Epub rendering</h3>
-<h4>epub.template</h4>
-<p>A file containing a (mustache) xhtml template for the files generated for each chapter.</p>
-<p><b>default</b>: <code>None</code> (built-in template)</p>
-<h4>epub.css</h4>
-<p>A file containing a stylesheet for the Epub file.</p>
-<p><b>default</b>: <code>None</code> (built-in)</p>
-<h3>epub_version</h3>
-<p>Sets the version for generated Epub, either 2 or 3.</p>
-<p><b>default</b>: <code>2</code></p>
-<h3>Options for LaTeX / PDF rendering</h3>
-<h4>tex.template</h4>
-<p>Sets the LaTeX template.</p>
-<p><b>default</b>: <code>None</code> (builtin)</p>
-<h4>tex.command</h4>
-<p>The command used to generate a PDF file.</p>
-<p><b>default</b>: <code>pdflatex</code></p>
-<h4>tex.links_as_footnotes</h4>
-<p>Display the link in the document, using the <code>\footnote{}</code> command. This is useful if you want your readers to be able to see the URLs in a printed document.</p>
-<p><b>default</b>: <code>true</code></p>
-<h3>Additional options</h3>
-<h4>temp_dir</h4>
+<h3 id = "link-29">2.2.10. Additional options</h3>
+<h4 id = "link-30">2.2.10.1. temp_dir</h4>
 <p>When it is generating epub or pdf files, Crowbook creates a temporary directory (which is then removed), named from a random uuid (so we can be pretty certain it's not gonna exist). This option specify where to create this directory. E.g., if you set:</p>
 <pre><code>temp_dir: /tmp
 </code></pre>
 <p>crowbook might create a temporary directory <code>/tmp/7fcbe41e-1676-46ba-b1a7-40c2fa37a3a7</code>.</p>
 <p>By default, this temporary directory is created where the config file is.</p>
 <p><b>default</b>: <code>.</code></p>
-<h1>3. Arguments</h1>
+<h1 id = "link-31">3. Arguments</h1>
 <p>Crowbook can takes a list of arguments:</p>
 <pre><code class = "language-bash">Render a markdown book in Epub, PDF or HTML.
 
 USAGE:
-        crowbook [OPTIONS] &lt;BOOK&gt; [--] [ARGS]
+        crowbook [OPTIONS] [--] [ARGS]
 
 OPTIONS:
-        --autoclean &lt;BOOL&gt;    Try to clean input markdown [values: true, false]
-        --create              Creates a new book file with existing markdown files
+        --create              Creates a new book with existing markdown files.
     -h, --help                Prints help information
-        --numbering &lt;BOOL&gt;    Number chapters or not [values: true, false]
-    -o, --output &lt;FILE&gt;       Specify output file
+    -l, --list-options        Lists all possible option
+        --list-options-md     List all options, formatted in Markdow
+    -o, --output &lt;FILE&gt;       Specifies output file.
+    -s, --set &lt;KEY_VALUES&gt;    Sets a list of book options
     -t, --to &lt;FORMAT&gt;         Generate specific format [values: epub, pdf, html, tex, odt]
     -V, --version             Prints version information
     -v, --verbose             Activate verbose mode
 
 ARGS:
-    &lt;BOOK&gt;     A file containing the book configuration
-    &lt;FILES&gt;...    Files to put in book when using --create
-
-Command line options allow to override options defined in &lt;BOOK&gt; configuration file. 
-E.g., even if this file specifies 'verbose: false', calling 'crowbook --verbose &lt;BOOK&gt;' 
-will activate verbose mode.
-
-Note that Crowbook generates output files relatively to the directory where &lt;BOOK&gt; is:
-$ crowbook foo/bar.book --to pdf --output baz.pdf
-will thus generate baz.pdf in directory foo and not in current
-directory.
+    &lt;BOOK&gt;        File containing the book configuration.
+    &lt;FILES&gt;...    Files to list in book when using --create
 </code></pre>
-<p>The most important ones is obviously  , i.e. the file configuration book. It is mandatory: if you don't pass it, <code>crowbook</code> will simply display this help message. In a normal use case this is the only argument you'll need to pass, and <code>crowbook</code> will generate the book in all formats specified in the configuration file.</p>
+<p>Command line options allow to override options defined in &lt;BOOK&gt; configuration file. E.g., even if this file specifies 'verbose: false', calling 'crowbook --verbose &lt;BOOK&gt;' will activate verbose mode.</p>
+<p>Note that Crowbook generates output files relatively to the directory where &lt;BOOK&gt; is:</p>
+<pre><code>$ crowbook foo/bar.book --to pdf --output baz.pdf
+</code></pre>
+<p>will thus generate baz.pdf in directory foo and not in current directory.</p>
+<p>The most important option obviously &lt;BOOK&gt;, i.e. the file configuration book. It is mandatory for most options: if you don't pass it, <code>crowbook</code> will simply display this help message. In a normal use case this is the only argument you'll need to pass, and <code>crowbook</code> will generate the book in all formats specified in the configuration file.</p>
 <p>It is, however, possible to pass more arguments to <code>crowbook</code>.</p>
-<h2><code>--create</code></h2>
-<p><b>Usage</b>: <code>crowbook --create &lt;BOOK&gt; file_1.md file_2.md ...</code></p>
-<p>Creates a new book from a list of Markdown files. It will generate the file <code>BOOK</code> (or abort if it already exists) with all file names specified added as chapters.</p>
-<p>Most other <code>crowbook</code> options have no impact when using <code>--create</code>, but if <code>--numbering</code> is set to <code>false</code>, the files will be included with <code>-</code> instead of <code>+</code> in the Markdown file.</p>
-<h3>Example</h3>
-<pre><code>crowbook --create foo.book README.md ChangeLog.md LICENSE.md
+<h2 id = "link-32">3.1. <code>--create</code></h2>
+<p><b>Usage</b>: <code>crowbook [BOOK] --create file_1.md file_2.md ...</code></p>
+<p>Creates a new book from a list of Markdown files. It will generate a book configuration file with alle file names specified as chapter. It either prints the result to stdout (if <code>BOOK</code> is not specified) or generate the file <code>BOOK</code> (or abort if it already exists).</p>
+<h3 id = "link-33">3.1.1. Examples</h3>
+<pre><code>crowbook foo.book --create  README.md ChangeLog.md LICENSE.md
 </code></pre>
 <p>will generate a file <code>foo.book</code> containing:</p>
 <pre><code>author: Your name
@@ -404,38 +886,103 @@ lang: en
 + ChangeLog.md
 + LICENSE.md
 </code></pre>
-<h2><code>--verbose</code></h2>
-<p><b>usage</b>: <code>crowbook --verbose &lt;BOOK&gt;</code></p>
+<p>while</p>
+<pre><code>crowbook --create README.md ChangeLog.md LICENSE.md
+</code></pre>
+<p>will prints the same result, but to stdout (without creating a file).</p>
+<p>When <code>crowbook</code> is runned with <code>--create</code>, it can also uses the keys/values set by <code>--set</code> (see below):</p>
+<pre><code>$ crowbook foo.book --create file1.md file2.md --set author "Pierre
+Dupont" title "Mon œeuvre" lang fr
+</code></pre>
+<p>will generate a <code>foo.book</code> file containing</p>
+<pre><code>author: Pierre Dupont
+title: Mon œeuvre
+lang: fr
+
+# List of chapters
++ file1.md
++ file2.md
+</code></pre>
+<h2 id = "link-34">3.2. <code>--set</code></h2>
+<p><b>usage</b>: `crowbook &lt;BOOK&gt; --set [KEY] [VALUE]...</p>
+<p>(or <code>crowbook &lt;BOOK&gt; -s [KEY] [VALUE]...</code></p>
+<p>This options takes a list <code>KEY</code> <code>VALUE</code> pairs and allows to set or override a book configuration option. All valid options in the configuration files are valid as keys. For more information, see <a href = "config.md">the configuration file page</a>.</p>
+<h3 id = "link-35">3.2.1. Examples</h3>
+<pre><code>$ crowbook foo.book --set html.css style.css
+</code></pre>
+<p>will override the CSS for HTML generation (the <code>html.css</code> key) to <code>style.css</code>.</p>
+<pre><code>$ crowbook foo.book --set author Foo --title Bar
+</code></pre>
+<p>will override the book title to <code>Bar</code> and its author to <code>Foo</code>.</p>
+<h2 id = "link-36">3.3. <code>--list-options</code></h2>
+<p><b>usage</b>: <code>crowbook --list-options</code></p>
+<p>(or <code>crowbook -l</code>)</p>
+<p>Displays all the valid options to use either in a book configuration file or with <code>--set</code>, with a short description. There is also <code>--list-options-md</code>, which outputs markdown.</p>
+<h2 id = "link-37">3.4. <code>--print-template</code></h2>
+<p><b>usage</b>: <code>crowbook --print-template template</code></p>
+<p>Prints to stdout the built-in template. Useful if you want to customize the appearance of your document. E.g., if you want to modify the CSS used for HTML rendering:</p>
+<pre><code>$ crowbook --print-template html.css &gt; my_style.css
+# edit my_style.css in your favourite editor
+$ crowbook my.book --set html.css my_style.css
+# or add "html.css: my_style.css" in my.book
+</code></pre>
+<p>Note that it is possible to use this option in conjonction with <code>--set</code>, though it is currently only useful for EPUB template:</p>
+<pre><code>$ crowbook --print-template epub.template --set epub.version 2
+# Returns the template for Epub 2 (default one)
+$ crowbook --print-template epub.template --set epub.version 3
+# Returns the template for Epub 3
+</code></pre>
+<h2 id = "link-38">3.5. <code>--verbose</code></h2>
+<p><b>usage</b>: <code>crowbook &lt;BOOK&gt; --verbose</code></p>
 <p>If this flag is set, Crowbook will print some more messages.</p>
-<h2><code>--to</code></h2>
-<p><b>usage</b>: <code>crowbook --to &lt;FORMAT&gt; &lt;BOOK&gt;</code></p>
-<p>(or <code>crowbook -t &lt;FORMAT&gt; &lt;BOOK&gt;</code>)</p>
+<h2 id = "link-39">3.6. <code>--to</code></h2>
+<p><b>usage</b>: <code>crowbook &lt;BOOK&gt;--to [FORMAT]</code></p>
+<p>(or <code>crowbook &lt;BOOK&gt; -t [FORMAT]</code>)</p>
 <p>Generate only the specified format. <code>FORMAT</code> must be either <code>epub</code>, <code>pdf</code>, <code>html</code>, <code>odt</code> or <code>tex</code>.</p>
 <p>If an output file for the format is not specified in the book configuration file, <code>crowbook</code> will fail to render PDF, ODT and Epub (whereas it will print HTML and Tex files on stdout). It is however possible to specify a file with the <code>--output</code> option.</p>
-<h3>Examples</h3>
+<h3 id = "link-40">3.6.1. Examples</h3>
 <pre><code>crowbook --to html foo.book
 </code></pre>
 <p>will generate some HTML, and prints it either to the file specified by <code>output.html</code> in <code>foo.book</code>, or to stdout.</p>
 <pre><code>crowbook --to pdf --output foo.pdf foo.book
 </code></pre>
 <p>will (try to) generate a <code>foo.pdf</code> file,.</p>
-<h2><code>--output</code></h2>
-<p><b>usage</b>: <code>crowbook --to &lt;FORMAT&gt; --output &lt;FILE&gt; &lt;BOOK&gt;</code></p>
+<h2 id = "link-41">3.7. <code>--output</code></h2>
+<p><b>usage</b>: <code>crowbook &lt;BOOK&gt; --to &lt;FORMAT&gt; --output &lt;FILE&gt;</code></p>
 <p>(or <code>crowbook -t &lt;FORMAT&gt; -o &lt;FILE&gt; &lt;BOOK&gt;</code>)</p>
 <p>Specifies an output file. Only valid when <code>--to</code> is used.</p>
 <p>Note that Crowbook generates output files relatively to the directory where <code>BOOK</code> is:</p>
 <pre><code>$ crowbook foo/bar.book --to pdf --output baz.pdf
 </code></pre>
 <p>will thus generate <code>baz.pdf</code> in directory <code>foo</code> and not in current directory.</p>
-<h2><code>--numbering</code></h2>
-<p><b>usage</b>: <code>crowbook --numbering &lt;BOOL&gt; &lt;BOOK&gt;</code></p>
-<p>Turns numbering on or off. Overrides the option set in <code>BOOK</code> configuration file.</p>
-<h3>Example</h3>
-<pre><code>crowbook --numbering false foo.book
-</code></pre>
-<h2><code>--autoclean</code></h2>
-<p><b>usage</b>: <code>crowbook --autoclean &lt;BOOL&gt; &lt;BOOK&gt;</code></p>
-<p>Turns autoclean on or off. Overrides the option set in <code>BOOK</code> configuration file.</p>
+<h1 id = "link-42">ChangeLog</h1>
+<h2 id = "link-43">0.2.0 (unreleased)</h2>
+<ul>
+<li>Command line arguments:<ul>
+<li>New argument <code>--print-template</code> now allows to print a built-in template to stdout.</li>
+<li>New argument <code>--list-options</code> prints out all valid options in a config file (or in <code>set</code>), their type and default value.</li>
+<li>New argument <code>--set</code> allows to define or override whatever option set in a book configuration.</li>
+<li><code>--create</code> can now be used without specifying a <code>BOOK</code>, printing its result on <code>stdout</code>.</li>
+</ul>
+</li>
+<li>Configuration file:<ul>
+<li>Added support for multiline strings in <code>.book</code> files, with either '|' (preserving line returns) or '&gt;' (transforming line returns in spaces)</li>
+<li>New option <code>display_toc</code> allows to display the table of contents (whose name, at least for HTML, is specified by <code>toc_name</code>) in HTML and PDF documents.</li>
+<li>Option <code>numbering</code> now takes an int instead of a boolean, allowing to specify the maximum level to number (e.g. <code>1</code>: chapters only, <code>2</code>: chapters and sectino, ..., <code>6</code>: everything).</li>
+</ul>
+</li>
+<li>Rendering:<ul>
+<li>Added support for numbering all headers, not just level-1 (e.g., having a subsection numbered <code>2.3.1</code>).</li>
+<li>Tables and Footnotes are now implemented for HTML/Epub and LaTeX output.</li>
+</ul>
+</li>
+<li>Refactored <code>Book</code> to use an HashMap of <code>BookOption</code>s instead of having like 42 fields.</li>
+</ul>
+<h2 id = "link-44">0.1.0 (2016-02-21)</h2>
+<ul>
+<li>initial release</li>
+</ul>
 
+    </div>
   </body>
 </html>
