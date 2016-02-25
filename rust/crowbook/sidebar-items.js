@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["book",""],["cleaner",""],["epub",""],["error",""],["escape",""],["html",""],["latex",""],["odt",""],["parser",""],["token",""]]});
+initSidebarItems({"mod":[["book",""],["cleaner",""],["epub",""],["error",""],["escape",""],["html",""],["latex",""],["odt",""],["parser",""],["toc",""],["token",""]]});

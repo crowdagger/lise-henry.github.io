@@ -46,16 +46,16 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-30' class='srclink' href='../../src/crowbook/parser.rs.html#28-32' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-30' class='srclink' href='../../src/crowbook/parser.rs.html#28-30' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Parser {
     // some fields omitted
 }</pre><div class='docblock'><p>A parser that reads markdown and convert it to AST (a vector of <code>Token</code>s)</p>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../crowbook/parser/struct.Parser.html' title='crowbook::parser::Parser'>Parser</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../crowbook/parser/struct.Parser.html' title='crowbook::parser::Parser'>Parser</a></code></h4>
 <div class='docblock'><p>Creates a parser with the default options</p>
-</div><h4 id='method.with_cleaner' class='method'><code>fn <a href='#method.with_cleaner' class='fnname'>with_cleaner</a>(self, cleaner: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='trait' href='../../crowbook/cleaner/trait.Cleaner.html' title='crowbook::cleaner::Cleaner'>Cleaner</a>&gt;) -&gt; <a class='struct' href='../../crowbook/parser/struct.Parser.html' title='crowbook::parser::Parser'>Parser</a></code></h4>
-<div class='docblock'><p>Sets cleaner implementation</p>
 </div><h4 id='method.parse_file' class='method'><code>fn <a href='#method.parse_file' class='fnname'>parse_file</a>(&amp;mut self, filename: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../../crowbook/error/type.Result.html' title='crowbook::error::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../crowbook/token/enum.Token.html' title='crowbook::token::Token'>Token</a>&gt;&gt;</code></h4>
 <div class='docblock'><p>Parse a file and returns an AST</p>
+</div><h4 id='method.parse_footnotes' class='method'><code>fn <a href='#method.parse_footnotes' class='fnname'>parse_footnotes</a>(&amp;mut self, v: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../crowbook/token/enum.Token.html' title='crowbook::token::Token'>Token</a>&gt;) -&gt; <a class='type' href='../../crowbook/error/type.Result.html' title='crowbook::error::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Replace footnote reference with their definition</p>
 </div><h4 id='method.parse' class='method'><code>fn <a href='#method.parse' class='fnname'>parse</a>(&amp;mut self, s: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../../crowbook/error/type.Result.html' title='crowbook::error::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../crowbook/token/enum.Token.html' title='crowbook::token::Token'>Token</a>&gt;&gt;</code></h4>
 <div class='docblock'><p>Parse a string and returns an AST, that is a vector of <code>Token</code>s</p>
 
