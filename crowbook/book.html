@@ -330,9 +330,11 @@ function toggle() {
  </li>
  <li><a href = "#link-42">ChangeLog</a>
  <ul>
-  <li><a href = "#link-43">0.2.0 (unreleased)</a>
+  <li><a href = "#link-43">0.2.1 (unreleased)</a>
   </li>
-  <li><a href = "#link-44">0.1.0 (2016-02-21)</a>
+  <li><a href = "#link-44">0.2.0 (2016-02-25)</a>
+  </li>
+  <li><a href = "#link-45">0.1.0 (2016-02-21)</a>
   </li>
  </ul>
  </li>
@@ -460,18 +462,20 @@ function toggle() {
  </li>
  <li><a href = "#link-42">ChangeLog</a>
  <ul>
-  <li><a href = "#link-43">0.2.0 (unreleased)</a>
+  <li><a href = "#link-43">0.2.1 (unreleased)</a>
   </li>
-  <li><a href = "#link-44">0.1.0 (2016-02-21)</a>
+  <li><a href = "#link-44">0.2.0 (2016-02-25)</a>
+  </li>
+  <li><a href = "#link-45">0.1.0 (2016-02-21)</a>
   </li>
  </ul>
  </li>
 </ul>
 </div>
 <h1 id = "link-1">1. Crowbook</h1>
+<p><a href = "https://travis-ci.org/lise-henry/crowbook"><img src = "https://travis-ci.org/lise-henry/crowbook.svg?branch=master" title = "" alt = "Build Status" /></a></p>
 <p>Render a markdown book in HTML, Epub or PDF.</p>
 <p>Crowbook's purpose is to allow you to automatically generate multiple outputs formats from a book written in Markdown. Its main focus is novels, and the default settings should (hopefully) generate readables book with correct typography.</p>
-<p><a href = "https://travis-ci.org/lise-henry/crowbook"><img src = "https://travis-ci.org/lise-henry/crowbook.svg?branch=master" title = "" alt = "Build Status" /></a></p>
 <h2 id = "link-2">1.1. Installing</h2>
 <p>There are two ways to get <code>crowbook</code>: either use a precompiled binary or build it yourself.</p>
 <h3 id = "link-3">1.1.1. Binaries</h3>
@@ -510,7 +514,7 @@ output_html: some_book.html
 <h2 id = "link-6">1.3. Current features</h2>
 <h3 id = "link-7">1.3.1. Output formats</h3>
 <p>Crowbook (to my knowledge) correctly supports HTML and EPUB (either version 2 or 3) as output formats: rendered files should pass respectively the <a href = "https://validator.w3.org/">W3C validator</a> and the <a href = "http://validator.idpf.org/">IDPF EPUB validator</a> for a wide range of (correctly Markdown formatted) input files. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.html">HTML</a> and <a href = "http://lise-henry.github.io/crowbook/book.epub">EPUB</a> on github.io.</p>
-<p>LaTeX output is a bit more tricky: it should work reasonably well for novels (the primary target of Crowbook), but <code>pdflatex</code> might occasionally choke on some « weird » unicode character. Moreover, the rendering of code blocks is not satisfactory and images are not yet implemented. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.pdf">PDF</a> on github.io to get an idea of the problems you might encounter.</p>
+<p>LaTeX output is a bit more tricky: it should work reasonably well for novels (the primary target of Crowbook), but <code>pdflatex</code> might occasionally choke on some « weird » unicode character. Moreover, the rendering of code blocks is not entirely satisfactory and images are not yet implemented. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.pdf">PDF</a> on github.io.</p>
 <p>ODT output is experimental at best. It might work if your inputs files only include very basic formatting (basically, headers, emphasis and bold), it will probably look ugly in the rest of the cases, and it might miserably fail in some. See the example book rendered in <a href = "http://lise-henry.github.io/crowbook/book.odt">ODT</a> on github.io if you want to hurt your eyes.</p>
 <h3 id = "link-8">1.3.2. Input format</h3>
 <p>Crowbook uses <a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a> and thus should support most of commonmark Markdown. Inline HTML, however, is not implemented, and probably won't be, as the goal is to have books that can also be generated in PDF (and maybe eventually ODT).</p>
@@ -892,11 +896,11 @@ lang: en
 <p>will prints the same result, but to stdout (without creating a file).</p>
 <p>When <code>crowbook</code> is runned with <code>--create</code>, it can also uses the keys/values set by <code>--set</code> (see below):</p>
 <pre><code>$ crowbook foo.book --create file1.md file2.md --set author "Pierre
-Dupont" title "Mon œeuvre" lang fr
+Dupont" title "Mon œuvre" lang fr
 </code></pre>
 <p>will generate a <code>foo.book</code> file containing</p>
 <pre><code>author: Pierre Dupont
-title: Mon œeuvre
+title: Mon œuvre
 lang: fr
 
 # List of chapters
@@ -956,7 +960,19 @@ $ crowbook --print-template epub.template --set epub.version 3
 </code></pre>
 <p>will thus generate <code>baz.pdf</code> in directory <code>foo</code> and not in current directory.</p>
 <h1 id = "link-42">ChangeLog</h1>
-<h2 id = "link-43">0.2.0 (unreleased)</h2>
+<h2 id = "link-43">0.2.1 (unreleased)</h2>
+<ul>
+<li>Bugfixes:<ul>
+<li>HTML/Epub rendering no longer incorrectly increment chapter count for unnumbered chapters,</li>
+<li>Latex: makes what is possible to avoid orverflowing the page.</li>
+</ul>
+</li>
+<li>Minor changes:<ul>
+<li>Latex: improvement of the default way URLs are displayed</li>
+</ul>
+</li>
+</ul>
+<h2 id = "link-44">0.2.0 (2016-02-25)</h2>
 <ul>
 <li>Command line arguments:<ul>
 <li>New argument <code>--print-template</code> now allows to print a built-in template to stdout.</li>
@@ -976,9 +992,12 @@ $ crowbook --print-template epub.template --set epub.version 3
 <li>Tables and Footnotes are now implemented for HTML/Epub and LaTeX output.</li>
 </ul>
 </li>
+<li>Internal:<ul>
 <li>Refactored <code>Book</code> to use an HashMap of <code>BookOption</code>s instead of having like 42 fields.</li>
 </ul>
-<h2 id = "link-44">0.1.0 (2016-02-21)</h2>
+</li>
+</ul>
+<h2 id = "link-45">0.1.0 (2016-02-21)</h2>
 <ul>
 <li>initial release</li>
 </ul>
