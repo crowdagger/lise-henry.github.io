@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Parser","A parser that reads markdown and convert it to AST (a vector of `Token`s)"]]});

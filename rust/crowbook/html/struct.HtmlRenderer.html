@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `HtmlRenderer` struct in crate `crowbook`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, HtmlRenderer">
+
+    <title>crowbook::html::HtmlRenderer - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>crowbook</a>::<wbr><a href='index.html'>html</a></p><script>window.sidebarCurrent = {name: 'HtmlRenderer', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>crowbook</a>::<wbr><a href='index.html'>html</a>::<wbr><a class='struct' href=''>HtmlRenderer</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-143' class='srclink' href='../../src/crowbook/html.rs.html#29-44' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct HtmlRenderer&lt;'a&gt; {
+    pub toc: <a class='struct' href='../../crowbook/toc/struct.Toc.html' title='crowbook::toc::Toc'>Toc</a>,
+    pub footnotes: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a><a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;,
+    pub current_chapter: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.array.html'>[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.array.html'>; 6]</a>,
+    pub current_numbering: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>,
+    pub current_hide: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>,
+    pub filename: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
+    // some fields omitted
+}</pre><div class='docblock'><p>Renderer for HTML</p>
+
+<p>Also used by Epub.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.toc'><code>toc</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.footnotes'><code>footnotes</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.current_chapter'><code>current_chapter</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.current_numbering'><code>current_numbering</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.current_hide'><code>current_hide</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.filename'><code>filename</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../../crowbook/html/struct.HtmlRenderer.html' title='crowbook::html::HtmlRenderer'>HtmlRenderer</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(book: &amp;'a <a class='struct' href='../../crowbook/book/struct.Book.html' title='crowbook::book::Book'>Book</a>) -&gt; <a class='struct' href='../../crowbook/html/struct.HtmlRenderer.html' title='crowbook::html::HtmlRenderer'>HtmlRenderer</a>&lt;'a&gt;</code></h4>
+<div class='docblock'><p>Creates a new HTML renderer</p>
+</div><h4 id='method.inc_header' class='method'><code>fn <a href='#method.inc_header' class='fnname'>inc_header</a>(&amp;mut self, n: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</code></h4>
+<div class='docblock'><p>Increase a header</p>
+</div><h4 id='method.get_numbers' class='method'><code>fn <a href='#method.get_numbers' class='fnname'>get_numbers</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Returns a &quot;x.y.z&quot;</p>
+</div><h4 id='method.render_book' class='method'><code>fn <a href='#method.render_book' class='fnname'>render_book</a>(&amp;mut self) -&gt; <a class='type' href='../../crowbook/error/type.Result.html' title='crowbook::error::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Render books as a standalone HTML file</p>
+</div><h4 id='method.render_side_notes' class='method'><code>fn <a href='#method.render_side_notes' class='fnname'>render_side_notes</a>(&amp;mut self, res: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
+<div class='docblock'><p>display side notes if option is to true</p>
+</div><h4 id='method.render_end_notes' class='method'><code>fn <a href='#method.render_end_notes' class='fnname'>render_end_notes</a>(&amp;mut self, res: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
+<h4 id='method.render_html' class='method'><code>fn <a href='#method.render_html' class='fnname'>render_html</a>(&amp;mut self, tokens: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='enum' href='../../crowbook/token/enum.Token.html' title='crowbook::token::Token'>Token</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Renders the HML of a chapter</p>
+</div><h4 id='method.render_vec' class='method'><code>fn <a href='#method.render_vec' class='fnname'>render_vec</a>(&amp;mut self, tokens: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='enum' href='../../crowbook/token/enum.Token.html' title='crowbook::token::Token'>Token</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Transform a vector of <code>Token</code>s to HTML format.</p>
+</div><h4 id='method.parse_token' class='method'><code>fn <a href='#method.parse_token' class='fnname'>parse_token</a>(&amp;mut self, token: &amp;<a class='enum' href='../../crowbook/token/enum.Token.html' title='crowbook::token::Token'>Token</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<div class='docblock'><p>Parse a single token.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "crowbook";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
