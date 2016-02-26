@@ -9,6 +9,7 @@
 
     <title>caribon::Word - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
 
     
@@ -45,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-44' class='srclink' href='../src/caribon/word.rs.html#23-33' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-33' class='srclink' href='../src/caribon/word.rs.html#23-33' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Word {
     Untracked(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
     Ignored(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
@@ -54,18 +55,18 @@
 
 <p>You probably should not use this type directly.</p>
 </div><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.Untracked'><code>Untracked</code></td><td><div class='docblock'><p>A String which is not part of the text (typically whitespace, HTML formatting, ...)</p>
-</div></td></tr><tr><td id='variant.Ignored'><code>Ignored</code></td><td><div class='docblock'><p>A word that is ignored, either because it is in <code>parser.ignored</code> or because it is
+<table class='variants_table'><tr><td id='variant.Untracked'><code>Untracked</code></td><td><div class='docblock'><p>A String which is not part of the text (typically whitespace, HTML formatting, ...)</p>
+</div></td><td></td></tr><tr><td id='variant.Ignored'><code>Ignored</code></td><td><div class='docblock'><p>A word that is ignored, either because it is in <code>parser.ignored</code> or because it is
 a proper noun and <code>ignore_proper</code> has been set to <code>true</code>.</p>
-</div></td></tr><tr><td id='variant.Tracked'><code>Tracked</code></td><td><div class='docblock'><p>Tracked string, containing the string, the stemmed variant of the
+</div></td><td></td></tr><tr><td id='variant.Tracked'><code>Tracked</code></td><td><div class='docblock'><p>Tracked string, containing the string, the stemmed variant of the
 string, some value corresponding to the degree of repetitions and
 an option to a highlighting colour</p>
-</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h3><div class='impl-items'><h4 id='method.set_stemmed' class='method'><code>fn <a href='#method.set_stemmed' class='fnname'>set_stemmed</a>(&amp;mut self, s: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
+</div></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h3><div class='impl-items'><h4 id='method.set_stemmed' class='method'><code>fn <a href='#method.set_stemmed' class='fnname'>set_stemmed</a>(&amp;mut self, s: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
 <div class='docblock'><p>Sets the stemmed value of a word.</p>
 </div><h4 id='method.set_count' class='method'><code>fn <a href='#method.set_count' class='fnname'>set_count</a>(&amp;mut self, x: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.f32.html'>f32</a>)</code></h4>
 <div class='docblock'><p>Sets the repetition value of a word.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h4>
-<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
 </div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../caribon/enum.Word.html' title='caribon::Word'>Word</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
@@ -110,7 +111,7 @@ an option to a highlighting colour</p>
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
@@ -126,6 +127,6 @@ an option to a highlighting colour</p>
     <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     
-    <script async src="../search-index.js"></script>
+    <script defer src="../search-index.js"></script>
 </body>
 </html>
