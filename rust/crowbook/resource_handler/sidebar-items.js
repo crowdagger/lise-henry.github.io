@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ResourceHandler","Resource Handler.Its task is to make sure that some resource (image, link) is available for the book and to list images used in Markdown files so they can be used for the book"]]});
