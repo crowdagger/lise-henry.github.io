@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="generator" content="crowbook">
     <meta name="author" content="Élisabeth Henry">
-    <title>Lise Henry&#39;s github page</title>
+    <title>Lise Henry&#39;s Github page</title>
     <style type = "text/css">
       body {
     font-family: "Linux Libertine", "Georgia", serif;
@@ -15,6 +15,7 @@
     text-align: justify;
     font-size: 100%;
 }
+
 p {
     text-indent: 1.25em;
     margin:0;
@@ -38,6 +39,7 @@ pre {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+/* Try to disable hyphenation in titles */
 h1, h2, h3, h4, h5, h5 {
     adobe-hyphenate: none;
     -ms-hyphens: none; /* Trident (Windows) */
@@ -47,40 +49,42 @@ h1, h2, h3, h4, h5, h5 {
     hyphens: none; /* Futur standard */
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     text-align: left;
     font-family: Linux Biolinum, sans-serif;
     font-variant: small-caps;
 }
-h2 {
-    text-align: left;
-    font-family: Linux Biolinum, sans-serif;
-    font-variant: small-caps;
-}
-h3 {
-    text-align: left;
-    font-family: Linux Biolinum, sans-serif;
-    font-variant: small-caps;
-}
-h4 { text-align: left; }
-h5 { text-align: left; }
-h6 { text-align: left; }
+
+/* Title of the book */
 h1.title {
     text-align: center;
     font-size: 300%;
 }
+/* Author */
 h2.author {
     text-align: right;
     font-size:  200%;
 }
-h3.date { }
-ol.toc { padding: 0; margin-left: 1em; }
-ol.toc li { list-style-type: none; margin: 0; padding: 0; }
-p img {
+
+/* When toc is displayed inlined */
+#toc ol, #toc ul {
+    padding: 0;
+    margin-left: 1em;
 }
+#toc li, {
+    list-style-type: none;
+    margin: 0; padding: 0;
+}
+
+#toc li:before {
+    content: none;
+}
+
+
 #cover img {
     width: 100%;
 }
+
 .rule {
     text-align: center;
     margin-top: 1em;
@@ -88,6 +92,13 @@ p img {
     font-weight: bold;
 }
 
+/* The number of the note in an expanded footnote (e.g. [3]) */
+.note-number {
+    font-weight: bold;
+    margin-right: 1em;
+}
+
+/* When footnotes (try to) be diplayed as margin notes */
 .sidenote {
     display: block;
     float: right;
@@ -98,15 +109,11 @@ p img {
     margin-right: -1.5em;
 }
 
-.note-number {
-    font-weight: bold;
-    margin-right: 1em;
-}
-
 .sidenote .note-number {
     float: left;
 }
 
+/* The div class displaying notes at the end of a chapter */
 .notes {
     text-align: justify;
     border: none;
@@ -117,7 +124,7 @@ table.notes td {
     margin-right: 1em;
 }
                  
-
+/* Every markdown table is included in a <div class = "table"> */
 .table {
     margin: 1em;
 }
@@ -140,6 +147,14 @@ table.notes td {
     font-weight: bold;
     font-variant: small-caps;
 }
+
+/* Make list displays '–' instead of puces */
+ul li {
+    list-style-type: none;
+}
+ul li:before {
+    content: "– "; 
+}/* The nav element corresponding to the navigation menu */
 nav {
     position: fixed;
     left: 0;
@@ -149,24 +164,47 @@ nav {
     overflow-y: auto;
     font-size: 80%;
     margin-left: 0;
-    background: #F0F0F0;
-}
-#content {
-    position: absolute;
-    overflow-y: auto;
-    margin-left: 10%;
-    margin-right: 10%;
-    transition: margin-left 1s;
+    background: black;
+    color: white;
 }
 
-#toc ul, #nav ul {
+#nav code {
+    background-color: transparent;
+}
+    
+#nav a:link {
+    color: white;
+    text-decoration: none;
+}
+
+#nav a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+#nav {
+    text-align: left;
+}
+
+#nav h2 {
+    text-align: center;
+}
+
+#nav li {
     list-style-type: none;
+    text-indent: -1em;
 }
+
+#nav li:before {
+    content: none;
+}
+                    
 #nav ul {
-    margin-left: 0;
     padding-right: 1em;
-    padding-left: 1em;
+    padding-left: 1.5em;
 }
+
+/* The menu containing the button to display the navigation bar */
 #menu {
     position: fixed;
     top: 0em;
@@ -175,11 +213,22 @@ nav {
 }
 #menu-button {
     width: 1.5em;
+    padding: 0.5em;
 }
 
+/* Hide navigation bar */
 #nav {
     left: -20%;
     transition: left 1s;
+}
+
+/* The main content of the book */
+#content {
+    position: absolute;
+    overflow-y: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    transition: margin-left 1s;
 }
    </style>
    <script>
@@ -206,18 +255,21 @@ function toggle() {
   <body>
 
   <nav id = "nav">
-    <h1>Menu</h1>
+    <h2>Menu</h2>
     <ul>
+ <li><a href = "#link-1">Lise Henry's Github page</a>
  <ul>
-  <li><a href = "#link-1">Crowbook</a>
+  <li><a href = "#link-2">Crowbook</a>
   </li>
-  <li><a href = "#link-2">Caribon</a>
+  <li><a href = "#link-3">Caribon</a>
   </li>
-  <li><a href = "#link-3">Stemmer-rs</a>
+  <li><a href = "#link-4">Stemmer-rs</a>
   </li>
-  <li><a href = "#link-4">Tiny 'Nux Tarot</a>
+  <li><a href = "#link-5">Tiny 'Nux Tarot</a>
   </li>
- </ul></ul>
+ </ul>
+ </li>
+</ul>
   </nav>
 
   <div id = "content">
@@ -227,20 +279,21 @@ function toggle() {
      "Menu" title = "Menu" />
     </div>
     <header>
-    <h1 class="title">Lise Henry&#39;s github page</h1>
+    <h1 class="title">Lise Henry&#39;s Github page</h1>
       <h2 class="author">Élisabeth Henry</h2>
     </header>
     
     
-    <p>Not much here, except a list of projects I have on github.</p>
-<h2 id = "link-1">Crowbook</h2>
+    <a id = "chapter-0"></a>
+<a id = "link-1"></a><p>Not much here, except a list of projects I have on github.</p>
+<h2 id = "link-2">Crowbook</h2>
 <p><a href = ""><img src = "https://img.shields.io/crates/v/crowbook.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/crates/d/crowbook.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/crates/l/crowbook.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/travis/lise-henry/crowbook.svg" title = "" alt = "Travis" /></a></p>
 <p>Renders a Markdown book in various formats: HTML, Epub, PDF. Though it was not really made to make a website, this page was rendered using this software.</p>
 <ul>
 <li><a href = "https://github.com/lise-henry/crowbook">Source code on Github</a></li>
 <li><a href = "https://crates.io/crates/crowbook">Crates.io</a></li>
 </ul>
-<h2 id = "link-2">Caribon</h2>
+<h2 id = "link-3">Caribon</h2>
 <p><a href = ""><img src = "https://img.shields.io/crates/v/caribon.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/crates/d/caribon.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/crates/l/caribon.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/travis/lise-henry/caribon.svg" title = "" alt = "Travis" /></a></p>
 <p>A repetition detector written in Rust. Code is <a href = "https://github.com/lise-henry/caribon">here</a>, but you can also test it <a href = "http://vps184889.ovh.net/caribon/">in your browser</a> because <a href = "https://github.com/lise-henry/caribon-server">caribon-server</a> runs it as a Webservice.</p>
 <ul>
@@ -248,14 +301,14 @@ function toggle() {
 <li><a href = "https://crates.io/crates/caribon">Crates.io</a></li>
 <li><a href = "http://vps184889.ovh.net/caribon/">Web service</a></li>
 </ul>
-<h2 id = "link-3">Stemmer-rs</h2>
+<h2 id = "link-4">Stemmer-rs</h2>
 <p><a href = ""><img src = "https://img.shields.io/crates/v/stemmer.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/crates/d/stemmer.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/crates/l/stemmer.svg" title = "" alt = "Crates.io" /></a> <a href = ""><img src = "https://img.shields.io/travis/lise-henry/stemmer-rs.svg" title = "" alt = "Travis" /></a></p>
 <p>Rust bindings to the Snowball C implementation, allowing you to stem a word in various language. Used by Caribon.</p>
 <ul>
 <li><a href = "https://github.com/lise-henry/stemmer-rs">Source code on Github</a></li>
 <li><a href = "https://crates.io/crates/stemmer">Crates.io</a></li>
 </ul>
-<h2 id = "link-4">Tiny 'Nux Tarot</h2>
+<h2 id = "link-5">Tiny 'Nux Tarot</h2>
 <p><a href = ""><img src = "https://img.shields.io/github/tag/lise-henry/tnt.svg" title = "" alt = "GitHub tag" /></a> <a href = ""><img src = "https://img.shields.io/github/license/lise-henry/tnt.svg" title = "" alt = "GitHub license" /></a></p>
 <p>A tarot game written in Vala, using Gtk+.</p>
 <ul>
