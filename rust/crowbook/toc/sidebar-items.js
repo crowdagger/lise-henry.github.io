@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Toc","A structure for manipulating Table Of Content"]]});

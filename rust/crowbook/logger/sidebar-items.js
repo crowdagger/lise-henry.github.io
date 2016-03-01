@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["InfoLevel","The level of information to display to a logger#"]],"struct":[["Logger","Logs info and warning message and choose whether to display them according to verbosity"]]});

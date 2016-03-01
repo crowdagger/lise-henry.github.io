@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BookOptions","Contains the options of a book."]]});

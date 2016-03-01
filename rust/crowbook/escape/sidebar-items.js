@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["escape_html","Escape characters <, >, and &"],["escape_tex","Escape characters for tex file"]]});

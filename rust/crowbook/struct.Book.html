@@ -46,12 +46,13 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-346' class='srclink' href='../src/crowbook/src/lib/book.rs.html#53-65' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-394' class='srclink' href='../src/crowbook/src/lib/book.rs.html#55-70' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Book {
     pub chapters: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a><a class='enum' href='../crowbook/enum.Number.html' title='crowbook::Number'>Number</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../crowbook/enum.Token.html' title='crowbook::Token'>Token</a>&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>&gt;,
     pub filenames: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
     pub options: <a class='struct' href='../crowbook/struct.BookOptions.html' title='crowbook::BookOptions'>BookOptions</a>,
     pub root: <a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html' title='std::path::PathBuf'>PathBuf</a>,
+    pub logger: <a class='struct' href='../crowbook/struct.Logger.html' title='crowbook::Logger'>Logger</a>,
 }</pre><div class='docblock'><p>A Book.</p>
 
 <p>Probably the central structure for of Crowbook, as it is the one
@@ -86,9 +87,11 @@ you are writing a new renderer.</p>
                                   <td id='structfield.options'><code>options</code></td><td><div class='docblock'><p>Options of the book</p>
 </div></td></tr><tr class='stab '>
                                   <td id='structfield.root'><code>root</code></td><td><div class='docblock'><p>Root path of the book</p>
+</div></td></tr><tr class='stab '>
+                                  <td id='structfield.logger'><code>logger</code></td><td><div class='docblock'><p>Logger</p>
 </div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../crowbook/struct.Book.html' title='crowbook::Book'>Book</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../crowbook/struct.Book.html' title='crowbook::Book'>Book</a></code></h4>
 <div class='docblock'><p>Creates a new, empty <code>Book</code> with default options</p>
-</div><h4 id='method.new_from_file' class='method'><code>fn <a href='#method.new_from_file' class='fnname'>new_from_file</a>(filename: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, verbose: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='struct' href='../crowbook/struct.Book.html' title='crowbook::Book'>Book</a>&gt;</code></h4>
+</div><h4 id='method.new_from_file' class='method'><code>fn <a href='#method.new_from_file' class='fnname'>new_from_file</a>(filename: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, verbosity: <a class='enum' href='../crowbook/enum.InfoLevel.html' title='crowbook::InfoLevel'>InfoLevel</a>) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='struct' href='../crowbook/struct.Book.html' title='crowbook::Book'>Book</a>&gt;</code></h4>
 <div class='docblock'><p>Creates a new book from a file</p>
 
 <h1 id='arguments' class='section-header'><a href='#arguments'>Arguments</a></h1>
@@ -96,9 +99,10 @@ you are writing a new renderer.</p>
 <li><code>filename</code>: the path of file to load. The directory of this file is used as
 a &quot;root&quot; directory for all paths referenced in books, whether chapter files,
 templates, cover images, and so on.</li>
-<li><code>verbose</code>: sets the book to verbose mode even if the file&#39;s doesn&#39;t specify it
-or specifies <code>verbose: false</code>.</li>
+<li>`verbosity: sets the book verbosity </li>
 </ul>
+</div><h4 id='method.new_from_markdown_file' class='method'><code>fn <a href='#method.new_from_markdown_file' class='fnname'>new_from_markdown_file</a>(filename: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, verbosity: <a class='enum' href='../crowbook/enum.InfoLevel.html' title='crowbook::InfoLevel'>InfoLevel</a>) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='struct' href='../crowbook/struct.Book.html' title='crowbook::Book'>Book</a>&gt;</code></h4>
+<div class='docblock'><p>Creates a book from a single markdown file</p>
 </div><h4 id='method.set_from_config' class='method'><code>fn <a href='#method.set_from_config' class='fnname'>set_from_config</a>(&amp;mut self, s: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
 <div class='docblock'><p>Sets options and load chapters according to configuration file</p>
 
@@ -106,7 +110,7 @@ or specifies <code>verbose: false</code>.</li>
 + chapter_name.md adds the (default numbered) chapter
 - chapter_name.md adds the (unnumbered) chapter
 3. chapter_name.md adds the (custom numbered) chapter</p>
-</div><h4 id='method.render_all' class='method'><code>fn <a href='#method.render_all' class='fnname'>render_all</a>(&amp;self) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+</div><h4 id='method.render_all' class='method'><code>fn <a href='#method.render_all' class='fnname'>render_all</a>(&amp;self)</code></h4>
 <div class='docblock'><p>Generates output files acccording to book options</p>
 </div><h4 id='method.render_pdf' class='method'><code>fn <a href='#method.render_pdf' class='fnname'>render_pdf</a>(&amp;self) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
 <div class='docblock'><p>Render book to pdf according to book options</p>
@@ -154,10 +158,6 @@ according to book <code>lang</code> and <code>autoclean</code> options</p>
 <div class='docblock'><p>Returns the template (default or modified version)</p>
 </div><h4 id='method.get_header' class='method'><code>fn <a href='#method.get_header' class='fnname'>get_header</a>(&amp;self, n: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, title: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
 <div class='docblock'><p>Returns the string corresponding to a number, title, and the numbering template</p>
-</div><h4 id='method.println' class='method'><code>fn <a href='#method.println' class='fnname'>println</a>(&amp;self, s: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
-<div class='docblock'><p>Prints a message to stderr</p>
-</div><h4 id='method.debug' class='method'><code>fn <a href='#method.debug' class='fnname'>debug</a>(&amp;self, s: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
-<div class='docblock'><p>Prints a message to stderr if verbose is set to true</p>
 </div><h4 id='method.get_mapbuilder' class='method'><code>fn <a href='#method.get_mapbuilder' class='fnname'>get_mapbuilder</a>(&amp;self, format: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='../mustache/builder/struct.MapBuilder.html' title='mustache::builder::MapBuilder'>MapBuilder</a></code></h4>
 <div class='docblock'><p>Returns a <code>MapBuilder</code> (used by <code>Mustache</code> for templating), to be used (and completed)
 by renderers. It fills it with the followings strings, corresponding to the matching

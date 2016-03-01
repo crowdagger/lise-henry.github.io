@@ -46,8 +46,8 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-1546' class='srclink' href='../src/crowbook/src/lib/resource_handler.rs.html#12-20' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct ResourceHandler {
+        </span><a id='src-1657' class='srclink' href='../src/crowbook/src/lib/resource_handler.rs.html#13-22' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ResourceHandler&lt;'r&gt; {
     pub images: <a class='struct' href='https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html' title='std::collections::hash::map::HashMap'>HashMap</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
     // some fields omitted
 }</pre><div class='docblock'><p>Resource Handler.</p>
@@ -57,7 +57,7 @@ for the book and to list images used in Markdown files so they can be used for t
 </div><h2 class='fields'>Fields</h2>
 <table><tr class='stab '>
                                   <td id='structfield.images'><code>images</code></td><td><div class='docblock'><p>Maps an original (local) file name to a new file name. Allows to</p>
-</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../crowbook/struct.ResourceHandler.html' title='crowbook::ResourceHandler'>ResourceHandler</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../crowbook/struct.ResourceHandler.html' title='crowbook::ResourceHandler'>ResourceHandler</a></code></h4>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'r&gt; <a class='struct' href='../crowbook/struct.ResourceHandler.html' title='crowbook::ResourceHandler'>ResourceHandler</a>&lt;'r&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(logger: &amp;'r <a class='struct' href='../crowbook/struct.Logger.html' title='crowbook::Logger'>Logger</a>) -&gt; <a class='struct' href='../crowbook/struct.ResourceHandler.html' title='crowbook::ResourceHandler'>ResourceHandler</a></code></h4>
 <div class='docblock'><p>Creates a new, empty Resource Handler</p>
 </div><h4 id='method.set_images_mapping' class='method'><code>fn <a href='#method.set_images_mapping' class='fnname'>set_images_mapping</a>(&amp;mut self, b: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
 <div class='docblock'><p>Turns on mapping for image files</p>
@@ -75,7 +75,7 @@ file name</p>
 <div class='docblock'><p>Tell whether a file name is a local resource or net</p>
 </div><h4 id='method.add_offset' class='method'><code>fn <a href='#method.add_offset' class='fnname'>add_offset</a>(offset: &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>, ast: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='enum' href='../crowbook/enum.Token.html' title='crowbook::Token'>Token</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>)</code></h4>
 <div class='docblock'><p>Add a path offset to all linked urls and images src</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../crowbook/struct.ResourceHandler.html' title='crowbook::ResourceHandler'>ResourceHandler</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'r&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../crowbook/struct.ResourceHandler.html' title='crowbook::ResourceHandler'>ResourceHandler</a>&lt;'r&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 

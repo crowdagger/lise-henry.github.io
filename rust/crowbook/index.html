@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-0' class='srclink' href='../src/crowbook/src/lib/lib.rs.html#19-136' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-0' class='srclink' href='../src/crowbook/src/lib/lib.rs.html#19-142' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Note: this documentation is relative to <code>crowbook</code> <em>as a library</em>.
  For documentation regarding the <em>program</em> <code>crowbook</code>, see
  <a href="https://github.com/lise-henry/crowbook">the Github page</a>.</p>
@@ -62,9 +62,9 @@
   according to the book&#39;s parameters and generate the appopriate files.</p>
 
 <h2 id='example' class='section-header'><a href='#example'>Example</a></h2><pre class='rust rust-example-rendered'>
-<span class='kw'>use</span> <span class='ident'>crowbook</span>::<span class='ident'>Book</span>;
-<span class='comment'>// Reads configuration file &quot;foo.book&quot; (and set verbose mode to `false`)</span>
-<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>book</span> <span class='op'>=</span> <span class='ident'>Book</span>::<span class='ident'>new_from_file</span>(<span class='string'>&quot;foo.book&quot;</span>, <span class='boolval'>false</span>).<span class='ident'>unwrap</span>();
+<span class='kw'>use</span> <span class='ident'>crowbook</span>::{<span class='ident'>Book</span>, <span class='ident'>InfoLevel</span>};
+<span class='comment'>// Reads configuration file &quot;foo.book&quot; (and set verbosity do default level)</span>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>book</span> <span class='op'>=</span> <span class='ident'>Book</span>::<span class='ident'>new_from_file</span>(<span class='string'>&quot;foo.book&quot;</span>, <span class='ident'>InfoLevel</span>::<span class='ident'>Info</span>).<span class='ident'>unwrap</span>();
 <span class='comment'>// Render all formats according to this configuration file</span>
 <span class='ident'>book</span>.<span class='ident'>render_all</span>().<span class='ident'>unwrap</span>();</pre>
 
@@ -165,6 +165,15 @@ Let&#39;s assume you want to count the number of links in a document.</p>
                     </tr>
                 
                     <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Logger.html'
+                               title='crowbook::Logger'>Logger</a></td>
+                        <td class='docblock short'>
+                             <p>Logs info and warning message and choose whether to display them
+according to verbosity</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
                         <td><a class='struct' href='struct.OdtRenderer.html'
                                title='crowbook::OdtRenderer'>OdtRenderer</a></td>
                         <td class='docblock short'>
@@ -202,6 +211,14 @@ Let&#39;s assume you want to count the number of links in a document.</p>
                                title='crowbook::Error'>Error</a></td>
                         <td class='docblock short'>
                              <p>Crowbook&#39;s error type</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.InfoLevel.html'
+                               title='crowbook::InfoLevel'>InfoLevel</a></td>
+                        <td class='docblock short'>
+                             <p>The level of information to display to a logger#</p>
                         </td>
                     </tr>
                 

@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Error","Crowbook error type"]],"type":[["Result",""]]});
+initSidebarItems({"enum":[["Error","Crowbook's error type"]],"type":[["Result",""]]});

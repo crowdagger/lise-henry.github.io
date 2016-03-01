@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["BookOption","Structure for storing a book option"]],"struct":[["BookOptions","Contains the options of a book."]]});
+initSidebarItems({"enum":[["BookOption","Structure for storing a book option"]]});

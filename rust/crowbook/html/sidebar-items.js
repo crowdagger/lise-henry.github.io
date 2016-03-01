@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["HtmlRenderer","Renderer for HTMLAlso used by Epub."]]});
+initSidebarItems({"struct":[["HtmlRenderer","Renders HTML document.Also used by `EpubRenderer`."]]});

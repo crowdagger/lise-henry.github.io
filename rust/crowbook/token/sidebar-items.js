@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Token",""]]});
+initSidebarItems({"enum":[["Token","A single token representing a Markdown element.A Markdown document is, thus, a Vec of `Token`s."]]});

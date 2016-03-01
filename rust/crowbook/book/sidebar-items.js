@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["Number","Numbering for a given chapter"]],"struct":[["Book",""]]});
+initSidebarItems({"struct":[["Book","A Book.Probably the central structure for of Crowbook, as it is the one that calls the other ones.It has the tasks of loading a configuration file, loading chapters and using `Parser`to parse them, and then calling various renderers (`HtmlRendrer`, `LatexRenderer`, `EpubRenderer` and/or `OdtRenderer`) to convert the AST into documents.Examples"]]});
