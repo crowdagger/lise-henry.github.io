@@ -46,19 +46,20 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-34' class='srclink' href='../src/crowbook/src/lib/html.rs.html#32-55' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-40' class='srclink' href='../src/crowbook/src/lib/html.rs.html#35-60' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct HtmlRenderer&lt;'a&gt; {
     // some fields omitted
-}</pre><div class='docblock'><p>Renders HTML document.</p>
+}</pre><div class='docblock'><p>Renders HTML document in a standalone file.</p>
 
-<p>Also used by <code>EpubRenderer</code>.</p>
+<p>Also used by <code>EpubRenderer</code> and <code>HtmlDirRenderer</code>.</p>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../crowbook/struct.HtmlRenderer.html' title='crowbook::HtmlRenderer'>HtmlRenderer</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(book: &amp;'a <a class='struct' href='../crowbook/struct.Book.html' title='crowbook::Book'>Book</a>) -&gt; <a class='struct' href='../crowbook/struct.HtmlRenderer.html' title='crowbook::HtmlRenderer'>HtmlRenderer</a>&lt;'a&gt;</code></h4>
 <div class='docblock'><p>Creates a new HTML renderer</p>
 </div><h4 id='method.render_book' class='method'><code>fn <a href='#method.render_book' class='fnname'>render_book</a>(&amp;mut self) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
 <div class='docblock'><p>Render books as a standalone HTML file</p>
 </div><h4 id='method.render_html' class='method'><code>fn <a href='#method.render_html' class='fnname'>render_html</a>(&amp;mut self, tokens: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='enum' href='../crowbook/enum.Token.html' title='crowbook::Token'>Token</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
 <div class='docblock'><p>Renders a chapter to HTML</p>
-</div></div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../crowbook/struct.HtmlRenderer.html' title='crowbook::HtmlRenderer'>HtmlRenderer</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

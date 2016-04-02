@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-1657' class='srclink' href='../src/crowbook/src/lib/resource_handler.rs.html#13-22' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-2071' class='srclink' href='../src/crowbook/src/lib/resource_handler.rs.html#20-30' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct ResourceHandler&lt;'r&gt; {
     pub images: <a class='struct' href='https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html' title='std::collections::hash::map::HashMap'>HashMap</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
     // some fields omitted
@@ -62,7 +62,12 @@ for the book and to list images used in Markdown files so they can be used for t
 </div><h4 id='method.set_images_mapping' class='method'><code>fn <a href='#method.set_images_mapping' class='fnname'>set_images_mapping</a>(&amp;mut self, b: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
 <div class='docblock'><p>Turns on mapping for image files</p>
 
-<h1 id='argument-an-offset-should-be-bookroot' class='section-header'><a href='#argument-an-offset-should-be-bookroot'>Argument: an offset (should be book.root)</a></h1></div><h4 id='method.map_image' class='method'><code>fn <a href='#method.map_image' class='fnname'>map_image</a>&lt;'a&gt;(&amp;'a mut self, file: <a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+<h1 id='argument-an-offset-should-be-bookroot' class='section-header'><a href='#argument-an-offset-should-be-bookroot'>Argument: an offset (should be book.root)</a></h1></div><h4 id='method.set_base64' class='method'><code>fn <a href='#method.set_base64' class='fnname'>set_base64</a>(&amp;mut self, b: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Sets base64 mode for image mapping</p>
+
+<p>If set to true, instead of returning a destination file path,
+<code>map_image</code> will include the image as base64</p>
+</div><h4 id='method.map_image' class='method'><code>fn <a href='#method.map_image' class='fnname'>map_image</a>&lt;'a&gt;(&amp;'a mut self, file: <a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
 <div class='docblock'><p>Add a local image file and get the resulting transformed
 file name</p>
 </div><h4 id='method.images_mapping' class='method'><code>fn <a href='#method.images_mapping' class='fnname'>images_mapping</a>(&amp;self) -&gt; &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html' title='std::collections::hash::map::HashMap'>HashMap</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
@@ -73,8 +78,19 @@ file name</p>
 <div class='docblock'><p>Get a destination link from an original link</p>
 </div><h4 id='method.is_local' class='method'><code>fn <a href='#method.is_local' class='fnname'>is_local</a>(path: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Tell whether a file name is a local resource or net</p>
-</div><h4 id='method.add_offset' class='method'><code>fn <a href='#method.add_offset' class='fnname'>add_offset</a>(offset: &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>, ast: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='enum' href='../crowbook/enum.Token.html' title='crowbook::Token'>Token</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>)</code></h4>
+</div><h4 id='method.add_offset' class='method'><code>fn <a href='#method.add_offset' class='fnname'>add_offset</a>(link_offset: &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>, image_offset: &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>, ast: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='enum' href='../crowbook/enum.Token.html' title='crowbook::Token'>Token</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>)</code></h4>
 <div class='docblock'><p>Add a path offset to all linked urls and images src</p>
+</div><h4 id='method.get_files' class='method'><code>fn <a href='#method.get_files' class='fnname'>get_files</a>(list: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;, base: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;</code></h4>
+<div class='docblock'><p>Get the list of all files, walking recursively in directories</p>
+
+<h1 id='arguments' class='section-header'><a href='#arguments'>Arguments</a></h1>
+<ul>
+<li>list: a list of files</li>
+<li>base: the path where to get them</li>
+</ul>
+
+<h1 id='returns' class='section-header'><a href='#returns'>Returns</a></h1>
+<p>A list of files (relative to <code>base</code>), or an error.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'r&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../crowbook/struct.ResourceHandler.html' title='crowbook::ResourceHandler'>ResourceHandler</a>&lt;'r&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>

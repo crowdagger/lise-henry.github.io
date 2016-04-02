@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `French` struct in crate `crowbook`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, French">
+    <meta name="description" content="API documentation for the Rust `HtmlDirRenderer` struct in crate `crowbook`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, HtmlDirRenderer">
 
-    <title>crowbook::French - Rust</title>
+    <title>crowbook::HtmlDirRenderer - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
@@ -27,7 +27,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='index.html'>crowbook</a></p><script>window.sidebarCurrent = {name: 'French', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>crowbook</a></p><script>window.sidebarCurrent = {name: 'HtmlDirRenderer', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -42,18 +42,21 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>crowbook</a>::<wbr><a class='struct' href=''>French</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>crowbook</a>::<wbr><a class='struct' href=''>HtmlDirRenderer</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-2004' class='srclink' href='../src/crowbook/src/lib/cleaner.rs.html#55-57' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct French {
+        </span><a id='src-344' class='srclink' href='../src/crowbook/src/lib/html_dir.rs.html#23-26' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct HtmlDirRenderer&lt;'a&gt; {
     // some fields omitted
-}</pre><div class='docblock'><p>Implementation for french &#39;cleaning&#39;</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../crowbook/struct.French.html' title='crowbook::French'>French</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(nb_char: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.char.html'>char</a>) -&gt; <a class='struct' href='../crowbook/struct.French.html' title='crowbook::French'>French</a></code></h4>
-<div class='docblock'><p>Creates a new french cleaner, which will replace spaces with the defined
-non-breaking space when appropriate.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='../crowbook/trait.Cleaner.html' title='crowbook::Cleaner'>Cleaner</a> for <a class='struct' href='../crowbook/struct.French.html' title='crowbook::French'>French</a></code></h3><div class='impl-items'><h4 id='method.clean' class='method'><code>fn <a href='../crowbook/trait.Cleaner.html#method.clean' class='fnname'>clean</a>(&amp;self, s: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>)</code></h4>
+}</pre><div class='docblock'><p>Multiple files HTML renderer</p>
+
+<p>Renders HTML in a given directory.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../crowbook/struct.HtmlDirRenderer.html' title='crowbook::HtmlDirRenderer'>HtmlDirRenderer</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(book: &amp;'a <a class='struct' href='../crowbook/struct.Book.html' title='crowbook::Book'>Book</a>) -&gt; <a class='struct' href='../crowbook/struct.HtmlDirRenderer.html' title='crowbook::HtmlDirRenderer'>HtmlDirRenderer</a>&lt;'a&gt;</code></h4>
+<div class='docblock'><p>Creates a new HtmlDirRenderer</p>
+</div><h4 id='method.render_book' class='method'><code>fn <a href='#method.render_book' class='fnname'>render_book</a>(&amp;mut self) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Render a book</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../crowbook/struct.HtmlDirRenderer.html' title='crowbook::HtmlDirRenderer'>HtmlDirRenderer</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 

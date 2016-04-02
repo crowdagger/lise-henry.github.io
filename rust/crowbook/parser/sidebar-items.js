@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Parser","A parser that reads markdown and convert it to AST (a vector of `Token`s)This AST can then be used by various renderes.As this Parser uses Pulldown-cmark's one, it should be able to parse most *valid* CommonMark variant of Markdown.Compared to other Markdown parser, it might fail more often on invalid code, e.g. footnotes references that are not defined anywhere.Examples"]]});
+initSidebarItems({"struct":[["Parser","A parser that reads markdown and convert it to AST (a vector of `Token`s)"]]});

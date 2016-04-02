@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["HtmlDirRenderer","Multiple files HTML renderer"]]});

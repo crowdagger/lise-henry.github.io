@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["OdtRenderer","Rendererer for ODTStill very experimental."]]});
+initSidebarItems({"struct":[["OdtRenderer","Rendererer for ODT"]]});

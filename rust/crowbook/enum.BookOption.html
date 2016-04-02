@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-2229' class='srclink' href='../src/crowbook/src/lib/bookoption.rs.html#5-11' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-2769' class='srclink' href='../src/crowbook/src/lib/bookoption.rs.html#5-18' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum BookOption {
     String(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
     Bool(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>),
@@ -55,7 +55,14 @@
     Path(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
 }</pre><div class='docblock'><p>Structure for storing a book option</p>
 </div><h2 class='variants'>Variants</h2>
-<table class='variants_table'><tr><td id='variant.String'><code>String</code></td><td></td><td></td></tr><tr><td id='variant.Bool'><code>Bool</code></td><td></td><td></td></tr><tr><td id='variant.Char'><code>Char</code></td><td></td><td></td></tr><tr><td id='variant.Int'><code>Int</code></td><td></td><td></td></tr><tr><td id='variant.Path'><code>Path</code></td><td></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../crowbook/enum.BookOption.html' title='crowbook::BookOption'>BookOption</a></code></h3><div class='impl-items'><h4 id='method.as_str' class='method'><code>fn <a href='#method.as_str' class='fnname'>as_str</a>(&amp;self) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+<table class='variants_table'><tr><td id='variant.String'><code>String</code></td><td><div class='docblock'><p>Stores a String</p>
+</div></td><td></td></tr><tr><td id='variant.Bool'><code>Bool</code></td><td><div class='docblock'><p>Stores a boolean</p>
+</div></td><td></td></tr><tr><td id='variant.Char'><code>Char</code></td><td><div class='docblock'><p>Stores a single char</p>
+</div></td><td></td></tr><tr><td id='variant.Int'><code>Int</code></td><td><div class='docblock'><p>Stores an int</p>
+</div></td><td></td></tr><tr><td id='variant.Path'><code>Path</code></td><td><div class='docblock'><p>Stores a path</p>
+
+<p>Stored the same way as a string, but some base path is usually prepended to it</p>
+</div></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../crowbook/enum.BookOption.html' title='crowbook::BookOption'>BookOption</a></code></h3><div class='impl-items'><h4 id='method.as_str' class='method'><code>fn <a href='#method.as_str' class='fnname'>as_str</a>(&amp;self) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
 <div class='docblock'><p>Retuns the BookOption as a &amp;str</p>
 </div><h4 id='method.as_path' class='method'><code>fn <a href='#method.as_path' class='fnname'>as_path</a>(&amp;self) -&gt; <a class='type' href='../crowbook/type.Result.html' title='crowbook::Result'>Result</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
 <div class='docblock'><p>Returns the BookOption as a &amp;str, but only if it is a path</p>
