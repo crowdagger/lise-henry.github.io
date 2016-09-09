@@ -342,59 +342,69 @@ function toggle() {
   </li>
   <li><a href = "#link-8">1.4. Current features</a>
   </li>
+  <li><a href = "#link-14">1.5. Contributors</a>
+  </li>
+  <li><a href = "#link-15">1.6. Acknowledgements</a>
+  </li>
+  <li><a href = "#link-16">1.7. ChangeLog</a>
+  </li>
+  <li><a href = "#link-17">1.8. Library</a>
+  </li>
+  <li><a href = "#link-18">1.9. License</a>
+  </li>
  </ul>
  </li>
- <li><a href = "#link-13">2. Arguments</a>
+ <li><a href = "#link-19">2. Arguments</a>
  <ul>
-  <li><a href = "#link-14">2.1. <code>--create</code></a>
+  <li><a href = "#link-20">2.1. <code>--create</code></a>
   </li>
-  <li><a href = "#link-16">2.2. <code>--single</code></a>
+  <li><a href = "#link-22">2.2. <code>--single</code></a>
   </li>
-  <li><a href = "#link-17">2.3. <code>--set</code></a>
+  <li><a href = "#link-23">2.3. <code>--set</code></a>
   </li>
-  <li><a href = "#link-19">2.4. <code>--list-options</code></a>
+  <li><a href = "#link-25">2.4. <code>--list-options</code></a>
   </li>
-  <li><a href = "#link-20">2.5. <code>--print-template</code></a>
+  <li><a href = "#link-26">2.5. <code>--print-template</code></a>
   </li>
-  <li><a href = "#link-21">2.6. <code>--verbose</code></a>
+  <li><a href = "#link-27">2.6. <code>--verbose</code></a>
   </li>
-  <li><a href = "#link-22">2.7. <code>--to</code></a>
+  <li><a href = "#link-28">2.7. <code>--to</code></a>
   </li>
-  <li><a href = "#link-24">2.8. <code>--output</code></a>
+  <li><a href = "#link-30">2.8. <code>--output</code></a>
   </li>
  </ul>
  </li>
- <li><a href = "#link-25">3. The configuration file</a>
+ <li><a href = "#link-31">3. The configuration file</a>
  <ul>
-  <li><a href = "#link-26">3.1. The list of files</a>
+  <li><a href = "#link-32">3.1. The list of files</a>
   </li>
-  <li><a href = "#link-27">3.2. Crowbook options</a>
+  <li><a href = "#link-33">3.2. Crowbook options</a>
   </li>
  </ul>
  </li>
- <li><a href = "#link-45">ChangeLog</a>
+ <li><a href = "#link-51">ChangeLog</a>
  <ul>
-  <li><a href = "#link-46">0.6.0 (2016-09-09)</a>
+  <li><a href = "#link-52">0.6.0 (2016-09-09)</a>
   </li>
-  <li><a href = "#link-47">0.5.1 (2016-04-14)</a>
+  <li><a href = "#link-53">0.5.1 (2016-04-14)</a>
   </li>
-  <li><a href = "#link-48">0.5.0 (2016-04-02)</a>
+  <li><a href = "#link-54">0.5.0 (2016-04-02)</a>
   </li>
-  <li><a href = "#link-49">0.4.0 (2016-03-01)</a>
+  <li><a href = "#link-55">0.4.0 (2016-03-01)</a>
   </li>
-  <li><a href = "#link-50">0.3.0 (2016-02-27)</a>
+  <li><a href = "#link-56">0.3.0 (2016-02-27)</a>
   </li>
-  <li><a href = "#link-51">0.2.2 (2016-02-25)</a>
+  <li><a href = "#link-57">0.2.2 (2016-02-25)</a>
   </li>
-  <li><a href = "#link-52">0.2.1 (2016-02-25)</a>
+  <li><a href = "#link-58">0.2.1 (2016-02-25)</a>
   </li>
-  <li><a href = "#link-53">0.2.0 (2016-02-25)</a>
+  <li><a href = "#link-59">0.2.0 (2016-02-25)</a>
   </li>
-  <li><a href = "#link-54">0.1.0 (2016-02-21)</a>
+  <li><a href = "#link-60">0.1.0 (2016-02-21)</a>
   </li>
  </ul>
  </li>
- <li><a href = "#link-55">GNU LESSER GENERAL PUBLIC LICENSE</a>
+ <li><a href = "#link-61">GNU LESSER GENERAL PUBLIC LICENSE</a>
  </li>
 </ul>
     </nav>
@@ -468,78 +478,40 @@ output.html: book.html
 ---
 
 This is a very tiny book!
-    ```
-
-can be processed with `crowbook --single foo.md` or `crowbook -s
-foo.md` to produce the `book.html` file. This is useful for short
-texts that typically only contain one "chapter".
-
-### Bugs ###
-
-See the [github's issue tracker](https://github.com/lise-henry/crowbook/issues).
-
-Contributors
-------------
-
-* [Stéphane Mourey](http://stephanemourey.fr/) `&lt;s+crowbook AT stephanemourey DOT fr&gt;`
-
-Acknowledgements
-----------------
-
-Besides the [Rust](https://www.rust-lang.org/) compiler and standard library, Crowbook uses the
-following libraries:
-
-* [pulldown-cmark](https://crates.io/crates/pulldown-cmark) 
-* [yaml-rust](https://crates.io/crates/yaml-rust) 
-* [mustache](https://crates.io/crates/mustache) 
-* [clap](https://github.com/kbknapp/clap-rs)
-* [chrono](https://crates.io/crates/chrono) 
-* [uuid](https://crates.io/crates/uuid) 
-* [mime_guess](https://crates.io/crates/mime_guess) 
-* [walkdir](https://crates.io/crates/walkdir)
-* [rustc-serialize](https://crates.io/crates/rustc-serialize)
-
-It also uses configuration files from
-[rust-everywhere](https://github.com/japaric/rust-everywhere) to use
-[Travis](https://travis-ci.org/) and
-[Appveyor](http://www.appveyor.com/) to generate binaries for
-various platforms on each release.
-
-While Crowbook directly doesn't use them, there was also inspiration
-from [Pandoc](http://pandoc.org/) and
-[mdBook](https://github.com/azerupi/mdBook).
-
-Also, the [W3C HTML validator](https://validator.w3.org/) and the
-[IDPF EPUB validator](http://validator.idpf.org/) proved very useful
-during development.
-
-ChangeLog
----------
-
-See [ChangeLog](ChangeLog.md).
-
-Library
--------
-
-While the main purpose of Crowbook is to be runned as a command line,
-the code is written as a library, so if you want to build on it you can
-use it as such. You can look at the generated documentation on
-[docs.rs](https://docs.rs/releases/search?query=crowbook).
-
-License 
--------
-
-Crowbook is free software: you can redistribute it and/or modify it
-under the terms of the GNU Lesser General Public License (LGPL),
-version 2.1 or (at your option) any ulterior version. See 
-[LICENSE](LICENSE.md) for more information.
-
-
 </code></pre>
+<p id = "para-23">can be processed with <code>crowbook --single foo.md</code> or <code>crowbook -s foo.md</code> to produce the <code>book.html</code> file. This is useful for short texts that typically only contain one "chapter".</p>
+<h3 id = "link-13">Bugs</h3>
+<p id = "para-24">See the <a href = "https://github.com/lise-henry/crowbook/issues">github's issue tracker</a>.</p>
+<h2 id = "link-14">1.5. Contributors</h2>
+<ul>
+<li><a href = "http://stephanemourey.fr/">Stéphane Mourey</a> <code>&lt;s+crowbook AT stephanemourey DOT fr&gt;</code></li>
+</ul>
+<h2 id = "link-15">1.6. Acknowledgements</h2>
+<p id = "para-25">Besides the <a href = "https://www.rust-lang.org/">Rust</a> compiler and standard library, Crowbook uses the following libraries:</p>
+<ul>
+<li><a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a></li>
+<li><a href = "https://crates.io/crates/yaml-rust">yaml-rust</a></li>
+<li><a href = "https://crates.io/crates/mustache">mustache</a></li>
+<li><a href = "https://github.com/kbknapp/clap-rs">clap</a></li>
+<li><a href = "https://crates.io/crates/chrono">chrono</a></li>
+<li><a href = "https://crates.io/crates/uuid">uuid</a></li>
+<li><a href = "https://crates.io/crates/mime_guess">mime_guess</a></li>
+<li><a href = "https://crates.io/crates/walkdir">walkdir</a></li>
+<li><a href = "https://crates.io/crates/rustc-serialize">rustc-serialize</a></li>
+</ul>
+<p id = "para-26">It also uses configuration files from <a href = "https://github.com/japaric/rust-everywhere">rust-everywhere</a> to use <a href = "https://travis-ci.org/">Travis</a> and <a href = "http://www.appveyor.com/">Appveyor</a> to generate binaries for various platforms on each release.</p>
+<p id = "para-27">While Crowbook directly doesn't use them, there was also inspiration from <a href = "http://pandoc.org/">Pandoc</a> and <a href = "https://github.com/azerupi/mdBook">mdBook</a>.</p>
+<p id = "para-28">Also, the <a href = "https://validator.w3.org/">W3C HTML validator</a> and the <a href = "http://validator.idpf.org/">IDPF EPUB validator</a> proved very useful during development.</p>
+<h2 id = "link-16">1.7. ChangeLog</h2>
+<p id = "para-29">See <a href = "#chapter-3">ChangeLog</a>.</p>
+<h2 id = "link-17">1.8. Library</h2>
+<p id = "para-30">While the main purpose of Crowbook is to be runned as a command line, the code is written as a library, so if you want to build on it you can use it as such. You can look at the generated documentation on <a href = "https://docs.rs/releases/search?query=crowbook">docs.rs</a>.</p>
+<h2 id = "link-18">1.9. License</h2>
+<p id = "para-31">Crowbook is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License (LGPL), version 2.1 or (at your option) any ulterior version. See <a href = "#chapter-4">LICENSE</a> for more information.</p>
 
 </div><div id = "chapter-1" class = "chapter">
-  <h1 id = "link-13">2. Arguments</h1>
-<p id = "para-23">Crowbook can takes a list of arguments:</p>
+  <h1 id = "link-19">2. Arguments</h1>
+<p id = "para-32">Crowbook can takes a list of arguments:</p>
 <pre><code class = "language-bash">Render a markdown book in Epub, PDF or HTML.
 
 USAGE:
@@ -562,19 +534,19 @@ OPTIONS:
 ARGS:
     &lt;BOOK&gt;    File containing the book configuration, or a Markdown file when called with --single
 </code></pre>
-<p id = "para-24">Note that Crowbook generates output files relatively to the directory where &lt;BOOK&gt; is:</p>
+<p id = "para-33">Note that Crowbook generates output files relatively to the directory where &lt;BOOK&gt; is:</p>
 <pre><code>$ crowbook foo/bar.book --to pdf --output baz.pdf
 </code></pre>
-<p id = "para-25">will thus generate baz.pdf in directory foo and not in current directory.</p>
-<p id = "para-26">The most important option obviously &lt;BOOK&gt;, i.e. the file configuration book. It is mandatory for most options: if you don't pass it, <code>crowbook</code> will simply display this help message. In a normal use case this is the only argument you'll need to pass, and <code>crowbook</code> will generate the book in all formats specified in the configuration file.</p>
-<p id = "para-27">It is, however, possible to pass more arguments to <code>crowbook</code>.</p>
-<h2 id = "link-14">2.1. <code>--create</code></h2>
-<p id = "para-28"><b>Usage</b>: <code>crowbook [BOOK] --create file_1.md file_2.md ...</code></p>
-<p id = "para-29">Creates a new book from a list of Markdown files. It will generate a book configuration file with all file names specified as chapters. It either prints the result to stdout (if <code>BOOK</code> is not specified) or generate the file <code>BOOK</code> (or abort if it already exists).</p>
-<h3 id = "link-15">Examples</h3>
+<p id = "para-34">will thus generate baz.pdf in directory foo and not in current directory.</p>
+<p id = "para-35">The most important option obviously &lt;BOOK&gt;, i.e. the file configuration book. It is mandatory for most options: if you don't pass it, <code>crowbook</code> will simply display this help message. In a normal use case this is the only argument you'll need to pass, and <code>crowbook</code> will generate the book in all formats specified in the configuration file.</p>
+<p id = "para-36">It is, however, possible to pass more arguments to <code>crowbook</code>.</p>
+<h2 id = "link-20">2.1. <code>--create</code></h2>
+<p id = "para-37"><b>Usage</b>: <code>crowbook [BOOK] --create file_1.md file_2.md ...</code></p>
+<p id = "para-38">Creates a new book from a list of Markdown files. It will generate a book configuration file with all file names specified as chapters. It either prints the result to stdout (if <code>BOOK</code> is not specified) or generate the file <code>BOOK</code> (or abort if it already exists).</p>
+<h3 id = "link-21">Examples</h3>
 <pre><code>crowbook foo.book --create  README.md ChangeLog.md LICENSE.md
 </code></pre>
-<p id = "para-30">will generate a file <code>foo.book</code> containing:</p>
+<p id = "para-39">will generate a file <code>foo.book</code> containing:</p>
 <pre><code>author: Your name
 title: Your title
 lang: en
@@ -592,14 +564,14 @@ lang: en
 + ChangeLog.md
 + LICENSE.md
 </code></pre>
-<p id = "para-31">while</p>
+<p id = "para-40">while</p>
 <pre><code>crowbook --create README.md ChangeLog.md LICENSE.md
 </code></pre>
-<p id = "para-32">will prints the same result, but to stdout (without creating a file).</p>
-<p id = "para-33">When <code>crowbook</code> is runned with <code>--create</code>, it can also uses the keys/values set by <code>--set</code> (see below):</p>
+<p id = "para-41">will prints the same result, but to stdout (without creating a file).</p>
+<p id = "para-42">When <code>crowbook</code> is runned with <code>--create</code>, it can also uses the keys/values set by <code>--set</code> (see below):</p>
 <pre><code>$ crowbook foo.book --create file1.md file2.md --set author "Pierre Dupont" title "Mon œuvre" lang fr
 </code></pre>
-<p id = "para-34">will generate a <code>foo.book</code> file containing</p>
+<p id = "para-43">will generate a <code>foo.book</code> file containing</p>
 <pre><code>author: Pierre Dupont
 title: Mon œuvre
 lang: fr
@@ -608,77 +580,77 @@ lang: fr
 + file1.md
 + file2.md
 </code></pre>
-<h2 id = "link-16">2.2. <code>--single</code></h2>
-<p id = "para-35"><b>usage</b>: <code>crowbook --single &lt;FILE&gt;</code></p>
-<p id = "para-36">(or <code>crowbook -s &lt;FILE&gt;</code>)</p>
-<p id = "para-37">This options allows to pass <code>crowbook</code> a single Markdown file. This file can contain an inline YAML block to set some book options. Inline YAML blocks must start and end with a line with <code>---</code> (three dashes). E.g:</p>
+<h2 id = "link-22">2.2. <code>--single</code></h2>
+<p id = "para-44"><b>usage</b>: <code>crowbook --single &lt;FILE&gt;</code></p>
+<p id = "para-45">(or <code>crowbook -s &lt;FILE&gt;</code>)</p>
+<p id = "para-46">This options allows to pass <code>crowbook</code> a single Markdown file. This file can contain an inline YAML block to set some book options. Inline YAML blocks must start and end with a line with <code>---</code> (three dashes). E.g:</p>
 <pre><code class = "language-markdown">---
 author: Joan Doe
 title: A short story
 ---
 </code></pre>
-<p id = "para-38">If this YAML block is not at the beginning of a file, it must also be preceded by a blank line.</p>
-<p id = "para-39">This allows to not have to write a <code>.book</code> configuration file for a short story or an article. <code>crowbook --single foo.md</code> is rougly equivalent to having a book configuration file containing:</p>
+<p id = "para-47">If this YAML block is not at the beginning of a file, it must also be preceded by a blank line.</p>
+<p id = "para-48">This allows to not have to write a <code>.book</code> configuration file for a short story or an article. <code>crowbook --single foo.md</code> is rougly equivalent to having a book configuration file containing:</p>
 <pre><code class = "language-markdown">! foo.md
 </code></pre>
-<p id = "para-40">That is, the chapter heading (if any) won't be displayed in the output documents (though they still appear in the TOC).</p>
-<p id = "para-41">Note that by default, using <code>--single</code> sets the <code>tex.short</code> option to <code>true</code>, using the LaTeX class of <code>article</code> instead of <code>book</code>.</p>
-<h2 id = "link-17">2.3. <code>--set</code></h2>
-<p id = "para-42"><b>usage</b>: <code>crowbook &lt;BOOK&gt; --set [KEY] [VALUE]...</code></p>
-<p id = "para-43">This options takes a list <code>KEY</code> <code>VALUE</code> pairs and allows to set or override a book configuration option. All valid options in the configuration files are valid as keys. For more information, see <a href = "#chapter-2">the configuration file</a>.</p>
-<h3 id = "link-18">Examples</h3>
+<p id = "para-49">That is, the chapter heading (if any) won't be displayed in the output documents (though they still appear in the TOC).</p>
+<p id = "para-50">Note that by default, using <code>--single</code> sets the <code>tex.short</code> option to <code>true</code>, using the LaTeX class of <code>article</code> instead of <code>book</code>.</p>
+<h2 id = "link-23">2.3. <code>--set</code></h2>
+<p id = "para-51"><b>usage</b>: <code>crowbook &lt;BOOK&gt; --set [KEY] [VALUE]...</code></p>
+<p id = "para-52">This options takes a list <code>KEY</code> <code>VALUE</code> pairs and allows to set or override a book configuration option. All valid options in the configuration files are valid as keys. For more information, see <a href = "#chapter-2">the configuration file</a>.</p>
+<h3 id = "link-24">Examples</h3>
 <pre><code>$ crowbook foo.book --set html.css style.css
 </code></pre>
-<p id = "para-44">will override the CSS for HTML generation (the <code>html.css</code> key) to <code>style.css</code>.</p>
+<p id = "para-53">will override the CSS for HTML generation (the <code>html.css</code> key) to <code>style.css</code>.</p>
 <pre><code>$ crowbook foo.book --set author Foo --title Bar
 </code></pre>
-<p id = "para-45">will override the book title to <code>Bar</code> and its author to <code>Foo</code>.</p>
-<h2 id = "link-19">2.4. <code>--list-options</code></h2>
-<p id = "para-46"><b>usage</b>: <code>crowbook --list-options</code></p>
-<p id = "para-47">(or <code>crowbook -l</code>)</p>
-<p id = "para-48">Displays all the valid options to use, whether in a book configuration file, with <code>--set</code>, or in an inline YAML block.</p>
-<h2 id = "link-20">2.5. <code>--print-template</code></h2>
-<p id = "para-49"><b>usage</b>: <code>crowbook --print-template template</code></p>
-<p id = "para-50">Prints to stdout the built-in template. Useful if you want to customize the appearance of your document. E.g., if you want to modify the CSS used for HTML rendering:</p>
+<p id = "para-54">will override the book title to <code>Bar</code> and its author to <code>Foo</code>.</p>
+<h2 id = "link-25">2.4. <code>--list-options</code></h2>
+<p id = "para-55"><b>usage</b>: <code>crowbook --list-options</code></p>
+<p id = "para-56">(or <code>crowbook -l</code>)</p>
+<p id = "para-57">Displays all the valid options to use, whether in a book configuration file, with <code>--set</code>, or in an inline YAML block.</p>
+<h2 id = "link-26">2.5. <code>--print-template</code></h2>
+<p id = "para-58"><b>usage</b>: <code>crowbook --print-template template</code></p>
+<p id = "para-59">Prints to stdout the built-in template. Useful if you want to customize the appearance of your document. E.g., if you want to modify the CSS used for HTML rendering:</p>
 <pre><code>$ crowbook --print-template html.css &gt; my_style.css
 # edit my_style.css in your favourite editor
 $ crowbook my.book --set html.css my_style.css
 # or add "html.css: my_style.css" in my.book
 </code></pre>
-<p id = "para-51">Note that it is possible to use this option in conjonction with <code>--set</code>, though it is currently only useful for EPUB template:</p>
+<p id = "para-60">Note that it is possible to use this option in conjonction with <code>--set</code>, though it is currently only useful for EPUB template:</p>
 <pre><code>$ crowbook --print-template epub.template --set epub.version 2
 # Returns the template for Epub 2 (currently it is the default one)
 $ crowbook --print-template epub.template --set epub.version 3
 # Returns the template for Epub 3
 </code></pre>
-<h2 id = "link-21">2.6. <code>--verbose</code></h2>
-<p id = "para-52"><b>usage</b>: <code>crowbook &lt;BOOK&gt; --verbose</code></p>
-<p id = "para-53">If this flag is set, Crowbook will print the warnings it detect while parsing and rendering. These warnings are typically related to the inclusion of non-local images, linking to Markdown files that are not part of the book, and so on.</p>
-<h2 id = "link-22">2.7. <code>--to</code></h2>
-<p id = "para-54"><b>usage</b>: <code>crowbook &lt;BOOK&gt;--to [FORMAT]</code></p>
-<p id = "para-55">(or <code>crowbook &lt;BOOK&gt; -t [FORMAT]</code>)</p>
-<p id = "para-56">Generate only the specified format. <code>FORMAT</code> must be either <code>epub</code>, <code>pdf</code>, <code>html</code>, <code>odt</code> or <code>tex</code>.</p>
-<p id = "para-57">If an output file for the format is not specified in the book configuration file, <code>crowbook</code> will fail to render PDF, ODT and Epub (whereas it will print HTML and Tex files on stdout). It is however possible to specify a file with the <code>--output</code> option.</p>
-<h3 id = "link-23">Examples</h3>
+<h2 id = "link-27">2.6. <code>--verbose</code></h2>
+<p id = "para-61"><b>usage</b>: <code>crowbook &lt;BOOK&gt; --verbose</code></p>
+<p id = "para-62">If this flag is set, Crowbook will print the warnings it detect while parsing and rendering. These warnings are typically related to the inclusion of non-local images, linking to Markdown files that are not part of the book, and so on.</p>
+<h2 id = "link-28">2.7. <code>--to</code></h2>
+<p id = "para-63"><b>usage</b>: <code>crowbook &lt;BOOK&gt;--to [FORMAT]</code></p>
+<p id = "para-64">(or <code>crowbook &lt;BOOK&gt; -t [FORMAT]</code>)</p>
+<p id = "para-65">Generate only the specified format. <code>FORMAT</code> must be either <code>epub</code>, <code>pdf</code>, <code>html</code>, <code>odt</code> or <code>tex</code>.</p>
+<p id = "para-66">If an output file for the format is not specified in the book configuration file, <code>crowbook</code> will fail to render PDF, ODT and Epub (whereas it will print HTML and Tex files on stdout). It is however possible to specify a file with the <code>--output</code> option.</p>
+<h3 id = "link-29">Examples</h3>
 <pre><code>crowbook --to html foo.book
 </code></pre>
-<p id = "para-58">will generate some HTML, and prints it either to the file specified by <code>output.html</code> in <code>foo.book</code>, or to stdout if it is not specified.</p>
+<p id = "para-67">will generate some HTML, and prints it either to the file specified by <code>output.html</code> in <code>foo.book</code>, or to stdout if it is not specified.</p>
 <pre><code>crowbook --to pdf --output foo.pdf foo.book
 </code></pre>
-<p id = "para-59">will generate a <code>foo.pdf</code> file,.</p>
-<h2 id = "link-24">2.8. <code>--output</code></h2>
-<p id = "para-60"><b>usage</b>: <code>crowbook &lt;BOOK&gt; --to &lt;FORMAT&gt; --output &lt;FILE&gt;</code></p>
-<p id = "para-61">(or <code>crowbook -t &lt;FORMAT&gt; -o &lt;FILE&gt; &lt;BOOK&gt;</code>)</p>
-<p id = "para-62">Specifies an output file. Only valid when <code>--to</code> is used.</p>
-<p id = "para-63">Note that Crowbook generates output files relatively to the directory where <code>BOOK</code> is:</p>
+<p id = "para-68">will generate a <code>foo.pdf</code> file,.</p>
+<h2 id = "link-30">2.8. <code>--output</code></h2>
+<p id = "para-69"><b>usage</b>: <code>crowbook &lt;BOOK&gt; --to &lt;FORMAT&gt; --output &lt;FILE&gt;</code></p>
+<p id = "para-70">(or <code>crowbook -t &lt;FORMAT&gt; -o &lt;FILE&gt; &lt;BOOK&gt;</code>)</p>
+<p id = "para-71">Specifies an output file. Only valid when <code>--to</code> is used.</p>
+<p id = "para-72">Note that Crowbook generates output files relatively to the directory where <code>BOOK</code> is:</p>
 <pre><code>$ crowbook foo/bar.book --to pdf --output baz.pdf
 </code></pre>
-<p id = "para-64">will thus generate <code>baz.pdf</code> in directory <code>foo</code> and not in current directory.</p>
+<p id = "para-73">will thus generate <code>baz.pdf</code> in directory <code>foo</code> and not in current directory.</p>
 
 </div><div id = "chapter-2" class = "chapter">
-  <h1 id = "link-25">3. The configuration file</h1>
-<p id = "para-65">If you want to use Crowbook for your book, this configuration file is all you'll have to add (assuming you already have the book in Markdown files; if you don't, you'll also have to write a book first, but that's besides the scope of this document).</p>
-<p id = "para-66">The format is not very complicated. This is an example of it:</p>
+  <h1 id = "link-31">3. The configuration file</h1>
+<p id = "para-74">If you want to use Crowbook for your book, this configuration file is all you'll have to add (assuming you already have the book in Markdown files; if you don't, you'll also have to write a book first, but that's besides the scope of this document).</p>
+<p id = "para-75">The format is not very complicated. This is an example of it:</p>
 <pre><code># metadata
 author: Joan Doe
 title: Some book
@@ -694,21 +666,21 @@ output.html: some_book.html
 + chapter_4.md
 - epilogue.md
 </code></pre>
-<p id = "para-67">Basically, it is divided in two parts:</p>
+<p id = "para-76">Basically, it is divided in two parts:</p>
 <ul>
 <li>a list of options, under the form <code>key: value</code>, following YAML syntax.</li>
 <li>a list of Markdown files.</li>
 </ul>
-<p id = "para-68">Lines starting with the <code>#</code> characters are comments and are discarded.</p>
-<h2 id = "link-26">3.1. The list of files</h2>
-<p id = "para-69">There are various options to include a markdown file.</p>
+<p id = "para-77">Lines starting with the <code>#</code> characters are comments and are discarded.</p>
+<h2 id = "link-32">3.1. The list of files</h2>
+<p id = "para-78">There are various options to include a markdown file.</p>
 <ul>
 <li><code>+ file_name.md</code> includes a numbered chapter.</li>
 <li><code>- file_name.md</code> includes an unnumbered chapter.</li>
 <li><code>! file_name.md</code> includes a chapter whose title won't be displayed (except in the table of contents); this is useful for e.g. including a copyright at the beginning or the book, or for short stories where there is only one chapter.</li>
 <li><code>42. file_name.md</code> specifies the number for a chapter.</li>
 </ul>
-<p id = "para-70">So a typical usage might look like this:</p>
+<p id = "para-79">So a typical usage might look like this:</p>
 <pre><code>! copyright.md
 - preface.md
 # We want first chapter to be Chapter 0 because we are programmers!
@@ -718,45 +690,45 @@ output.html: some_book.html
 + chapter_2.md
 ...
 </code></pre>
-<p id = "para-71">There are two important things to note:</p>
+<p id = "para-80">There are two important things to note:</p>
 <ol>
 <li>you must <em>not</em> use quotes around the file names.</li>
 <li>the path of these files are relative to the directory where your configuration file is. This means you can run <code>crowbook books/my_trilogy/first_book/config.book</code> without being in the book's directory.</li>
 </ol>
-<p id = "para-72">Also note that you don't have to specify a title. This is because the title of the chapter is inferred from the Markdown document. To go back to our previous example:</p>
+<p id = "para-81">Also note that you don't have to specify a title. This is because the title of the chapter is inferred from the Markdown document. To go back to our previous example:</p>
 <pre><code>+ chapter_1.md
 </code></pre>
-<p id = "para-73">does not specify a chapter title, because it will read it directly in <code>chapter_1.md</code>, e.g.:</p>
+<p id = "para-82">does not specify a chapter title, because it will read it directly in <code>chapter_1.md</code>, e.g.:</p>
 <pre><code class = "language-markdown">The day I was born
 ==================
 
 ...
 </code></pre>
-<p id = "para-74">You should have one and only one level-one header (i.e. chapter title) in each markdown file.</p>
-<p id = "para-75">If you have more than one, Crowbook will print a warning and treat it as another chapter (numbered according to the scheme specified for including the file). It might however mess the table of contents in some cases (e.g. for Epub).</p>
-<p id = "para-76">If you do <em>not</em> have a level-1 header in a markdown file:</p>
+<p id = "para-83">You should have one and only one level-one header (i.e. chapter title) in each markdown file.</p>
+<p id = "para-84">If you have more than one, Crowbook will print a warning and treat it as another chapter (numbered according to the scheme specified for including the file). It might however mess the table of contents in some cases (e.g. for Epub).</p>
+<p id = "para-85">If you do <em>not</em> have a level-1 header in a markdown file:</p>
 <ul>
 <li>if it is a numbered chapter, Crowbook will infer a chapter name from the numbering scheme;</li>
 <li>if it is not numbered, chapter's title will default to the empty string and won't be displayed in the TOC.</li>
 </ul>
-<h2 id = "link-27">3.2. Crowbook options</h2>
-<p id = "para-77">The first part of the configuration file is dedicated to pass options to Crowbook. This is <a href = "https://en.wikipedia.org/wiki/YAML">YAML syntax</a>, so each line should be of the form <code>key: value</code>. Note that in most cases you don't have to put string in quotes, e.g.:</p>
+<h2 id = "link-33">3.2. Crowbook options</h2>
+<p id = "para-86">The first part of the configuration file is dedicated to pass options to Crowbook. This is <a href = "https://en.wikipedia.org/wiki/YAML">YAML syntax</a>, so each line should be of the form <code>key: value</code>. Note that in most cases you don't have to put string in quotes, e.g.:</p>
 <pre><code>title: My title
 </code></pre>
-<p id = "para-78">It is however possible (and sometimes necessary) to escape some characters to use quotes around strings:</p>
+<p id = "para-87">It is however possible (and sometimes necessary) to escape some characters to use quotes around strings:</p>
 <pre><code>title: "My: title!"
 </code></pre>
-<p id = "para-79">It is possible to use multiline strings with <code>&gt;-</code> and then indenting the lines that are part of the string:</p>
+<p id = "para-88">It is possible to use multiline strings with <code>&gt;-</code> and then indenting the lines that are part of the string:</p>
 <pre><code>title: &gt;-
  A
  long
  title
 author: Joan Doe
 </code></pre>
-<p id = "para-80">will set <code>title</code> to <code>"A long title"</code>. See <a href = "https://en.wikipedia.org/wiki/YAML#Block_literals">block literals in YAML</a> for more information on the various way to insert multiline strings (which mostly change the way newlines will or won't be inserted).</p>
-<p id = "para-81">A final note on the syntax: all options must be set <em>before</em> the first chapter inclusion (that is, a line beginning with '+', '-', 'x.' (where <code>x</code> is a number) or '!').</p>
-<p id = "para-82">Here is the complete list of options, with a short description. The usage of some of them is detailed later on.</p>
-<h3 id = "link-28">Metadata</h3>
+<p id = "para-89">will set <code>title</code> to <code>"A long title"</code>. See <a href = "https://en.wikipedia.org/wiki/YAML#Block_literals">block literals in YAML</a> for more information on the various way to insert multiline strings (which mostly change the way newlines will or won't be inserted).</p>
+<p id = "para-90">A final note on the syntax: all options must be set <em>before</em> the first chapter inclusion (that is, a line beginning with '+', '-', 'x.' (where <code>x</code> is a number) or '!').</p>
+<p id = "para-91">Here is the complete list of options, with a short description. The usage of some of them is detailed later on.</p>
+<h3 id = "link-34">Metadata</h3>
 <ul>
 <li><b><code>author</code></b><ul>
 <li><b>type</b>: string</li>
@@ -795,7 +767,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-29">Output options</h3>
+<h3 id = "link-35">Output options</h3>
 <ul>
 <li><b><code>output.epub</code></b><ul>
 <li><b>type</b>: path</li>
@@ -834,7 +806,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-30">Resources option</h3>
+<h3 id = "link-36">Resources option</h3>
 <ul>
 <li><b><code>resources.base_path</code></b><ul>
 <li><b>type</b>: path</li>
@@ -873,7 +845,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-31">Misc options</h3>
+<h3 id = "link-37">Misc options</h3>
 <ul>
 <li><b><code>enable_yaml_blocks</code></b><ul>
 <li><b>type</b>: boolean</li>
@@ -942,7 +914,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-32">HTML options</h3>
+<h3 id = "link-38">HTML options</h3>
 <ul>
 <li><b><code>html.template</code></b><ul>
 <li><b>type</b>: path</li>
@@ -977,7 +949,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-33">Multifile HTML options</h3>
+<h3 id = "link-39">Multifile HTML options</h3>
 <ul>
 <li><b><code>html_dir.script</code></b><ul>
 <li><b>type</b>: path</li>
@@ -1004,7 +976,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-34">EPUB options</h3>
+<h3 id = "link-40">EPUB options</h3>
 <ul>
 <li><b><code>epub.version</code></b><ul>
 <li><b>type</b>: integer</li>
@@ -1025,7 +997,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-35">LaTeX options</h3>
+<h3 id = "link-41">LaTeX options</h3>
 <ul>
 <li><b><code>tex.short</code></b><ul>
 <li><b>type</b>: boolean</li>
@@ -1052,7 +1024,7 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<h3 id = "link-36">Deprecated options</h3>
+<h3 id = "link-42">Deprecated options</h3>
 <ul>
 <li><b><code>base_path</code></b><ul>
 <li><b>type</b>: DEPRECATED</li>
@@ -1073,22 +1045,22 @@ author: Joan Doe
 </ul>
 </li>
 </ul>
-<p id = "para-83">Note that these options have a type, which in most case should be pretty straightforward (a boolean can be <code>true</code> or <code>false</code>, an integer must be composed a number, a string is, well, any string). The <code>path</code> type might puzzle you a bit, but it's equivalent to a string, except Crowbook will consider it relatively to the book file.</p>
-<h3 id = "link-37">Output options</h3>
-<p id = "para-84">These options specify which files to generate. You must at least set one of this option, or Crowbook won't do anything.</p>
-<p id = "para-85">Recall that all file paths are relative to the directory where the config file is, not to the one where you run <code>crowbook</code>. So if you set</p>
+<p id = "para-92">Note that these options have a type, which in most case should be pretty straightforward (a boolean can be <code>true</code> or <code>false</code>, an integer must be composed a number, a string is, well, any string). The <code>path</code> type might puzzle you a bit, but it's equivalent to a string, except Crowbook will consider it relatively to the book file.</p>
+<h3 id = "link-43">Output options</h3>
+<p id = "para-93">These options specify which files to generate. You must at least set one of this option, or Crowbook won't do anything.</p>
+<p id = "para-94">Recall that all file paths are relative to the directory where the config file is, not to the one where you run <code>crowbook</code>. So if you set</p>
 <pre><code>output.epub = foo.epub
 </code></pre>
-<p id = "para-86">and runs</p>
+<p id = "para-95">and runs</p>
 <pre><code class = "language-bash">$ crowbook some/dir/config.book
 </code></pre>
-<p id = "para-87"><code>foo.epub</code> will be generated in <code>some/dir</code>, not in your current directory.</p>
-<p id = "para-88">Crowbook will try to generate each of the <code>output.xxx</code> files that are specified. That means that you'll have to set at least one of those if you want a call to</p>
+<p id = "para-96"><code>foo.epub</code> will be generated in <code>some/dir</code>, not in your current directory.</p>
+<p id = "para-97">Crowbook will try to generate each of the <code>output.xxx</code> files that are specified. That means that you'll have to set at least one of those if you want a call to</p>
 <pre><code>$ crowbook my.book
 </code></pre>
-<p id = "para-89">to generate anything. (It's still possible to generate a specific format, and only this one, by using the <code>--to</code> argument on the command line).</p>
-<p id = "para-90">Note that some formats depend on some commands being installed on your system. Most notably, Crowbook depends on LaTeX (<code>pdflatex</code> by default, though you can specify the command to use with <code>tex.command</code>) to generate a PDF file, so PDF rendering won't work if it is not installed on your system. Crowbook also uses the <code>zip</code> command to generate the EPUB and ODT, files.</p>
-<p id = "para-91">Current output options are:</p>
+<p id = "para-98">to generate anything. (It's still possible to generate a specific format, and only this one, by using the <code>--to</code> argument on the command line).</p>
+<p id = "para-99">Note that some formats depend on some commands being installed on your system. Most notably, Crowbook depends on LaTeX (<code>pdflatex</code> by default, though you can specify the command to use with <code>tex.command</code>) to generate a PDF file, so PDF rendering won't work if it is not installed on your system. Crowbook also uses the <code>zip</code> command to generate the EPUB and ODT, files.</p>
+<p id = "para-100">Current output options are:</p>
 <ul>
 <li><code>output.html</code>: renders a standalone HTML file;</li>
 <li><code>output.html_dir</code>: render a HTML directory with one page by chapter;</li>
@@ -1096,52 +1068,52 @@ author: Joan Doe
 <li><code>output.tex</code>: renders a LaTeX file;</li>
 <li><code>output.pdf</code>: renders a PDF file (using <code>tex.command</code>).</li>
 </ul>
-<h3 id = "link-38">Resources options</h3>
-<p id = "para-92">These two options allow to embed additional files for some formats (currently, only EPUB). This can be useful for embedding fonts.</p>
-<h4 id = "link-39">resources.files</h4>
-<p id = "para-93">A list of files or directories that should be added. It's a whitespace-separated list, so it can be, e.g.:</p>
+<h3 id = "link-44">Resources options</h3>
+<p id = "para-101">These two options allow to embed additional files for some formats (currently, only EPUB). This can be useful for embedding fonts.</p>
+<h4 id = "link-45">resources.files</h4>
+<p id = "para-102">A list of files or directories that should be added. It's a whitespace-separated list, so it can be, e.g.:</p>
 <pre><code>resources.files: font1.otf font2.otf
 </code></pre>
-<p id = "para-94">It is also possible to specify a directory (or multiple directories). So if you have a <code>fonts</code> directories containing <code>font1.otf</code> and <code>font2.otf</code>,</p>
+<p id = "para-103">It is also possible to specify a directory (or multiple directories). So if you have a <code>fonts</code> directories containing <code>font1.otf</code> and <code>font2.otf</code>,</p>
 <pre><code>resources.files: fonts
 </code></pre>
-<p id = "para-95">will be equivalent to:</p>
+<p id = "para-104">will be equivalent to:</p>
 <pre><code>resources.files fonts/font1.otf fonts/font2.otf
 </code></pre>
-<p id = "para-96"><b>default</b>: not set</p>
-<h4 id = "link-40">resources.path</h4>
-<p id = "para-97">This option determine where (in which directory), <em>in the resulting document</em>, will those files be copied. The default is <code>data</code>, so by default the <code>resources.files</code> in the first example above will search <code>font1.otf</code> and <code>font2.otf</code> *in the same directory than the <code>.book</code> file, and will copy them to <code>data/font1.otf</code> and <code>data/font2.otf</code> <em>in the EPUB file</em>. This is therefore this last path that you should use if you want to access those files e.g. in a custom CSS stylesheet.</p>
-<p id = "para-98">Note that if you pass directories to <code>resources.files</code>, the whole directory would be copied. So assuming <code>fonts/</code> contains <code>font1.otf</code> and <code>font2.otf</code></p>
+<p id = "para-105"><b>default</b>: not set</p>
+<h4 id = "link-46">resources.path</h4>
+<p id = "para-106">This option determine where (in which directory), <em>in the resulting document</em>, will those files be copied. The default is <code>data</code>, so by default the <code>resources.files</code> in the first example above will search <code>font1.otf</code> and <code>font2.otf</code> *in the same directory than the <code>.book</code> file, and will copy them to <code>data/font1.otf</code> and <code>data/font2.otf</code> <em>in the EPUB file</em>. This is therefore this last path that you should use if you want to access those files e.g. in a custom CSS stylesheet.</p>
+<p id = "para-107">Note that if you pass directories to <code>resources.files</code>, the whole directory would be copied. So assuming <code>fonts/</code> contains <code>font1.otf</code> and <code>font2.otf</code></p>
 <pre><code>resources.files: fonts
 resources.path: data
 </code></pre>
-<p id = "para-99">will copy these two files to <code>data/fonts/font1.otf</code> and <code>data/fonts/font2.otf</code> (and not <code>data/font1.otf</code> and <code>data/font2.otf</code>).</p>
-<p id = "para-100">Similarly, the whole path of <code>resources.files</code> is copied, so</p>
+<p id = "para-108">will copy these two files to <code>data/fonts/font1.otf</code> and <code>data/fonts/font2.otf</code> (and not <code>data/font1.otf</code> and <code>data/font2.otf</code>).</p>
+<p id = "para-109">Similarly, the whole path of <code>resources.files</code> is copied, so</p>
 <pre><code>resources.files: fonts/font1.otf fonts/font2.otf
 </code></pre>
-<p id = "para-101">will yield the same result.</p>
-<p id = "para-102"><b>default</b>: <code>data</code></p>
-<h3 id = "link-41">Generic options for rendering</h3>
-<h4 id = "link-42">numbering</h4>
-<p id = "para-103">An integer that represents the maximum level of numbering for your book. E.g., <code>1</code> will only number chapters, while <code>2</code> will number chapters, sections, but not anything below that. <code>6</code> is the maximum level and turns numbering on for all headers.</p>
-<p id = "para-104"><b>default</b>: <code>1</code></p>
-<h4 id = "link-43">numbering_template</h4>
-<p id = "para-105">A string that will be used for chapter titles. You can use <code>{{number}}</code> and <code>{{title}}</code> in this string, e.g.:</p>
+<p id = "para-110">will yield the same result.</p>
+<p id = "para-111"><b>default</b>: <code>data</code></p>
+<h3 id = "link-47">Generic options for rendering</h3>
+<h4 id = "link-48">numbering</h4>
+<p id = "para-112">An integer that represents the maximum level of numbering for your book. E.g., <code>1</code> will only number chapters, while <code>2</code> will number chapters, sections, but not anything below that. <code>6</code> is the maximum level and turns numbering on for all headers.</p>
+<p id = "para-113"><b>default</b>: <code>1</code></p>
+<h4 id = "link-49">numbering_template</h4>
+<p id = "para-114">A string that will be used for chapter titles. You can use <code>{{number}}</code> and <code>{{title}}</code> in this string, e.g.:</p>
 <pre><code>numbering_template: "Chapter {{number}} {{title}}"
 </code></pre>
-<p id = "para-106">Note that:</p>
+<p id = "para-115">Note that:</p>
 <ul>
 <li>in this case, quoting is necessary because <code>{</code> and <code>}</code> have special meaning in YAML;</li>
 <li>this string won't be used for unnumbered chapters;</li>
 <li>this string isn't currently used by LaTeX, either.</li>
 </ul>
-<h4 id = "link-44">autoclean</h4>
-<p id = "para-107">This option cleans a bit the input markdown. With the default implementation, it only removes consecutive spaces, which has not real impact (they are ignored anyway both by HTML viewers and by LaTeX).</p>
-<p id = "para-108">However, if <code>lang</code> is set to <code>fr</code>, it also tries to add non-breaking spaces in front (or after) characters like '?', '!', ';' to respect french typography.</p>
+<h4 id = "link-50">autoclean</h4>
+<p id = "para-116">This option cleans a bit the input markdown. With the default implementation, it only removes consecutive spaces, which has not real impact (they are ignored anyway both by HTML viewers and by LaTeX).</p>
+<p id = "para-117">However, if <code>lang</code> is set to <code>fr</code>, it also tries to add non-breaking spaces in front (or after) characters like '?', '!', ';' to respect french typography.</p>
 
 </div><div id = "chapter-3" class = "chapter">
-  <h1 id = "link-45">ChangeLog</h1>
-<h2 id = "link-46">0.6.0 (2016-09-09)</h2>
+  <h1 id = "link-51">ChangeLog</h1>
+<h2 id = "link-52">0.6.0 (2016-09-09)</h2>
 <ul>
 <li>Deprecated options:<ul>
 <li><code>nb_char</code>: since it was only used for french cleaner and for typography reasons it's better to use different non breaking spaces according to context, this option was not really useful anymore.</li>
@@ -1168,8 +1140,8 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-47">0.5.1 (2016-04-14)</h2>
-<p id = "para-109">Mostly rendering fixes:</p>
+<h2 id = "link-53">0.5.1 (2016-04-14)</h2>
+<p id = "para-118">Mostly rendering fixes:</p>
 <ul>
 <li>Epub:<ul>
 <li>Fix a validation problem when book contained hidden chapters.</li>
@@ -1194,7 +1166,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-48">0.5.0 (2016-04-02)</h2>
+<h2 id = "link-54">0.5.0 (2016-04-02)</h2>
 <ul>
 <li>Crowbook now requires Rustc 1.7.0.</li>
 <li>It is now possible to render HTML in multiple files:<ul>
@@ -1233,7 +1205,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-49">0.4.0 (2016-03-01)</h2>
+<h2 id = "link-55">0.4.0 (2016-03-01)</h2>
 <ul>
 <li>Crowbook now internally uses a true YAML parser, <code>yaml_rust</code>, for its options. Since the "old" Crowbooks's config format was similar, but had some subtle differences, this is somewhat of a breaking change:<ul>
 <li>strings should now be escaped with "" in some cases (e.g. if it contains special characters). On the other hand, it <em>allows</em> to optionally escape a string with these quotes, which wasn't possible until then and might be useful in some cases.</li>
@@ -1253,7 +1225,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-50">0.3.0 (2016-02-27)</h2>
+<h2 id = "link-56">0.3.0 (2016-02-27)</h2>
 <ul>
 <li>Crowbook now tries to convert local links. That is, if you link to a Markdown file that is used in the book. (e.g. <a href = "#chapter-0">README.md</a>), it <em>should</em> link to an appropriate inner reference inside the book.</li>
 <li>Latex renderer now supports (local) images.</li>
@@ -1271,14 +1243,14 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-51">0.2.2 (2016-02-25)</h2>
+<h2 id = "link-57">0.2.2 (2016-02-25)</h2>
 <ul>
 <li>Bugfixes:<ul>
 <li>French cleaner now correctly replaces space after — (in e.g. dialogs) with "em space".</li>
 </ul>
 </li>
 </ul>
-<h2 id = "link-52">0.2.1 (2016-02-25)</h2>
+<h2 id = "link-58">0.2.1 (2016-02-25)</h2>
 <ul>
 <li>Bugfixes:<ul>
 <li>HTML/Epub rendering no longer incorrectly increment chapter count for unnumbered chapters.</li>
@@ -1290,7 +1262,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-53">0.2.0 (2016-02-25)</h2>
+<h2 id = "link-59">0.2.0 (2016-02-25)</h2>
 <ul>
 <li>Command line arguments:<ul>
 <li>New argument <code>--print-template</code> now allows to print a built-in template to stdout.</li>
@@ -1315,47 +1287,47 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-54">0.1.0 (2016-02-21)</h2>
+<h2 id = "link-60">0.1.0 (2016-02-21)</h2>
 <ul>
 <li>initial release</li>
 </ul>
 
 </div><div id = "chapter-4" class = "chapter">
-  <h1 id = "link-55">GNU LESSER GENERAL PUBLIC LICENSE</h1>
+  <h1 id = "link-61">GNU LESSER GENERAL PUBLIC LICENSE</h1>
 <pre><code>                   Version 2.1, February 1999
 </code></pre>
-<p id = "para-110">Copyright (C) 1991, 1999 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.</p>
-<p id = "para-111">[This is the first released version of the Lesser GPL. It also counts as the successor of the GNU Library Public License, version 2, hence the version number 2.1.]</p>
+<p id = "para-119">Copyright (C) 1991, 1999 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.</p>
+<p id = "para-120">[This is the first released version of the Lesser GPL. It also counts as the successor of the GNU Library Public License, version 2, hence the version number 2.1.]</p>
 <pre><code>                        Preamble
 </code></pre>
-<p id = "para-112">The licenses for most software are designed to take away your freedom to share and change it. By contrast, the GNU General Public Licenses are intended to guarantee your freedom to share and change free software--to make sure the software is free for all its users.</p>
-<p id = "para-113">This license, the Lesser General Public License, applies to some specially designated software packages--typically libraries--of the Free Software Foundation and other authors who decide to use it. You can use it too, but we suggest you first think carefully about whether this license or the ordinary General Public License is the better strategy to use in any particular case, based on the explanations below.</p>
-<p id = "para-114">When we speak of free software, we are referring to freedom of use, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for this service if you wish); that you receive source code or can get it if you want it; that you can change the software and use pieces of it in new free programs; and that you are informed that you can do these things.</p>
-<p id = "para-115">To protect your rights, we need to make restrictions that forbid distributors to deny you these rights or to ask you to surrender these rights. These restrictions translate to certain responsibilities for you if you distribute copies of the library or if you modify it.</p>
-<p id = "para-116">For example, if you distribute copies of the library, whether gratis or for a fee, you must give the recipients all the rights that we gave you. You must make sure that they, too, receive or can get the source code. If you link other code with the library, you must provide complete object files to the recipients, so that they can relink them with the library after making changes to the library and recompiling it. And you must show them these terms so they know their rights.</p>
-<p id = "para-117">We protect your rights with a two-step method: (1) we copyright the library, and (2) we offer you this license, which gives you legal permission to copy, distribute and/or modify the library.</p>
-<p id = "para-118">To protect each distributor, we want to make it very clear that there is no warranty for the free library. Also, if the library is modified by someone else and passed on, the recipients should know that what they have is not the original version, so that the original author's reputation will not be affected by problems that might be introduced by others.</p>
-<p id = "para-119"> Finally, software patents pose a constant threat to the existence of any free program. We wish to make sure that a company cannot effectively restrict the users of a free program by obtaining a restrictive license from a patent holder. Therefore, we insist that any patent license obtained for a version of the library must be consistent with the full freedom of use specified in this license.</p>
-<p id = "para-120">Most GNU software, including some libraries, is covered by the ordinary GNU General Public License. This license, the GNU Lesser General Public License, applies to certain designated libraries, and is quite different from the ordinary General Public License. We use this license for certain libraries in order to permit linking those libraries into non-free programs.</p>
-<p id = "para-121">When a program is linked with a library, whether statically or using a shared library, the combination of the two is legally speaking a combined work, a derivative of the original library. The ordinary General Public License therefore permits such linking only if the entire combination fits its criteria of freedom. The Lesser General Public License permits more lax criteria for linking other code with the library.</p>
-<p id = "para-122">We call this license the "Lesser" General Public License because it does Less to protect the user's freedom than the ordinary General Public License. It also provides other free software developers Less of an advantage over competing non-free programs. These disadvantages are the reason we use the ordinary General Public License for many libraries. However, the Lesser license provides advantages in certain special circumstances.</p>
-<p id = "para-123">For example, on rare occasions, there may be a special need to encourage the widest possible use of a certain library, so that it becomes a de-facto standard. To achieve this, non-free programs must be allowed to use the library. A more frequent case is that a free library does the same job as widely used non-free libraries. In this case, there is little to gain by limiting the free library to free software only, so we use the Lesser General Public License.</p>
-<p id = "para-124">In other cases, permission to use a particular library in non-free programs enables a greater number of people to use a large body of free software. For example, permission to use the GNU C Library in non-free programs enables many more people to use the whole GNU operating system, as well as its variant, the GNU/Linux operating system.</p>
-<p id = "para-125">Although the Lesser General Public License is Less protective of the users' freedom, it does ensure that the user of a program that is linked with the Library has the freedom and the wherewithal to run that program using a modified version of the Library.</p>
-<p id = "para-126">The precise terms and conditions for copying, distribution and modification follow. Pay close attention to the difference between a "work based on the library" and a "work that uses the library". The former contains code derived from the library, whereas the latter must be combined with the library in order to run.</p>
-<p id = "para-127"> GNU LESSER GENERAL PUBLIC LICENSE TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</p>
+<p id = "para-121">The licenses for most software are designed to take away your freedom to share and change it. By contrast, the GNU General Public Licenses are intended to guarantee your freedom to share and change free software--to make sure the software is free for all its users.</p>
+<p id = "para-122">This license, the Lesser General Public License, applies to some specially designated software packages--typically libraries--of the Free Software Foundation and other authors who decide to use it. You can use it too, but we suggest you first think carefully about whether this license or the ordinary General Public License is the better strategy to use in any particular case, based on the explanations below.</p>
+<p id = "para-123">When we speak of free software, we are referring to freedom of use, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for this service if you wish); that you receive source code or can get it if you want it; that you can change the software and use pieces of it in new free programs; and that you are informed that you can do these things.</p>
+<p id = "para-124">To protect your rights, we need to make restrictions that forbid distributors to deny you these rights or to ask you to surrender these rights. These restrictions translate to certain responsibilities for you if you distribute copies of the library or if you modify it.</p>
+<p id = "para-125">For example, if you distribute copies of the library, whether gratis or for a fee, you must give the recipients all the rights that we gave you. You must make sure that they, too, receive or can get the source code. If you link other code with the library, you must provide complete object files to the recipients, so that they can relink them with the library after making changes to the library and recompiling it. And you must show them these terms so they know their rights.</p>
+<p id = "para-126">We protect your rights with a two-step method: (1) we copyright the library, and (2) we offer you this license, which gives you legal permission to copy, distribute and/or modify the library.</p>
+<p id = "para-127">To protect each distributor, we want to make it very clear that there is no warranty for the free library. Also, if the library is modified by someone else and passed on, the recipients should know that what they have is not the original version, so that the original author's reputation will not be affected by problems that might be introduced by others.</p>
+<p id = "para-128"> Finally, software patents pose a constant threat to the existence of any free program. We wish to make sure that a company cannot effectively restrict the users of a free program by obtaining a restrictive license from a patent holder. Therefore, we insist that any patent license obtained for a version of the library must be consistent with the full freedom of use specified in this license.</p>
+<p id = "para-129">Most GNU software, including some libraries, is covered by the ordinary GNU General Public License. This license, the GNU Lesser General Public License, applies to certain designated libraries, and is quite different from the ordinary General Public License. We use this license for certain libraries in order to permit linking those libraries into non-free programs.</p>
+<p id = "para-130">When a program is linked with a library, whether statically or using a shared library, the combination of the two is legally speaking a combined work, a derivative of the original library. The ordinary General Public License therefore permits such linking only if the entire combination fits its criteria of freedom. The Lesser General Public License permits more lax criteria for linking other code with the library.</p>
+<p id = "para-131">We call this license the "Lesser" General Public License because it does Less to protect the user's freedom than the ordinary General Public License. It also provides other free software developers Less of an advantage over competing non-free programs. These disadvantages are the reason we use the ordinary General Public License for many libraries. However, the Lesser license provides advantages in certain special circumstances.</p>
+<p id = "para-132">For example, on rare occasions, there may be a special need to encourage the widest possible use of a certain library, so that it becomes a de-facto standard. To achieve this, non-free programs must be allowed to use the library. A more frequent case is that a free library does the same job as widely used non-free libraries. In this case, there is little to gain by limiting the free library to free software only, so we use the Lesser General Public License.</p>
+<p id = "para-133">In other cases, permission to use a particular library in non-free programs enables a greater number of people to use a large body of free software. For example, permission to use the GNU C Library in non-free programs enables many more people to use the whole GNU operating system, as well as its variant, the GNU/Linux operating system.</p>
+<p id = "para-134">Although the Lesser General Public License is Less protective of the users' freedom, it does ensure that the user of a program that is linked with the Library has the freedom and the wherewithal to run that program using a modified version of the Library.</p>
+<p id = "para-135">The precise terms and conditions for copying, distribution and modification follow. Pay close attention to the difference between a "work based on the library" and a "work that uses the library". The former contains code derived from the library, whereas the latter must be combined with the library in order to run.</p>
+<p id = "para-136"> GNU LESSER GENERAL PUBLIC LICENSE TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</p>
 <ol start = "0">
 <li>This License Agreement applies to any software library or other program which contains a notice placed by the copyright holder or other authorized party saying it may be distributed under the terms of this Lesser General Public License (also called "this License"). Each licensee is addressed as "you".</li>
 </ol>
-<p id = "para-128">A "library" means a collection of software functions and/or data prepared so as to be conveniently linked with application programs (which use some of those functions and data) to form executables.</p>
-<p id = "para-129">The "Library", below, refers to any such software library or work which has been distributed under these terms. A "work based on the Library" means either the Library or any derivative work under copyright law: that is to say, a work containing the Library or a portion of it, either verbatim or with modifications and/or translated straightforwardly into another language. (Hereinafter, translation is included without limitation in the term "modification".)</p>
-<p id = "para-130">"Source code" for a work means the preferred form of the work for making modifications to it. For a library, complete source code means all the source code for all modules it contains, plus any associated interface definition files, plus the scripts used to control compilation and installation of the library.</p>
-<p id = "para-131">Activities other than copying, distribution and modification are not covered by this License; they are outside its scope. The act of running a program using the Library is not restricted, and output from such a program is covered only if its contents constitute a work based on the Library (independent of the use of the Library in a tool for writing it). Whether that is true depends on what the Library does and what the program that uses the Library does.</p>
+<p id = "para-137">A "library" means a collection of software functions and/or data prepared so as to be conveniently linked with application programs (which use some of those functions and data) to form executables.</p>
+<p id = "para-138">The "Library", below, refers to any such software library or work which has been distributed under these terms. A "work based on the Library" means either the Library or any derivative work under copyright law: that is to say, a work containing the Library or a portion of it, either verbatim or with modifications and/or translated straightforwardly into another language. (Hereinafter, translation is included without limitation in the term "modification".)</p>
+<p id = "para-139">"Source code" for a work means the preferred form of the work for making modifications to it. For a library, complete source code means all the source code for all modules it contains, plus any associated interface definition files, plus the scripts used to control compilation and installation of the library.</p>
+<p id = "para-140">Activities other than copying, distribution and modification are not covered by this License; they are outside its scope. The act of running a program using the Library is not restricted, and output from such a program is covered only if its contents constitute a work based on the Library (independent of the use of the Library in a tool for writing it). Whether that is true depends on what the Library does and what the program that uses the Library does.</p>
 <ol>
 <li>You may copy and distribute verbatim copies of the Library's complete source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice and disclaimer of warranty; keep intact all the notices that refer to this License and to the absence of any warranty; and distribute a copy of this License along with the Library.</li>
 </ol>
-<p id = "para-132">You may charge a fee for the physical act of transferring a copy, and you may at your option offer warranty protection in exchange for a fee.</p>
-<p id = "para-133"></p>
+<p id = "para-141">You may charge a fee for the physical act of transferring a copy, and you may at your option offer warranty protection in exchange for a fee.</p>
+<p id = "para-142"></p>
 <ol start = "2">
 <li>You may modify your copy or copies of the Library or any portion of it, thus forming a work based on the Library, and copy and distribute such modifications or work under the terms of Section 1 above, provided that you also meet all of these conditions:</li>
 </ol>
@@ -1382,30 +1354,30 @@ application-supplied function or table used by this function must
 be optional: if the application does not supply it, the square
 root function must still compute square roots.)
 </code></pre>
-<p id = "para-134">These requirements apply to the modified work as a whole. If identifiable sections of that work are not derived from the Library, and can be reasonably considered independent and separate works in themselves, then this License, and its terms, do not apply to those sections when you distribute them as separate works. But when you distribute the same sections as part of a whole which is a work based on the Library, the distribution of the whole must be on the terms of this License, whose permissions for other licensees extend to the entire whole, and thus to each and every part regardless of who wrote it.</p>
-<p id = "para-135">Thus, it is not the intent of this section to claim rights or contest your rights to work written entirely by you; rather, the intent is to exercise the right to control the distribution of derivative or collective works based on the Library.</p>
-<p id = "para-136">In addition, mere aggregation of another work not based on the Library with the Library (or with a work based on the Library) on a volume of a storage or distribution medium does not bring the other work under the scope of this License.</p>
+<p id = "para-143">These requirements apply to the modified work as a whole. If identifiable sections of that work are not derived from the Library, and can be reasonably considered independent and separate works in themselves, then this License, and its terms, do not apply to those sections when you distribute them as separate works. But when you distribute the same sections as part of a whole which is a work based on the Library, the distribution of the whole must be on the terms of this License, whose permissions for other licensees extend to the entire whole, and thus to each and every part regardless of who wrote it.</p>
+<p id = "para-144">Thus, it is not the intent of this section to claim rights or contest your rights to work written entirely by you; rather, the intent is to exercise the right to control the distribution of derivative or collective works based on the Library.</p>
+<p id = "para-145">In addition, mere aggregation of another work not based on the Library with the Library (or with a work based on the Library) on a volume of a storage or distribution medium does not bring the other work under the scope of this License.</p>
 <ol start = "3">
 <li>You may opt to apply the terms of the ordinary GNU General Public License instead of this License to a given copy of the Library. To do this, you must alter all the notices that refer to this License, so that they refer to the ordinary GNU General Public License, version 2, instead of to this License. (If a newer version than version 2 of the ordinary GNU General Public License has appeared, then you can specify that version instead if you wish.) Do not make any other change in these notices.</li>
 </ol>
-<p id = "para-137"> Once this change is made in a given copy, it is irreversible for that copy, so the ordinary GNU General Public License applies to all subsequent copies and derivative works made from that copy.</p>
-<p id = "para-138">This option is useful when you wish to copy part of the code of the Library into a program that is not a library.</p>
+<p id = "para-146"> Once this change is made in a given copy, it is irreversible for that copy, so the ordinary GNU General Public License applies to all subsequent copies and derivative works made from that copy.</p>
+<p id = "para-147">This option is useful when you wish to copy part of the code of the Library into a program that is not a library.</p>
 <ol start = "4">
 <li>You may copy and distribute the Library (or a portion or derivative of it, under Section 2) in object code or executable form under the terms of Sections 1 and 2 above provided that you accompany it with the complete corresponding machine-readable source code, which must be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange.</li>
 </ol>
-<p id = "para-139">If distribution of object code is made by offering access to copy from a designated place, then offering equivalent access to copy the source code from the same place satisfies the requirement to distribute the source code, even though third parties are not compelled to copy the source along with the object code.</p>
+<p id = "para-148">If distribution of object code is made by offering access to copy from a designated place, then offering equivalent access to copy the source code from the same place satisfies the requirement to distribute the source code, even though third parties are not compelled to copy the source along with the object code.</p>
 <ol start = "5">
 <li>A program that contains no derivative of any portion of the Library, but is designed to work with the Library by being compiled or linked with it, is called a "work that uses the Library". Such a work, in isolation, is not a derivative work of the Library, and therefore falls outside the scope of this License.</li>
 </ol>
-<p id = "para-140">However, linking a "work that uses the Library" with the Library creates an executable that is a derivative of the Library (because it contains portions of the Library), rather than a "work that uses the library". The executable is therefore covered by this License. Section 6 states terms for distribution of such executables.</p>
-<p id = "para-141">When a "work that uses the Library" uses material from a header file that is part of the Library, the object code for the work may be a derivative work of the Library even though the source code is not. Whether this is true is especially significant if the work can be linked without the Library, or if the work is itself a library. The threshold for this to be true is not precisely defined by law.</p>
-<p id = "para-142">If such an object file uses only numerical parameters, data structure layouts and accessors, and small macros and small inline functions (ten lines or less in length), then the use of the object file is unrestricted, regardless of whether it is legally a derivative work. (Executables containing this object code plus portions of the Library will still fall under Section 6.)</p>
-<p id = "para-143">Otherwise, if the work is a derivative of the Library, you may distribute the object code for the work under the terms of Section 6. Any executables containing that work also fall under Section 6, whether or not they are linked directly with the Library itself.</p>
-<p id = "para-144"></p>
+<p id = "para-149">However, linking a "work that uses the Library" with the Library creates an executable that is a derivative of the Library (because it contains portions of the Library), rather than a "work that uses the library". The executable is therefore covered by this License. Section 6 states terms for distribution of such executables.</p>
+<p id = "para-150">When a "work that uses the Library" uses material from a header file that is part of the Library, the object code for the work may be a derivative work of the Library even though the source code is not. Whether this is true is especially significant if the work can be linked without the Library, or if the work is itself a library. The threshold for this to be true is not precisely defined by law.</p>
+<p id = "para-151">If such an object file uses only numerical parameters, data structure layouts and accessors, and small macros and small inline functions (ten lines or less in length), then the use of the object file is unrestricted, regardless of whether it is legally a derivative work. (Executables containing this object code plus portions of the Library will still fall under Section 6.)</p>
+<p id = "para-152">Otherwise, if the work is a derivative of the Library, you may distribute the object code for the work under the terms of Section 6. Any executables containing that work also fall under Section 6, whether or not they are linked directly with the Library itself.</p>
+<p id = "para-153"></p>
 <ol start = "6">
 <li>As an exception to the Sections above, you may also combine or link a "work that uses the Library" with the Library to produce a work containing portions of the Library, and distribute that work under terms of your choice, provided that the terms permit modification of the work for the customer's own use and reverse engineering for debugging such modifications.</li>
 </ol>
-<p id = "para-145">You must give prominent notice with each copy of the work that the Library is used in it and that the Library and its use are covered by this License. You must supply a copy of this License. If the work during execution displays copyright notices, you must include the copyright notice for the Library among them, as well as a reference directing the user to the copy of this License. Also, you must do one of these things:</p>
+<p id = "para-154">You must give prominent notice with each copy of the work that the Library is used in it and that the Library and its use are covered by this License. You must supply a copy of this License. If the work during execution displays copyright notices, you must include the copyright notice for the Library among them, as well as a reference directing the user to the copy of this License. Also, you must do one of these things:</p>
 <pre><code>a) Accompany the work with the complete corresponding
 machine-readable source code for the Library including whatever
 changes were used in the work (which must be distributed under
@@ -1438,9 +1410,9 @@ specified materials from the same place.
 e) Verify that the user has already received a copy of these
 materials or that you have already sent this user a copy.
 </code></pre>
-<p id = "para-146">For an executable, the required form of the "work that uses the Library" must include any data and utility programs needed for reproducing the executable from it. However, as a special exception, the materials to be distributed need not include anything that is normally distributed (in either source or binary form) with the major components (compiler, kernel, and so on) of the operating system on which the executable runs, unless that component itself accompanies the executable.</p>
-<p id = "para-147">It may happen that this requirement contradicts the license restrictions of other proprietary libraries that do not normally accompany the operating system. Such a contradiction means you cannot use both them and the Library together in an executable that you distribute.</p>
-<p id = "para-148"></p>
+<p id = "para-155">For an executable, the required form of the "work that uses the Library" must include any data and utility programs needed for reproducing the executable from it. However, as a special exception, the materials to be distributed need not include anything that is normally distributed (in either source or binary form) with the major components (compiler, kernel, and so on) of the operating system on which the executable runs, unless that component itself accompanies the executable.</p>
+<p id = "para-156">It may happen that this requirement contradicts the license restrictions of other proprietary libraries that do not normally accompany the operating system. Such a contradiction means you cannot use both them and the Library together in an executable that you distribute.</p>
+<p id = "para-157"></p>
 <ol start = "7">
 <li>You may place library facilities that are a work based on the Library side-by-side in a single library together with other library facilities not covered by this License, and distribute such a combined library, provided that the separate distribution of the work based on the Library and of the other library facilities is otherwise permitted, and provided that you do these two things:</li>
 </ol>
@@ -1454,43 +1426,43 @@ that part of it is a work based on the Library, and explaining
 where to find the accompanying uncombined form of the same work.
 </code></pre>
 <ol start = "8">
-<li><p id = "para-149">You may not copy, modify, sublicense, link with, or distribute the Library except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense, link with, or distribute the Library is void, and will automatically terminate your rights under this License. However, parties who have received copies, or rights, from you under this License will not have their licenses terminated so long as such parties remain in full compliance.</p>
+<li><p id = "para-158">You may not copy, modify, sublicense, link with, or distribute the Library except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense, link with, or distribute the Library is void, and will automatically terminate your rights under this License. However, parties who have received copies, or rights, from you under this License will not have their licenses terminated so long as such parties remain in full compliance.</p>
 </li>
-<li><p id = "para-150">You are not required to accept this License, since you have not signed it. However, nothing else grants you permission to modify or distribute the Library or its derivative works. These actions are prohibited by law if you do not accept this License. Therefore, by modifying or distributing the Library (or any work based on the Library), you indicate your acceptance of this License to do so, and all its terms and conditions for copying, distributing or modifying the Library or works based on it.</p>
+<li><p id = "para-159">You are not required to accept this License, since you have not signed it. However, nothing else grants you permission to modify or distribute the Library or its derivative works. These actions are prohibited by law if you do not accept this License. Therefore, by modifying or distributing the Library (or any work based on the Library), you indicate your acceptance of this License to do so, and all its terms and conditions for copying, distributing or modifying the Library or works based on it.</p>
 </li>
-<li><p id = "para-151">Each time you redistribute the Library (or any work based on the Library), the recipient automatically receives a license from the original licensor to copy, distribute, link with or modify the Library subject to these terms and conditions. You may not impose any further restrictions on the recipients' exercise of the rights granted herein. You are not responsible for enforcing compliance by third parties with this License.</p>
+<li><p id = "para-160">Each time you redistribute the Library (or any work based on the Library), the recipient automatically receives a license from the original licensor to copy, distribute, link with or modify the Library subject to these terms and conditions. You may not impose any further restrictions on the recipients' exercise of the rights granted herein. You are not responsible for enforcing compliance by third parties with this License.</p>
 </li>
 </ol>
-<p id = "para-152"></p>
+<p id = "para-161"></p>
 <ol start = "11">
 <li>If, as a consequence of a court judgment or allegation of patent infringement or for any other reason (not limited to patent issues), conditions are imposed on you (whether by court order, agreement or otherwise) that contradict the conditions of this License, they do not excuse you from the conditions of this License. If you cannot distribute so as to satisfy simultaneously your obligations under this License and any other pertinent obligations, then as a consequence you may not distribute the Library at all. For example, if a patent license would not permit royalty-free redistribution of the Library by all those who receive copies directly or indirectly through you, then the only way you could satisfy both it and this License would be to refrain entirely from distribution of the Library.</li>
 </ol>
-<p id = "para-153">If any portion of this section is held invalid or unenforceable under any particular circumstance, the balance of the section is intended to apply, and the section as a whole is intended to apply in other circumstances.</p>
-<p id = "para-154">It is not the purpose of this section to induce you to infringe any patents or other property right claims or to contest validity of any such claims; this section has the sole purpose of protecting the integrity of the free software distribution system which is implemented by public license practices. Many people have made generous contributions to the wide range of software distributed through that system in reliance on consistent application of that system; it is up to the author/donor to decide if he or she is willing to distribute software through any other system and a licensee cannot impose that choice.</p>
-<p id = "para-155">This section is intended to make thoroughly clear what is believed to be a consequence of the rest of this License.</p>
+<p id = "para-162">If any portion of this section is held invalid or unenforceable under any particular circumstance, the balance of the section is intended to apply, and the section as a whole is intended to apply in other circumstances.</p>
+<p id = "para-163">It is not the purpose of this section to induce you to infringe any patents or other property right claims or to contest validity of any such claims; this section has the sole purpose of protecting the integrity of the free software distribution system which is implemented by public license practices. Many people have made generous contributions to the wide range of software distributed through that system in reliance on consistent application of that system; it is up to the author/donor to decide if he or she is willing to distribute software through any other system and a licensee cannot impose that choice.</p>
+<p id = "para-164">This section is intended to make thoroughly clear what is believed to be a consequence of the rest of this License.</p>
 <ol start = "12">
-<li><p id = "para-156">If the distribution and/or use of the Library is restricted in certain countries either by patents or by copyrighted interfaces, the original copyright holder who places the Library under this License may add an explicit geographical distribution limitation excluding those countries, so that distribution is permitted only in or among countries not thus excluded. In such case, this License incorporates the limitation as if written in the body of this License.</p>
+<li><p id = "para-165">If the distribution and/or use of the Library is restricted in certain countries either by patents or by copyrighted interfaces, the original copyright holder who places the Library under this License may add an explicit geographical distribution limitation excluding those countries, so that distribution is permitted only in or among countries not thus excluded. In such case, this License incorporates the limitation as if written in the body of this License.</p>
 </li>
-<li><p id = "para-157">The Free Software Foundation may publish revised and/or new versions of the Lesser General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns.</p>
+<li><p id = "para-166">The Free Software Foundation may publish revised and/or new versions of the Lesser General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns.</p>
 </li>
 </ol>
-<p id = "para-158">Each version is given a distinguishing version number. If the Library specifies a version number of this License which applies to it and "any later version", you have the option of following the terms and conditions either of that version or of any later version published by the Free Software Foundation. If the Library does not specify a license version number, you may choose any version ever published by the Free Software Foundation.</p>
-<p id = "para-159"></p>
+<p id = "para-167">Each version is given a distinguishing version number. If the Library specifies a version number of this License which applies to it and "any later version", you have the option of following the terms and conditions either of that version or of any later version published by the Free Software Foundation. If the Library does not specify a license version number, you may choose any version ever published by the Free Software Foundation.</p>
+<p id = "para-168"></p>
 <ol start = "14">
-<li><p id = "para-160">If you wish to incorporate parts of the Library into other free programs whose distribution conditions are incompatible with these, write to the author to ask for permission. For software which is copyrighted by the Free Software Foundation, write to the Free Software Foundation; we sometimes make exceptions for this. Our decision will be guided by the two goals of preserving the free status of all derivatives of our free software and of promoting the sharing and reuse of software generally.</p>
+<li><p id = "para-169">If you wish to incorporate parts of the Library into other free programs whose distribution conditions are incompatible with these, write to the author to ask for permission. For software which is copyrighted by the Free Software Foundation, write to the Free Software Foundation; we sometimes make exceptions for this. Our decision will be guided by the two goals of preserving the free status of all derivatives of our free software and of promoting the sharing and reuse of software generally.</p>
 <pre><code>                  NO WARRANTY
 </code></pre>
 </li>
-<li><p id = "para-161">BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR THE LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE LIBRARY "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE LIBRARY IS WITH YOU. SHOULD THE LIBRARY PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</p>
+<li><p id = "para-170">BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR THE LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE LIBRARY "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE LIBRARY IS WITH YOU. SHOULD THE LIBRARY PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</p>
 </li>
-<li><p id = "para-162">IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE THE LIBRARY AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE LIBRARY (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE LIBRARY TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+<li><p id = "para-171">IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE THE LIBRARY AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE LIBRARY (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE LIBRARY TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
 <pre><code>           END OF TERMS AND CONDITIONS
 </code></pre>
 </li>
 </ol>
-<p id = "para-163"> How to Apply These Terms to Your New Libraries</p>
-<p id = "para-164">If you develop a new library, and you want it to be of the greatest possible use to the public, we recommend making it free software that everyone can redistribute and change. You can do so by permitting redistribution under these terms (or, alternatively, under the terms of the ordinary General Public License).</p>
-<p id = "para-165">To apply these terms, attach the following notices to the library. It is safest to attach them to the start of each source file to most effectively convey the exclusion of warranty; and each file should have at least the "copyright" line and a pointer to where the full notice is found.</p>
+<p id = "para-172"> How to Apply These Terms to Your New Libraries</p>
+<p id = "para-173">If you develop a new library, and you want it to be of the greatest possible use to the public, we recommend making it free software that everyone can redistribute and change. You can do so by permitting redistribution under these terms (or, alternatively, under the terms of the ordinary General Public License).</p>
+<p id = "para-174">To apply these terms, attach the following notices to the library. It is safest to attach them to the start of each source file to most effectively convey the exclusion of warranty; and each file should have at least the "copyright" line and a pointer to where the full notice is found.</p>
 <pre><code>&lt;one line to give the library's name and a brief idea of what it does.&gt;
 Copyright (C) &lt;year&gt;  &lt;name of author&gt;
 
@@ -1508,11 +1480,11 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 </code></pre>
-<p id = "para-166">Also add information on how to contact you by electronic and paper mail.</p>
-<p id = "para-167">You should also get your employer (if you work as a programmer) or your school, if any, to sign a "copyright disclaimer" for the library, if necessary. Here is a sample; alter the names:</p>
-<p id = "para-168">Yoyodyne, Inc., hereby disclaims all copyright interest in the library `Frob' (a library for tweaking knobs) written by James Random Hacker.</p>
-<p id = "para-169">&lt;signature of Ty Coon&gt;, 1 April 1990 Ty Coon, President of Vice</p>
-<p id = "para-170">That's all there is to it!</p>
+<p id = "para-175">Also add information on how to contact you by electronic and paper mail.</p>
+<p id = "para-176">You should also get your employer (if you work as a programmer) or your school, if any, to sign a "copyright disclaimer" for the library, if necessary. Here is a sample; alter the names:</p>
+<p id = "para-177">Yoyodyne, Inc., hereby disclaims all copyright interest in the library `Frob' (a library for tweaking knobs) written by James Random Hacker.</p>
+<p id = "para-178">&lt;signature of Ty Coon&gt;, 1 April 1990 Ty Coon, President of Vice</p>
+<p id = "para-179">That's all there is to it!</p>
 
 </div>
     </div>
