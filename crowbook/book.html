@@ -81,7 +81,7 @@ h2.author {
     width: 100%;
 }
 
-p img {
+.image img {
     width: 80%;
 }
 
@@ -260,7 +260,7 @@ nav {
 }
 
 /* Improving readability for the HTML format only */
-p, blockquote, li  {
+p, blockquote, li, .image  {
     margin-right: auto;
     max-width: 33em;
 }
@@ -384,27 +384,29 @@ function toggle() {
  </li>
  <li><a href = "#link-51">ChangeLog</a>
  <ul>
-  <li><a href = "#link-52">0.6.0 (2016-09-09)</a>
+  <li><a href = "#link-52">0.7.0 (2016-09-11)</a>
   </li>
-  <li><a href = "#link-53">0.5.1 (2016-04-14)</a>
+  <li><a href = "#link-53">0.6.0 (2016-09-09)</a>
   </li>
-  <li><a href = "#link-54">0.5.0 (2016-04-02)</a>
+  <li><a href = "#link-54">0.5.1 (2016-04-14)</a>
   </li>
-  <li><a href = "#link-55">0.4.0 (2016-03-01)</a>
+  <li><a href = "#link-55">0.5.0 (2016-04-02)</a>
   </li>
-  <li><a href = "#link-56">0.3.0 (2016-02-27)</a>
+  <li><a href = "#link-56">0.4.0 (2016-03-01)</a>
   </li>
-  <li><a href = "#link-57">0.2.2 (2016-02-25)</a>
+  <li><a href = "#link-57">0.3.0 (2016-02-27)</a>
   </li>
-  <li><a href = "#link-58">0.2.1 (2016-02-25)</a>
+  <li><a href = "#link-58">0.2.2 (2016-02-25)</a>
   </li>
-  <li><a href = "#link-59">0.2.0 (2016-02-25)</a>
+  <li><a href = "#link-59">0.2.1 (2016-02-25)</a>
   </li>
-  <li><a href = "#link-60">0.1.0 (2016-02-21)</a>
+  <li><a href = "#link-60">0.2.0 (2016-02-25)</a>
+  </li>
+  <li><a href = "#link-61">0.1.0 (2016-02-21)</a>
   </li>
  </ul>
  </li>
- <li><a href = "#link-61">GNU LESSER GENERAL PUBLIC LICENSE</a>
+ <li><a href = "#link-62">GNU LESSER GENERAL PUBLIC LICENSE</a>
  </li>
 </ul>
     </nav>
@@ -1113,7 +1115,20 @@ resources.path: data
 
 </div><div id = "chapter-3" class = "chapter">
   <h1 id = "link-51">ChangeLog</h1>
-<h2 id = "link-52">0.6.0 (2016-09-09)</h2>
+<h2 id = "link-52">0.7.0 (2016-09-11)</h2>
+<ul>
+<li>Internal/API:<ul>
+<li><code>Token</code> has a new variant, <code>StandaloneImage</code>. This is used to distinguish an image that is alone in a paragraph of an image that is inlined alongside text.</li>
+<li><code>Parser.parse</code> method now distingues between <code>Image</code> and <code>StandaloneImage</code>. Currently, an image is considered "standalone" if it is the sole element of a paragraph, even if it is among a link.</li>
+<li><code>Token</code> has a new <code>is_image</code> method.</li>
+</ul>
+</li>
+<li>Rendering:<ul>
+<li>Standalone images are now rendered differently than inline images (80% of width VS original size) in HTML/EPUB and LaTeX.</li>
+</ul>
+</li>
+</ul>
+<h2 id = "link-53">0.6.0 (2016-09-09)</h2>
 <ul>
 <li>Deprecated options:<ul>
 <li><code>nb_char</code>: since it was only used for french cleaner and for typography reasons it's better to use different non breaking spaces according to context, this option was not really useful anymore.</li>
@@ -1140,7 +1155,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-53">0.5.1 (2016-04-14)</h2>
+<h2 id = "link-54">0.5.1 (2016-04-14)</h2>
 <p id = "para-118">Mostly rendering fixes:</p>
 <ul>
 <li>Epub:<ul>
@@ -1166,7 +1181,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-54">0.5.0 (2016-04-02)</h2>
+<h2 id = "link-55">0.5.0 (2016-04-02)</h2>
 <ul>
 <li>Crowbook now requires Rustc 1.7.0.</li>
 <li>It is now possible to render HTML in multiple files:<ul>
@@ -1205,7 +1220,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-55">0.4.0 (2016-03-01)</h2>
+<h2 id = "link-56">0.4.0 (2016-03-01)</h2>
 <ul>
 <li>Crowbook now internally uses a true YAML parser, <code>yaml_rust</code>, for its options. Since the "old" Crowbooks's config format was similar, but had some subtle differences, this is somewhat of a breaking change:<ul>
 <li>strings should now be escaped with "" in some cases (e.g. if it contains special characters). On the other hand, it <em>allows</em> to optionally escape a string with these quotes, which wasn't possible until then and might be useful in some cases.</li>
@@ -1225,7 +1240,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-56">0.3.0 (2016-02-27)</h2>
+<h2 id = "link-57">0.3.0 (2016-02-27)</h2>
 <ul>
 <li>Crowbook now tries to convert local links. That is, if you link to a Markdown file that is used in the book. (e.g. <a href = "#chapter-0">README.md</a>), it <em>should</em> link to an appropriate inner reference inside the book.</li>
 <li>Latex renderer now supports (local) images.</li>
@@ -1243,14 +1258,14 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-57">0.2.2 (2016-02-25)</h2>
+<h2 id = "link-58">0.2.2 (2016-02-25)</h2>
 <ul>
 <li>Bugfixes:<ul>
 <li>French cleaner now correctly replaces space after — (in e.g. dialogs) with "em space".</li>
 </ul>
 </li>
 </ul>
-<h2 id = "link-58">0.2.1 (2016-02-25)</h2>
+<h2 id = "link-59">0.2.1 (2016-02-25)</h2>
 <ul>
 <li>Bugfixes:<ul>
 <li>HTML/Epub rendering no longer incorrectly increment chapter count for unnumbered chapters.</li>
@@ -1262,7 +1277,7 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-59">0.2.0 (2016-02-25)</h2>
+<h2 id = "link-60">0.2.0 (2016-02-25)</h2>
 <ul>
 <li>Command line arguments:<ul>
 <li>New argument <code>--print-template</code> now allows to print a built-in template to stdout.</li>
@@ -1287,13 +1302,13 @@ resources.path: data
 </ul>
 </li>
 </ul>
-<h2 id = "link-60">0.1.0 (2016-02-21)</h2>
+<h2 id = "link-61">0.1.0 (2016-02-21)</h2>
 <ul>
 <li>initial release</li>
 </ul>
 
 </div><div id = "chapter-4" class = "chapter">
-  <h1 id = "link-61">GNU LESSER GENERAL PUBLIC LICENSE</h1>
+  <h1 id = "link-62">GNU LESSER GENERAL PUBLIC LICENSE</h1>
 <pre><code>                   Version 2.1, February 1999
 </code></pre>
 <p id = "para-119">Copyright (C) 1991, 1999 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.</p>
