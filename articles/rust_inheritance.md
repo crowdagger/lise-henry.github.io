@@ -1,6 +1,6 @@
 ---
 author: Lise Henry
-title: Simulating inheritance in Rust
+title: 'Simulating a call to "parent" virtual method in Rust'
 
 output.html: rust_inheritance.html
 use_initials: false
