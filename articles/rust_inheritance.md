@@ -141,19 +141,13 @@ language, calling `self.html.render_token` means that every other
 methods call will be from `self.html`. So, the interest of having a
 polymorphic method (thanks to trait) is lost.
 
-My current solution is ugly: it's basically to avoid modifying
-`render_token` in `EpubRenderer`. It's done by bloating the
-`HtmlRenderer` with a lots of fields and code that is only necessary
-because its methods may be called from `EpubRenderer` or
-`HtmlDirRenderer`.
-
 
 [^2]: It doesn't, real differences are a bit more complicated than
 that, but let's pretend that's it.
 
 
-A trait-based solution
-----------------------
+Her comes AsMut
+---------------
 
 Now, is there a way to emulate this kind of "inheritance" behaviour
 with trait? Clearly, using only the `Renderer` trait is not
@@ -161,43 +155,24 @@ enough. The good news, though, is that it's still possible to have
 some kind of polymorphism similar to virtual methods, even when there
 was a previous call to a default implementation.
 
-The bad news is, it's ugly. My current solution (working with the
-minimal example as a start) is
-[here](https://play.rust-lang.org/?gist=26fbe010ec854856a6bb96deddea726b&version=stable&backtrace=0)
-and I confess it makes me feel a bit like this:
-
-![Uxam](uxam.jpg)
-
-### HtmlRendererTrait ###
-
-The idea is to (temporarily, we'll get back to it later) drop the
-`Renderer` trait, and use instead an `HtmlRendererTrait`,
-which allows (since it's a new trait definition) to use a default
-implementation for the `HtmlRenderer` implementation:
+The idea is to move the implementation of `Renderer` for
+`HtmlRenderer` in a separate, standalone function, and to make the
+`impl` block call it:
 
 ```rust
 struct HtmlRenderer {
-    n_para: u32, // index of the paragraph
-    // ...
+    n_para: u32,
 }
     
-pub trait HtmlRendererTrait: AsMut<HtmlRenderer> {
-    fn render_token(&mut self, token: &Token) -> String {
-        match *token {
-            Token::Str(ref content) => content.clone(),
-            Token::Paragraph(ref inner) => {
-                self.as_mut().n_para += 1;
-                format!("<p>{}</p>", self.render_vec(inner))
-            },
-            Token::Emphasis(ref inner) => format!("<em>{}</em>", self.render_vec(inner))
-        }
-    }
-    
-    fn render_vec(&mut self, tokens: &[Token]) -> String {
-                tokens.iter()
-            .map(|token| self.render_token(token))
-            .collect::<Vec<_>>()
-            .join("")
+fn html_render_token<T:AsMut<HtmlRenderer>+Renderer>(this: &mut T, token: &Token) -> String {
+    match *token {
+        Token::Str(ref content) => content.clone(),
+        Token::Paragraph(ref inner) => {
+            this.as_mut().n_para += 1;
+            let n = this.as_mut().n_para;
+            format!("<p id = '{}'>{}</p>", n, this.render_vec(inner))
+        },
+        Token::Emphasis(ref inner) => format!("<em>{}</em>", this.render_vec(inner))
     }
 }
 
@@ -207,168 +182,50 @@ impl AsMut<HtmlRenderer> for HtmlRenderer {
     }
 }
 
-impl HtmlRendererTrait for HtmlRenderer {}
+impl Renderer for HtmlRenderer {
+    fn render_token(&mut self, token: &Token) -> String {
+        html_render_token(self, token)
+    }
+}
 ```
 
-So, we define our `HtmlRenderer` struct normally. Then, we create a
-new trait. This trait requires `AsMut<HtmlRenderer>`, so we can
-access (read and mutate) `HtmlRenderer` fields in the implementation.
-
-Implementing this trait for `HtmlRenderer` requires some boilerplate,
-such as implementing `AsMut` for it. Thankfully, this is a trivial few
-lines of code that probably won't add much of a charge to the
-maintenance (there's a low probability that there should be a bug in
-there and that you'll need to look into it).
-
-
-
-### Implementing this trait for EpubRenderer ###
-
-Now, we need to implement this trait for `EpubRenderer`. This should
-be trivial, right?
+Now, this separate function is basically the same code as the previous
+implementation of `Renderer`, except it is now for
+`AsMut<HtmlRenderer>`. This necessitates some boilerplate
+(implementing `AsMut` for `HtmlRenderer`), but the good news is that
+now, we can have `EpubRenderer` call it without problem:
 
 ```rust
-pub struct EpubRenderer {
-    pub html: HtmlRenderer,
-    // ...
-}
-
 impl AsMut<HtmlRenderer> for EpubRenderer {
     fn as_mut(&mut self) -> &mut HtmlRenderer {
         &mut self.html
     }
 }
 
-impl HtmlRendererTrait for EpubRenderer {
+impl Renderer for EpubRenderer {
     fn render_token(&mut self, token: &Token) -> String {
         match *token {
             Token::Emphasis(ref inner) => format!("<i>{}</i>", self.render_vec(inner)),
-            _ => // call default impl of render_token(self, token),
+            _ => html_render_token(self, token),
         }
     }
 }
 ```
 
-Ooops. There is only a slight problem, and that's the commented line:
-call default implementation of `render_token`. How do we do that? Maybe
-I missed something, but it seems there is no way (yet) to do this simply
-in Rust, in a similar way to `super.render_token(...)` in an OO
-language.
-
-There is, however, a solution: move the code out of the implementation
-of `HtmlRendererTrait`, in a separate function:
-
-```rust
-fn default_render_token<T>(this: &mut T, token: &Token) -> String
-    where T: AsMut<HtmlRenderer> + HtmlRendererTrait {
-        match *token {
-            Token::Str(ref content) => content.clone(),
-            Token::Paragraph(ref inner) => {
-                this.as_mut().n_para += 1;
-                format!("<p>{}</p>",
-                        this.render_vec(inner))
-            },
-            Token::Emphasis(ref inner) => format!("<em>{}</em>", this.render_vec(inner))
-        }
-    }
-
-pub trait HtmlRendererTrait: AsMut<HtmlRenderer> + Sized {
-    fn render_token(&mut self, token: &Token) -> String {
-        default_render_token(self, token)
-    }
-
-    // no change for `render_vec`
-    ...
-}
-```
-
-So, we create a `default_render_token` function, which is the same as
-the method, except `self` is now called `this` (because it is a
-reserved name). The signature is a bit verbose, but it is still
-reasonable by Rust standards.
-
-Also, the compiler now wants `HtmlRendererTrait` to require `Sized`. I
-honestly don't really get why, but that's not really a problem (all
-renderers should be `Sized`), so why not.
-
-We can now, at least, implement this trait for `EpubRenderer`:
-
-```rust
-impl HtmlRendererTrait for EpubRenderer {
-    fn render_token(&mut self, token: &Token) -> String {
-        match *token {
-            Token::Emphasis(ref inner) => format!("<i>{}</i>", self.render_vec(inner)),
-            _ => default_render_token(self, token),
-        }
-    }
-}
-```
-
-At this point, we have a working solution:
+Notice that when `html_render_token` is called, it is with `self` and
+not `self.html`. This means that, inside of it, it is the correct
+implementation that will be called. Therefore,
 
 ```rust
 let ast = // ...
 let mut html = HtmlRenderer::new();
-let mut epub = EpubRenderer { html: HtmlRenderer::new() };
+let mut epub = EpubRenderer::new();
 println!("{}", html.render_vec(&ast));
 println!("{}", epub.render_vec(&ast));
 ```
 
-gives us different result, with the HTML renderer using `<em>` and the
-EPUB one using `<i>`.
-
-
-### Implementing the Renderer trait ###
-
-Now, this could be enough, but `HtmlRenderer` and `EpubRenderer` don't
-implement the `Renderer` trait. If we want to do so, we have to do it
-explicitely, but it's pretty straightforward.
-
-```rust
-impl<T:HtmlRendererTrait> Renderer for T {
-    fn render_token(&mut self, token: &super::Token) -> String {
-        super::HtmlRendererTrait::render_token(self, token)
-    }
-}
-```
-
-This implements the `Renderer` trait for all types implementing the
-`HtmlRendererTrait`, and basically delegates to its `render_token`
-method. Obviously, this means that if both traits are in `use`, Rust
-will complain, but it shouldn't be that hard to organise modules so it
-doesn't happen.
-
-Now, we still have some code duplication: the `HtmlRendererTrait` and
-`Renderer` traits have the same default implementation of
-`render_vec`. Can we factorize that? Well, we can at least partially:
-
-```rust
-fn default_render_vec<F>(f: F, tokens: &[Token]) -> String 
-where F:FnMut(&Token)->String {
-    tokens.iter()
-        .map(f)
-        .collect::<Vec<_>>()
-        .join("")
-}
-
-trait Renderer {
-    fn render_token(&mut self, token: &Token) -> String;
-    fn render_vec(&mut self, tokens: &[Token]) -> String {
-        default_render_vec(|token| self.render_token(token), tokens)
-    }
-}
-
-
-trait HtmlRendererTrait: AsMut<HtmlRenderer> + ::std::marker::Sized {
-    // render_token unchanged
-    fn render_vec(&mut self, tokens: &[Token]) -> String {
-        renderer::default_render_vec(|token| self.render_token(token), tokens)
-    }
-}
-```
-
-This way, we make sure that the day we change the `Renderer`
-implementation, it impacts all renderers.
+gives us different results, with the HTML printing `<em>` and the
+EPUB one correctly printing `<i>`.
 
 
 Conclusion 
@@ -376,10 +233,14 @@ Conclusion
 
 So, is it possible to do inheritance in Rust? No. Is it possible to
 simulate it by (ab)using traits and with some perseverance?
-Yes. Whether it is a good idea or not is left to the judgement of the
-reader. I'm not convinced this is the best solution and I hope there
-is a cleaner, more "rustic" way to do this.
+Yes. It took me a while to come to this solution, but I feel that the
+boilerplate it adds, even if it *is* more complicated than a call to `super.foo()` isn't actually that bad[^3].
 
-On the other hand, it was quite fun to try to simulate inheritance
-with Rust, and maybe this "article" might be useful for people who
-want to be object-oriented-ish in Rust.
+Thanks for all the people on Rust's reddit, I definitely wouldn't
+have come with this idea without your help :)
+
+Full working example is on [Rust Playground](https://play.rust-lang.org/?gist=64767cdcd417b7bd2ddccca014c83695&version=stable&backtrace=0).
+
+
+[^3]: Unlike some discarded previous solutions I came up with, like
+[this one](https://play.rust-lang.org/?gist=26fbe010ec854856a6bb96deddea726b&version=stable&backtrace=0).
