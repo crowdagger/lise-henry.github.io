@@ -377,23 +377,9 @@ Conclusion
 So, is it possible to do inheritance in Rust? No. Is it possible to
 simulate it by (ab)using traits and with some perseverance?
 Yes. Whether it is a good idea or not is left to the judgement of the
-reader.
+reader. I'm not convinced this is the best solution and I hope there
+is a cleaner, more "rustic" way to do this.
 
-The result is verbose and not really straightforward (at least to me
-it's not obvious, and it took me days to find this solution). On the other hand, while there is definitely
-some boilerplate involved, this is code that probably won't need to be
-changed that much during maintenance.
-
-At the opposite, the solution of duplicating the implementation of all
-three HTML-based renderers seems more problematic to me: it means that
-if I find a bug such as unclosed paragraph on some
-condition[^footnotes], I'll have to think about "porting" the fix to
-the other renderers.
-
-I don't know if I'll eventually end up using this solution for real
-code, but I hope this "article" might help people who, like me, are a
-bit struggling going from OOP thinking to Rust.
-
-
-[^footnotes]: Or if I eventually end up working on the way these ugly
-footnotes are displayed.
+On the other hand, it was quite fun to try to simulate inheritance
+with Rust, and maybe this "article" might be useful for people who
+want to be object-oriented-ish in Rust.

@@ -585,21 +585,15 @@ trait HtmlRendererTrait: AsMut&lt;HtmlRenderer&gt; + ::std::marker::Sized {
 </code></pre>
 <p id = "para-34">This way, we make sure that the day we change the <code>Renderer</code> implementation, it impacts all renderers.</p>
 <h2 id = "link-11">Conclusion</h2>
-<p id = "para-35">So, is it possible to do inheritance in Rust? No. Is it possible to simulate it by (ab)using traits and with some perseverance? Yes. Whether it is a good idea or not is left to the judgement of the reader.</p>
-<p id = "para-36">The result is verbose and not really straightforward (at least to me it's not obvious, and it took me days to find this solution). On the other hand, while there is definitely some boilerplate involved, this is code that probably won't need to be changed that much during maintenance.</p>
-<p id = "para-38">At the opposite, the solution of duplicating the implementation of all three HTML-based renderers seems more problematic to me: it means that if I find a bug such as unclosed paragraph on some condition<a  href = "#note-dest-3"><sup id = "note-source-3">3</sup></a>, I'll have to think about "porting" the fix to the other renderers.</p>
-<p id = "para-39">I don't know if I'll eventually end up using this solution for real code, but I hope this "article" might help people who, like me, are a bit struggling going from OOP thinking to Rust.</p>
- <h2 class = "notes">Notes</h2><table class = "notes"><tr class = "notes"><td class = "notes"><p class = "note-number">
+<p id = "para-35">So, is it possible to do inheritance in Rust? No. Is it possible to simulate it by (ab)using traits and with some perseverance? Yes. Whether it is a good idea or not is left to the judgement of the reader. I'm not convinced this is the best solution and I hope there is a cleaner, more "rustic" way to do this.</p>
+<p id = "para-36">On the other hand, it was quite fun to try to simulate inheritance with Rust, and maybe this "article" might be useful for people who want to be object-oriented-ish in Rust.</p>
+<h2 class = "notes">Notes</h2><table class = "notes"><tr class = "notes"><td class = "notes"><p class = "note-number">
   <a href = "#note-source-1">[1]</a>
 </p></td><td class = "notes"><aside  id = "note-dest-1"><p id = "para-11">In practice, this isn't exactly the case: because the single-file HTML renderer, <code>HtmlRenderer</code>, was the first I wrote, is doesn't include anything, and both <code>EpubRenderer</code> and <code>HtmlDirRenderer</code> (the renderer for multiple HTML files) include it. But it should probably be refactored some day.</p>
 </aside></td></tr>
 <tr class = "notes"><td class = "notes"><p class = "note-number">
   <a href = "#note-source-2">[2]</a>
 </p></td><td class = "notes"><aside  id = "note-dest-2"><p id = "para-13">It doesn't, real differences are a bit more complicated than that, but let's pretend that's it.</p>
-</aside></td></tr>
-<tr class = "notes"><td class = "notes"><p class = "note-number">
-  <a href = "#note-source-3">[3]</a>
-</p></td><td class = "notes"><aside  id = "note-dest-3"><p id = "para-37">Or if I eventually end up working on the way these ugly footnotes are displayed.</p>
 </aside></td></tr>
 </table>
 </div>
