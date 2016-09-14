@@ -232,7 +232,7 @@ Conclusion
 ----------
 
 So, is it possible to do inheritance in Rust? No. Is it possible to
-simulate it by (ab)using traits and with some perseverance?
+simulate a call to a parent virtual method by (ab)using traits and with some perseverance?
 Yes. It took me a while to come to this solution, but I feel that the
 boilerplate it adds, even if it *is* more complicated than a call to `super.foo()` isn't actually that bad[^3].
 

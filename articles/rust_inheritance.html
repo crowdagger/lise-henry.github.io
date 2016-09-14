@@ -497,7 +497,7 @@ println!("{}", epub.render_vec(&amp;ast));
 </code></pre>
 <p id = "para-21">gives us different results, with the HTML printing <code>&lt;em&gt;</code> and the EPUB one correctly printing <code>&lt;i&gt;</code>.</p>
 <h2 id = "link-8">Conclusion</h2>
-<p id = "para-23">So, is it possible to do inheritance in Rust? No. Is it possible to simulate it by (ab)using traits and with some perseverance? Yes. It took me a while to come to this solution, but I feel that the boilerplate it adds, even if it <em>is</em> more complicated than a call to <code>super.foo()</code> isn't actually that bad<a  href = "#note-dest-3"><sup id = "note-source-3">3</sup></a>.</p>
+<p id = "para-23">So, is it possible to do inheritance in Rust? No. Is it possible to simulate a call to a parent virtual method by (ab)using traits and with some perseverance? Yes. It took me a while to come to this solution, but I feel that the boilerplate it adds, even if it <em>is</em> more complicated than a call to <code>super.foo()</code> isn't actually that bad<a  href = "#note-dest-3"><sup id = "note-source-3">3</sup></a>.</p>
 <p id = "para-24">Thanks for all the people on Rust's reddit, I definitely wouldn't have come with this idea without your help :)</p>
 <p id = "para-25">Full working example is on <a href = "https://play.rust-lang.org/?gist=64767cdcd417b7bd2ddccca014c83695&amp;version=stable&amp;backtrace=0">Rust Playground</a>.</p>
  <h2 class = "notes">Notes</h2><table class = "notes"><tr class = "notes"><td class = "notes"><p class = "note-number">
