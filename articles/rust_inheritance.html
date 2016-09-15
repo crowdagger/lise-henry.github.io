@@ -441,7 +441,7 @@ function toggle() {
 </code></pre>
 <p id = "para-15">That is, render <code>Emphasis</code> variant of <code>Token</code> differently, but fall back on the HTML implementation to render all other variants.</p>
 <p id = "para-16">In practice, unfortunately, this doesn't work, as you can see with the full example on <a href = "https://play.rust-lang.org/?gist=a22520c912e42f42b870222c768d0381&amp;version=stable&amp;backtrace=0">Rust playground</a>. The problem is that unlike a call to <code>super</code> in an object-oriented language, calling <code>self.html.render_token</code> means that every other methods call will be from <code>self.html</code>. So, the interest of having a polymorphic method (thanks to trait) is lost.</p>
- <h2 id = "link-7">Her comes AsMut</h2>
+ <h2 id = "link-7">Here comes AsMut</h2>
 <p id = "para-17">Now, is there a way to emulate this kind of "inheritance" behaviour with trait? Clearly, using only the <code>Renderer</code> trait is not enough. The good news, though, is that it's still possible to have some kind of polymorphism similar to virtual methods, even when there was a previous call to a default implementation.</p>
 <p id = "para-18">The idea is to move the implementation of <code>Renderer</code> for <code>HtmlRenderer</code> in a separate, standalone function, and to make the <code>impl</code> block call it:</p>
 <pre><code class = "language-rust">struct HtmlRenderer {
