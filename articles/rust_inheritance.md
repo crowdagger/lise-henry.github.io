@@ -6,8 +6,8 @@ output.html: rust_inheritance.html
 use_initials: false
 ---
 
-Simulating inheritance in Rust 
-==============================
+Simulating a call to "parent" virtual method in Rust
+=====================================================
 
 Context 
 -------
@@ -146,8 +146,8 @@ polymorphic method (thanks to trait) is lost.
 that, but let's pretend that's it.
 
 
-Her comes AsMut
----------------
+Here comes AsMut
+----------------
 
 Now, is there a way to emulate this kind of "inheritance" behaviour
 with trait? Clearly, using only the `Renderer` trait is not

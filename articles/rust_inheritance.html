@@ -7,14 +7,7 @@
     <meta name="author" content="Lise Henry">
     <title>Simulating a call to &quot;parent&quot; virtual method in Rust</title>
     <style type = "text/css">
-      @font-face {
-    font-family: 'EBGaramondInitialsRegular';
-    src: url('/assets/fonts/eb-garamond/ad76a14ea9b136557b474c3445caea08/f36596fa0c3b3d23f033a5b85fbe3ee5/EBGaramondInitialsRegular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
+      body {
     font-family: "Linux Libertine", "Georgia", serif;
     text-align: justify;
     font-size: 100%;
@@ -153,31 +146,6 @@ table.notes td {
 .table table th {
     font-weight: bold;
     font-variant: small-caps;
-}
-
-
-span.initial { 
-    float: left;
-    font-size: 2em;
-    font-weight: bold;
-    margin-right: 0.05em;
-    line-height: 1em;
-}
-
-p.first-para {
-    text-indent: 0;
-}
-
-                           span.initial {
-    all: initial;
-}
-
-p.first-para:first-letter {
-    font-size: 300%;
-    float: left;
-    font-weight: bold;
-    margin-right: 0.05em;
-    line-height: 1em;
 }
 
 /* The nav element corresponding to the navigation menu */
@@ -320,7 +288,6 @@ blockquote {
 #toolbar img {
     cursor: pointer;
 }
-
     </style>
     <style type = "text/css" media = "print">
       #page {
@@ -365,7 +332,7 @@ function toggle() {
     <nav id = "nav">
       <h2>Simulating a call to "parent" virtual method in Rust</h2>
       <ul>
- <li><a href = "#link-1">Simulating inheritance in Rust</a>
+ <li><a href = "#link-1">Simulating a call to "parent" virtual method in Rust</a>
  </li>
 </ul>
     </nav>
@@ -386,7 +353,7 @@ function toggle() {
       </header>
 
       <div id = "chapter-0" class = "chapter">
-  <h1 id = "link-1"></h1><h2 id = "link-2">Context</h2>
+  <a id = "link-1"></a><h2 id = "link-2">Context</h2>
 <p id = "para-1"><a href = "https://github.com/lise-henry/crowbook">Crowbook</a> is a tool that renders Markdown books (or articles) to HTML, Epub and PDF. In summary it works like this.</p>
 <p id = "para-2">First, a parser (using <a href = "https://crates.io/crates/pulldown-cmark">pulldown-cmark</a>) reads all the Markdown files and outputs some kind of AST (Abstract Syntax Tree), which is basically a list of <code>Token</code>s, which look like this:</p>
 <pre><code class = "language-rust">enum Token {
@@ -428,8 +395,8 @@ function toggle() {
 <p id = "para-9">And, well, for the renderers that are <em>really</em> different, that's quite enough, because there isn't that much similarity between generating LaTeX and HTML.</p>
 <p id = "para-10">However, there are three differents HTML renderers, who share a bit more code.</p>
 <h3 id = "link-6">Composition over inheritance</h3>
-<p id = "para-12">Now, there is this whole idea of <a href = "https://en.wikipedia.org/wiki/Composition_over_inheritance">composition over inheritance</a> which, as far as I get it, is that you can avoid inheritance by composing elements. So, in this light, it would seem logical that each HTML-based renderer include the HTML common renderer<a  href = "#note-dest-1"><sup id = "note-source-1">1</sup></a> and call it when necessary.</p>
- <p id = "para-14">Now, this looks nice, because if the EPUB renderer just has to render <code>Emphasis</code> tokens with <code>&lt;i&gt;</code> instead of <code>&lt;em&gt;</code><a  href = "#note-dest-2"><sup id = "note-source-2">2</sup></a>, you could do something like that:</p>
+<p id = "para-11">Now, there is this whole idea of <a href = "https://en.wikipedia.org/wiki/Composition_over_inheritance">composition over inheritance</a> which, as far as I get it, is that you can avoid inheritance by composing elements. So, in this light, it would seem logical that each HTML-based renderer include the HTML common renderer<a  href = "#note-dest-1"><sup id = "note-source-1">1</sup></a> and call it when necessary.</p>
+ <p id = "para-13">Now, this looks nice, because if the EPUB renderer just has to render <code>Emphasis</code> tokens with <code>&lt;i&gt;</code> instead of <code>&lt;em&gt;</code><a  href = "#note-dest-2"><sup id = "note-source-2">2</sup></a>, you could do something like that:</p>
 <pre><code class = "language-rust">impl Renderer for EpubRenderer {
     fn render_token(&amp;mut self, token: &amp;Token) -&gt; String {
         match *token {
@@ -441,7 +408,7 @@ function toggle() {
 </code></pre>
 <p id = "para-15">That is, render <code>Emphasis</code> variant of <code>Token</code> differently, but fall back on the HTML implementation to render all other variants.</p>
 <p id = "para-16">In practice, unfortunately, this doesn't work, as you can see with the full example on <a href = "https://play.rust-lang.org/?gist=a22520c912e42f42b870222c768d0381&amp;version=stable&amp;backtrace=0">Rust playground</a>. The problem is that unlike a call to <code>super</code> in an object-oriented language, calling <code>self.html.render_token</code> means that every other methods call will be from <code>self.html</code>. So, the interest of having a polymorphic method (thanks to trait) is lost.</p>
- <h2 id = "link-7">Her comes AsMut</h2>
+ <h2 id = "link-7">Here comes AsMut</h2>
 <p id = "para-17">Now, is there a way to emulate this kind of "inheritance" behaviour with trait? Clearly, using only the <code>Renderer</code> trait is not enough. The good news, though, is that it's still possible to have some kind of polymorphism similar to virtual methods, even when there was a previous call to a default implementation.</p>
 <p id = "para-18">The idea is to move the implementation of <code>Renderer</code> for <code>HtmlRenderer</code> in a separate, standalone function, and to make the <code>impl</code> block call it:</p>
 <pre><code class = "language-rust">struct HtmlRenderer {
@@ -497,20 +464,20 @@ println!("{}", epub.render_vec(&amp;ast));
 </code></pre>
 <p id = "para-21">gives us different results, with the HTML printing <code>&lt;em&gt;</code> and the EPUB one correctly printing <code>&lt;i&gt;</code>.</p>
 <h2 id = "link-8">Conclusion</h2>
-<p id = "para-23">So, is it possible to do inheritance in Rust? No. Is it possible to simulate a call to a parent virtual method by (ab)using traits and with some perseverance? Yes. It took me a while to come to this solution, but I feel that the boilerplate it adds, even if it <em>is</em> more complicated than a call to <code>super.foo()</code> isn't actually that bad<a  href = "#note-dest-3"><sup id = "note-source-3">3</sup></a>.</p>
+<p id = "para-22">So, is it possible to do inheritance in Rust? No. Is it possible to simulate a call to a parent virtual method by (ab)using traits and with some perseverance? Yes. It took me a while to come to this solution, but I feel that the boilerplate it adds, even if it <em>is</em> more complicated than a call to <code>super.foo()</code> isn't actually that bad<a  href = "#note-dest-3"><sup id = "note-source-3">3</sup></a>.</p>
 <p id = "para-24">Thanks for all the people on Rust's reddit, I definitely wouldn't have come with this idea without your help :)</p>
 <p id = "para-25">Full working example is on <a href = "https://play.rust-lang.org/?gist=64767cdcd417b7bd2ddccca014c83695&amp;version=stable&amp;backtrace=0">Rust Playground</a>.</p>
  <h2 class = "notes">Notes</h2><table class = "notes"><tr class = "notes"><td class = "notes"><p class = "note-number">
   <a href = "#note-source-1">[1]</a>
-</p></td><td class = "notes"><aside  id = "note-dest-1"><p id = "para-11">In practice, this isn't exactly the case: because the single-file HTML renderer, <code>HtmlRenderer</code>, was the first I wrote, is doesn't include anything, and both <code>EpubRenderer</code> and <code>HtmlDirRenderer</code> (the renderer for multiple HTML files) include it. But it should probably be refactored some day.</p>
+</p></td><td class = "notes"><aside  id = "note-dest-1"><p id = "para-12">In practice, this isn't exactly the case: because the single-file HTML renderer, <code>HtmlRenderer</code>, was the first I wrote, is doesn't include anything, and both <code>EpubRenderer</code> and <code>HtmlDirRenderer</code> (the renderer for multiple HTML files) include it. But it should probably be refactored some day.</p>
 </aside></td></tr>
 <tr class = "notes"><td class = "notes"><p class = "note-number">
   <a href = "#note-source-2">[2]</a>
-</p></td><td class = "notes"><aside  id = "note-dest-2"><p id = "para-13">It doesn't, real differences are a bit more complicated than that, but let's pretend that's it.</p>
+</p></td><td class = "notes"><aside  id = "note-dest-2"><p id = "para-14">It doesn't, real differences are a bit more complicated than that, but let's pretend that's it.</p>
 </aside></td></tr>
 <tr class = "notes"><td class = "notes"><p class = "note-number">
   <a href = "#note-source-3">[3]</a>
-</p></td><td class = "notes"><aside  id = "note-dest-3"><p id = "para-22">Unlike some discarded previous solutions I came up with, like <a href = "https://play.rust-lang.org/?gist=26fbe010ec854856a6bb96deddea726b&amp;version=stable&amp;backtrace=0">this one</a>.</p>
+</p></td><td class = "notes"><aside  id = "note-dest-3"><p id = "para-23">Unlike some discarded previous solutions I came up with, like <a href = "https://play.rust-lang.org/?gist=26fbe010ec854856a6bb96deddea726b&amp;version=stable&amp;backtrace=0">this one</a>.</p>
 </aside></td></tr>
 </table>
 </div>
