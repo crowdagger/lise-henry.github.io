@@ -2,14 +2,15 @@
 author: Élisabeth Henry
 title: Lise Henry's Github page
 lang: en
-numbering: 2
+num_depth: 2
+
 output.html: index.html
 ---
 
 Lise Henry's Github page
 =============================
 
-Not much here, except a list of projects I have on github.
+Not much here, but here are some projects I have on Github:
 
 Crowbook
 --------
