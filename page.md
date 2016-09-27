@@ -1,4 +1,5 @@
 ---
+import_config: common.book
 author: Élisabeth Henry
 title: Lise Henry's Github page
 lang: en
