@@ -2,7 +2,7 @@
 author: Élisabeth Henry
 title: Lise Henry's Github page
 lang: en
-num_depth: 2
+rendering.num_depth: 2
 
 output.html: index.html
 ---
@@ -10,15 +10,21 @@ output.html: index.html
 Lise Henry's Github page
 =============================
 
-Not much here, but here are some projects I have on Github:
+Not really a webpage or a blog, just a space where I put stuff.
 
-Crowbook
+Articles
 --------
+* [Simulating a call to "parent" virtual method in Rust](http://lise-henry.github.io/articles/rust_inheritance.html)
+
+Projects and repositories
+-------------------------
+
+### Crowbook ###
 
 [![Crates.io](https://img.shields.io/crates/v/crowbook.svg)]()
 [![Crates.io](https://img.shields.io/crates/d/crowbook.svg)]()
 [![Crates.io](https://img.shields.io/crates/l/crowbook.svg)]()
-[![Travis](https://img.shields.io/travis/lise-henry/crowbook.svg)]()
+[![Travis](https://img.shields.io/travis/lise-henry/crowbook.svg)]() 
 
 Renders a Markdown book in various formats: HTML, Epub, PDF. Though
 it was not really made to make a website, this page was rendered using
@@ -27,8 +33,7 @@ this software.
 * [Source code on Github](https://github.com/lise-henry/crowbook)
 * [Crates.io](https://crates.io/crates/crowbook)
 
-Caribon
--------
+### Caribon ###
 
 [![Crates.io](https://img.shields.io/crates/v/caribon.svg)]()
 [![Crates.io](https://img.shields.io/crates/d/caribon.svg)]()
@@ -42,10 +47,22 @@ as a Webservice.
 
 * [Source code on Github](https://github.com/lise-henry/caribon)
 * [Crates.io](https://crates.io/crates/caribon)
-* [Web service](http://vps184889.ovh.net/caribon/) 
+* [Web service](http://vps184889.ovh.net/caribon/)
 
-Stemmer-rs
-----------
+### Rust-ispell ###
+
+[![Crates.io](https://img.shields.io/crates/v/ispell.svg)]()
+[![Crates.io](https://img.shields.io/crates/d/ispell.svg)]()
+[![Crates.io](https://img.shields.io/crates/l/ispell.svg)]()
+
+Easily call isell/aspell/hunspell from Rust programs.
+
+* [Source code on Github](https://github.com/lise-henry/rust-ispell)
+* [Crates.io](https://crates.io/crates/ispell)
+* [Documentation](https://lise-henry.github.io/rust-ispell/ispell/)
+
+
+### Stemmer-rs ###
 
 [![Crates.io](https://img.shields.io/crates/v/stemmer.svg)]()
 [![Crates.io](https://img.shields.io/crates/d/stemmer.svg)]()
@@ -58,8 +75,9 @@ word in various language. Used by Caribon.
 * [Source code on Github](https://github.com/lise-henry/stemmer-rs)
 * [Crates.io](https://crates.io/crates/stemmer)
 
-Tiny 'Nux Tarot
----------------
+### Tiny 'Nux Tarot ###
+
+(Not maintained)
 
 [![GitHub tag](https://img.shields.io/github/tag/lise-henry/tnt.svg)]()
 [![GitHub license](https://img.shields.io/github/license/lise-henry/tnt.svg)]()
