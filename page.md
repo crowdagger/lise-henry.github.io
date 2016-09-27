@@ -1,6 +1,6 @@
 ---
 import_config: common.book
-author: Élisabeth Henry
+author: ""
 title: Lise Henry's Github page
 lang: en
 rendering.num_depth: 2
