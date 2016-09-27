@@ -22,10 +22,10 @@ Projects and repositories
 
 ### Crowbook ###
 
-[![Crates.io](https://img.shields.io/crates/v/crowbook.svg)]()
-[![Crates.io](https://img.shields.io/crates/d/crowbook.svg)]()
-[![Crates.io](https://img.shields.io/crates/l/crowbook.svg)]()
-[![Travis](https://img.shields.io/travis/lise-henry/crowbook.svg)]() 
+[![Crates.io](https://img.shields.io/crates/v/crowbook.svg)](https://crates.io/crates/crowbook)
+[![Crates.io](https://img.shields.io/crates/d/crowbook.svg)](https://crates.io/crates/crowbook)
+[![Crates.io](https://img.shields.io/crates/l/crowbook.svg)](https://crates.io/crates/crowbook)
+![Travis](https://img.shields.io/travis/lise-henry/crowbook.svg)
 
 Renders a Markdown book in various formats: HTML, Epub, PDF. Though
 it was not really made to make a website, this page was rendered using
@@ -36,10 +36,10 @@ this software.
 
 ### Caribon ###
 
-[![Crates.io](https://img.shields.io/crates/v/caribon.svg)]()
-[![Crates.io](https://img.shields.io/crates/d/caribon.svg)]()
-[![Crates.io](https://img.shields.io/crates/l/caribon.svg)]()
-[![Travis](https://img.shields.io/travis/lise-henry/caribon.svg)]()
+[![Crates.io](https://img.shields.io/crates/v/caribon.svg)](https://crates.io/crates/caribon)
+[![Crates.io](https://img.shields.io/crates/d/caribon.svg)](https://crates.io/crates/caribon)
+[![Crates.io](https://img.shields.io/crates/l/caribon.svg)](https://crates.io/crates/caribon)
+![Travis](https://img.shields.io/travis/lise-henry/caribon.svg)
 
 A repetition detector written in Rust. Code is
 [here](https://github.com/lise-henry/caribon), but you can also test
@@ -52,9 +52,9 @@ as a Webservice.
 
 ### Rust-ispell ###
 
-[![Crates.io](https://img.shields.io/crates/v/ispell.svg)]()
-[![Crates.io](https://img.shields.io/crates/d/ispell.svg)]()
-[![Crates.io](https://img.shields.io/crates/l/ispell.svg)]()
+[![Crates.io](https://img.shields.io/crates/v/ispell.svg)](https://crates.io/crates/ispell)
+[![Crates.io](https://img.shields.io/crates/d/ispell.svg)](https://crates.io/crates/ispell)
+[![Crates.io](https://img.shields.io/crates/l/ispell.svg)](https://crates.io/crates/ispell)
 
 Easily call isell/aspell/hunspell from Rust programs.
 
@@ -65,10 +65,10 @@ Easily call isell/aspell/hunspell from Rust programs.
 
 ### Stemmer-rs ###
 
-[![Crates.io](https://img.shields.io/crates/v/stemmer.svg)]()
-[![Crates.io](https://img.shields.io/crates/d/stemmer.svg)]()
-[![Crates.io](https://img.shields.io/crates/l/stemmer.svg)]()
-[![Travis](https://img.shields.io/travis/lise-henry/stemmer-rs.svg)]()
+[![Crates.io](https://img.shields.io/crates/v/stemmer.svg)](https://crates.io/crates/stemmer)
+[![Crates.io](https://img.shields.io/crates/d/stemmer.svg)](https://crates.io/crates/stemmer)
+[![Crates.io](https://img.shields.io/crates/l/stemmer.svg)](https://crates.io/crates/stemmer)
+![Travis](https://img.shields.io/travis/lise-henry/stemmer-rs.svg)
 
 Rust bindings to the Snowball C implementation, allowing you to stem a
 word in various language. Used by Caribon.
@@ -78,10 +78,10 @@ word in various language. Used by Caribon.
 
 ### Tiny 'Nux Tarot ###
 
-(Not maintained)
+(Not maintained anymore.)
 
-[![GitHub tag](https://img.shields.io/github/tag/lise-henry/tnt.svg)]()
-[![GitHub license](https://img.shields.io/github/license/lise-henry/tnt.svg)]()
+[![GitHub tag](https://img.shields.io/github/tag/lise-henry/tnt.svg)](https://github.com/lise-henry/tnt)
+[![GitHub license](https://img.shields.io/github/license/lise-henry/tnt.svg)](https://github.com/lise-henry/tnt)
 
 
 A tarot game written in Vala, using Gtk+.
