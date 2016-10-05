@@ -432,11 +432,41 @@ It is two times slower than the implementation only using `find`.
 > have.
 
 
-Using `u8` instead of `chars`
-----------------------------
 
-> **Post-scriptum**: I got confirmation (thanks to the Rust Reddit :))
-> that it's possible to safely search for ASCII characterss in a slice of
+
+Finally, the chart
+---------------------
+
+To sum it up in a picture, here is a chart of the performances of all
+these implementations (except Regex without lazy static, which clearly
+is not the way you are supposed to use it). Time is in nanosecond per
+iteration, and, obviously, the lower the better.
+
+![Performances](performances.png)
+
+To conclude:
+
+* using a good implementation instead of the naive one actually has
+  huge performances issues, not a mere 10% factor;
+* the real improvement is actually when you *don't need to do
+  anything*, and I think this can apply to a broad range of string
+  manipulations (removing unnecessary whitespaces, using typographic
+  quotation marks, replacing `:)` with 😁 and so on...);
+* *wow*, `Regex` is fast.
+
+Post-scriptum: additional optimisations
+------------------------------------------
+
+Posting this article on
+the
+[Rust reddit](https://www.reddit.com/r/rust/comments/55wpxh/optimising_string_processing_in_rust/) provided
+a lot of interesting feedback, and many people suggested further optimisations.
+
+### Using `u8` instead of `chars` ###
+
+> While I wasn't initially sure it was safe, and thus avoided doing
+> it, I was told that it's possible to safely search for
+> ASCII characterss in a slice of 
 > `u8`, since the leading bit is set to `1` if it isn't the first byte
 > of a character. 
 
@@ -484,45 +514,279 @@ test bench_regex_u8_all     ... bench: 894 ns/iter (+/- 19)
 > methods described previously, this one cannot be generalized for any
 > UTF-8 character.
 
+It is possible to go a step further, by using the unsafe
+method
+[`String::from_utf8_unchecked`](https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_unchecked) since
+we know that the vector of bytes we constructed is valid unicode,
+replacing
+
+```rust
+Cow::Owned(String::from_utf8(output).unwrap())
+```
+
+with 
+
+```rust
+Cow::Owned(unsafe { String::from_utf8_unchecked(output) })
+```
+
+Since we don't have to check that the vector of `u8` is valid UTF-8,
+we have a little gain:
+
+```
+test bench_regex_u8_unsafe_html    ... bench: 686 ns/iter (+/- 18)
+test bench_regex_u8_unsafe_no_html ... bench: 152 ns/iter (+/- 2)
+test bench_regex_u8_unsafe_all     ... bench: 842 ns/iter (+/- 29)
+```
+
+> This requires using the `unsafe` keyword, which means you need to
+> know what you are doing. While on this particular case, this function is
+> small enough to be reasonably certain that nothing is going to go
+> badly, I'd be more reluctant to use this feature in a complex
+> function, or in code that might evolve later on.
+
+![Performances on bytes](performances_u8.png)
 
 
-Finally, the chart
----------------------
+### Using `Regex::find_iter` ###
 
-To sum it up in a picture, here is a chart of the performances of all
-these implementations (except Regex without lazy static, which clearly
-is not the way you are supposed to use it). Time is in nanosecond per
-iteration, and, obviously, the lower the better.
+In our main loop, we still walk through each character (or each byte
+with the version that works on bytes). It is, however, possible to use
+the `find_iter` method of `Regex` to get a list of matches and insert
+the substrings between the matches in one step:
 
-![Performances](performances.png)
+```rust
+pub fn find_iter<'a, S: Into<Cow<'a, str>>>(input: S) -> Cow<'a, str> {
+    lazy_static! {
+        static ref REGEX: Regex = Regex::new("[<>&]").unwrap();
+    }
+    let input = input.into();
+     let mut last_match = 0;
 
-To conclude:
+    if REGEX.is_match(&input)
+    {
+        let matches = REGEX.find_iter(&input);
+        let mut output = String::with_capacity(input.len());
+        for (begin, end) in matches {
+            output.push_str(&input[last_match..begin]);
+            match &input[begin..end] {
+                "<" => output.push_str("&lt;"),
+                ">" => output.push_str("&gt;"),
+                "&" => output.push_str("&amp;"),
+                _ => unreachable!()
+            }
+            last_match = end;
+        }
+        output.push_str(&input[last_match..]);
+        Cow::Owned(output)
+    } else {
+        input
+    }
+}
+```
 
-* using a good implementation instead of the naive one actually has
-  huge performances issues, not a mere 10% factor;
-* the real improvement is actually when you *don't need to do
-  anything*, and I think this can apply to a broad range of string
-  manipulations (removing unnecessary whitespaces, using typographic
-  quotation marks, replacing `:)` with 😁 and so on...);
-* *wow*, `Regex` is fast.
+In this case, there is an additional call to `REGEX.is_match` (which
+returns a boolean) which might not strictly be necessary, but is there
+to appease the borrow checker (`matches` is returned from `find_iter`
+which borrows `input`, so the compiler isn't happy with us returning
+`input` if `matches` is in the same scope). Despite that, it's still a
+performance gain compared to the implementation only using `find`:
 
-Additional thoughts and precisions
------------------------------------------
+```
+test bench_regex_html         ... bench: 1,072 ns/iter (+/- 19)
+test bench_regex_iter_html    ... bench:   841 ns/iter (+/- 26)
+test bench_regex_no_html      ... bench:   152 ns/iter (+/- 2)
+test bench_regex_iter_no_html ... bench:   155 ns/iter (+/- 2)
+test bench_regex_all          ... bench: 1,222 ns/iter (+/- 38)
+test bench_regex_iter_all     ... bench: 1,010 ns/iter (+/- 19)
+```
 
-### SIMD ###
+The same idea can be applied for the implementation working on bytes
+but in this case (and on this set of data), it is actually slightly
+slower, probably because walking through a slice of bytes can be much
+more optimised than having to find the next unicode character, so the
+overhead isn't worth it:
 
-I tried using the flags `-C target-feature=+sse2 -C
-target-feature=+ssse3` to enable SIMD optimisation on the generated code, but
-this didn't have any effects on the performances. I tried looking a
-bit at the assembly using `perf` and didn't find anything looking like
-a SIMD instruction. Maybe the compiler is just unable to do
-autovectorisation on iterators on `chars`, or maybe I just didn't see
-the instructions.
+```
+test bench_regex_u8_html         ... bench:   751 ns/iter (+/- 46)
+test bench_regex_u8_iter_html    ... bench:   827 ns/iter (+/- 22)
+test bench_regex_u8_no_html      ... bench:   147 ns/iter (+/- 3)
+test bench_regex_u8_iter_no_html ... bench:   152 ns/iter (+/- 2)
+test bench_regex_u8_all          ... bench:   897 ns/iter (+/- 29)
+test bench_regex_u8_iter_all     ... bench: 1,002 ns/iter (+/- 17)
+```
 
-More surprisingly, compiling `Regex` with the `simd` crate (and the
-above flags) didn't have any impact on the performances either
-(though, this time, I found e.g. `MOVUPS` instructions somewhere in the
-generated binary). I'm not sure what this means exactly: did I miss
-something? Is SIMD actually not helpful for that case?
+![Performances with find_iter](performances_iter.png)
+
+### Using `with_capacity` instead of `reserve` ###
+
+Initially (except in the most naive case), I was initialising the
+output string with:
+
+```rust
+String::with_capacity(input.len())
+```
+
+Later on, on some versions, I initialised this `String` (or this
+`Vec<u8>`) with the content of `input` until the first character to escape, using
+`reserve` next to allocate more memory:
+
+```rust
+let mut output = String::from(&input[0..first]);
+output.reserve(input.len() - first);
+```
+
+or 
+
+```rust
+let mut output:Vec<u8> = Vec::from(input[0..first].as_bytes());
+output.reserve(input.len() - first);
+```
+
+Ideally, I would have used something like 
+
+```rust
+let mut output = String::from_with_capacity(&input[0..first],
+input.len());
+```
+
+But there is no method `from_with_capacity`, so I had to do it in two
+steps. I was suggested to to it in the opposite order, in order to
+avoid an unnecessary allocation:
+
+```rust
+let mut output = String::with_capacity(input.len());
+output.push_str(&input[0..first]);
+```
+
+```rust
+let mut output:Vec<u8> = Vec::with_capacity(input.len());
+output.extend_from_slice(input[0..first].as_bytes());
+```
+
+The results turn out to be, indeed, slightly faster:
+
+![Performances](performances_with_cap.png)
+
+So, the morale seems to be, set capacity first, load content later.
 
 
+### Setting a larger initial capacity ###
+
+When we create our output string, we use
+`String::with_capacity(input.len())`. Except... since we are replacing
+single characters with four of five character strings (`>`-> `&gt;`, `<` -> `&lt;`, `&`
+-> `&amp;`), the output string will be larger than the
+initial one. This is bad because we'll need to have one more
+allocation, and it's possible that, in this process, the compiler will have to copy the
+entire string we have been building to a new memory location.
+
+So, we should set the initial capacity to a bigger
+number. Doing this is straightforward, as it just requires to replace: 
+
+```rust
+let mut output = String::with_capacity(input.len());
+```
+
+by:
+
+```rust
+let len = input.len();
+let mut output = String::with_capacity(len + len/2);
+```
+
+(Why add 50%, and not 10%, or double it? Well, I cheated a bit, and
+looked at the limited strings that I use to bench this function, and
+the worst case scenario added a bit less than 50% to the string
+length. Obviously, for real use cases, you probably have to rely a bit
+more on guessing.)
+
+The performance gain is significant, e.g. for the implementation using
+`Regex::find_iter`:
+
+```
+test bench_regex_iter_html            ... bench: 832 ns/iter (+/- 24)
+test bench_regex_iter_morecap_html    ... bench: 702 ns/iter (+/- 16)
+test bench_regex_iter_no_html         ... bench: 150 ns/iter (+/- 5)
+test bench_regex_iter_morecap_no_html ... bench: 150 ns/iter (+/- 1)
+test bench_regex_iter_all             ... bench: 995 ns/iter (+/- 29)
+test bench_regex_iter_morecap_all     ... bench: 846 ns/iter (+/- 11)
+```
+
+A similar modification on other implementation yields similar results:
+
+![Performances (with more initial capacity)](performances_cap.png)
+
+### And the winner is... ###
+
+So, with all those options, what is the fastest? Currently, at least
+on my computer, the fastest was the following, using `Regex`, then
+walking through the slice of bytes, using an initial capacity of 1.5
+the length of the input string, and using
+`String::from_utf8_unchecked` to generate the output string:
+
+```rust
+pub fn find_u8_unsafe_morecap<'a, S: Into<Cow<'a, str>>>(input: S) -> Cow<'a, str> {
+    lazy_static! {
+        static ref REGEX: Regex = Regex::new("[<>&]").unwrap();
+    }
+    let input = input.into();
+    let first = REGEX.find(&input);
+    if let Some((first, _)) = first {
+        let len = input.len();
+        let mut output:Vec<u8> = Vec::with_capacity(len + len/2);
+        output.extend_from_slice(input[0..first].as_bytes());
+        let rest = input[first..].bytes();
+        for c in rest {
+            match c {
+                b'<' => output.extend_from_slice(b"&lt;"),
+                b'>' => output.extend_from_slice(b"&gt;"),
+                b'&' => output.extend_from_slice(b"&amp;"),
+                _ => output.push(c),
+            }
+        }
+        Cow::Owned(unsafe { String::from_utf8_unchecked(output) })
+    } else {
+        input
+    }
+}
+```
+
+Getting the following results:
+
+```
+test bench_regex_u8_unsafe_morecap_html    ... bench: 497 ns/iter (+/- 14)
+test bench_regex_u8_unsafe_morecap_no_html ... bench: 152 ns/iter (+/- 2)
+test bench_regex_u8_unsafe_morecap_all     ... bench: 653 ns/iter (+/- 13)
+```
+
+While these results are nice, they require the use of `unsafe` and
+working on bytes (which might not be possible for more generic string
+processing). 
+
+
+### Post-scriptum conclusion ###
+
+We have gone a long way from our naive approach. But looking at the
+results:
+
+![Performances summary](performances_summary.png)
+
+I'd argue that the major performance improvements were:
+
+* avoid doing work when there is no work to do (using `Cow`);
+* using `Regex::find` instead of the standard library method on `str`,
+  which, at least currently, isn't as fast.
+
+There was room for more improvement after that (either using `Regex::find_iter`,
+tweaking the initial capacity, or working on bytes instead of chars)
+but it wasn't by the same order of magnitude. 
+
+### Thanks ###
+
+I'd like to thank everyone who commented on
+the
+[Rust reddit thread on this article](https://www.reddit.com/r/rust/comments/55wpxh/optimising_string_processing_in_rust/) and
+in particular
+`burntsushi`, `TaslemGuy`, `dbaupp`, `SimonSapin`, `tspiteri`, `LEmp_Evrey`, and I'm probably
+forgetting people.
