@@ -488,5 +488,9 @@ Unicode enough to be certain of that, and I rather not take
 risks. (Plus, I also have similar examples that need to replace
 characters that are not ASCII.)
 
-
+> **Post-scriptum**: I got confirmation (thanks to the Rust Reddit :))
+> that it's possible to safely search for ASCII characterss in a slice of
+> `u8`, since the leading bit is set to `1` if it isn't the first byte
+> of a character. I guess I'll have to do some more benches in the
+> next few days. 
 
