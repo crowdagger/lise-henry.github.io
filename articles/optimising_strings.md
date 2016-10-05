@@ -431,6 +431,61 @@ It is two times slower than the implementation only using `find`.
 > `find`, but if it is, it requires more competences than I currently
 > have.
 
+
+Using `u8` instead of `chars`
+----------------------------
+
+> **Post-scriptum**: I got confirmation (thanks to the Rust Reddit :))
+> that it's possible to safely search for ASCII characterss in a slice of
+> `u8`, since the leading bit is set to `1` if it isn't the first byte
+> of a character. 
+
+It is therefore possible to optimise the algorithm in this current
+case by looking directly at the bytes (`u8`) of the strings instead of
+the chars:
+
+```rust
+pub fn find_u8<'a, S: Into<Cow<'a, str>>>(input: S) -> Cow<'a, str> {
+    lazy_static! {
+        static ref REGEX: Regex = Regex::new("[<>&]").unwrap();
+    }
+    let input = input.into();
+    let first = REGEX.find(&input);
+    if let Some((first, _)) = first {
+        let mut output:Vec<u8> = Vec::from(input[0..first].as_bytes());
+        output.reserve(input.len() - first);
+        let rest = input[first..].bytes();
+        for c in rest {
+            match c {
+                b'<' => output.extend_from_slice(b"&lt;"),
+                b'>' => output.extend_from_slice(b"&gt;"),
+                b'&' => output.extend_from_slice(b"&amp;"),
+                _ => output.push(c),
+            }
+        }
+        Cow::Owned(String::from_utf8(output).unwrap())
+    } else {
+        input.into()
+    }
+}
+```
+
+This leads to a significant performance bump when having to escape
+characters:
+
+```
+test bench_regex_u8_html    ... bench: 745 ns/iter (+/- 19)
+test bench_regex_u8_no_html ... bench: 147 ns/iter (+/- 0)
+test bench_regex_u8_all     ... bench: 894 ns/iter (+/- 19)
+```
+
+> Note, however, that this only works because the characters that we
+> want to escape, `<`, `>`, and `&` are ASCII characters. Unlike the other
+> methods described previously, this one cannot be generalized for any
+> UTF-8 character.
+
+
+
 Finally, the chart
 ---------------------
 
@@ -470,27 +525,4 @@ above flags) didn't have any impact on the performances either
 generated binary). I'm not sure what this means exactly: did I miss
 something? Is SIMD actually not helpful for that case?
 
-
-### Using `u8` instead of `chars` ###
-
-I suppose all of this could be optimised by using a slice of `u8`
-instead of `chars` and assuming the input to be ASCII. It would
-probably be faster, and autovectorisation might kick in more
-easily. However, I'm not sure there is a way to do that without giving
-up UTF-8 support: I don't know what would happen by matching on `<`,
-`>` or `&` in a slice of `u8`. I guess it would work well in 99% of
-the cases, but I suppose there is the possibility that the code for
-e.g. `<` actually doesn't correspond to a real `<` but to the second,
-third or fourth bytes of another unicode character, which could cause
-quite awful bugs later on. Though, again,
-maybe ASCII compatibility avoids this problem, but I don't know
-Unicode enough to be certain of that, and I rather not take
-risks. (Plus, I also have similar examples that need to replace
-characters that are not ASCII.)
-
-> **Post-scriptum**: I got confirmation (thanks to the Rust Reddit :))
-> that it's possible to safely search for ASCII characterss in a slice of
-> `u8`, since the leading bit is set to `1` if it isn't the first byte
-> of a character. I guess I'll have to do some more benches in the
-> next few days. 
 
