@@ -15,6 +15,7 @@ Not really a webpage or a blog, just a space where I put stuff.
 
 Articles
 --------
+* [Optimising string processing in Rust](http://lise-henry.github.io/articles/optimising_strings.html)
 * [Simulating a call to "parent" virtual method in Rust](http://lise-henry.github.io/articles/rust_inheritance.html)
 
 Projects and repositories
@@ -33,6 +34,34 @@ this software.
 
 * [Source code on Github](https://github.com/lise-henry/crowbook)
 * [Crates.io](https://crates.io/crates/crowbook)
+
+The development of Crowbook also spawned a number of subprojects, that are available as separate libraries:
+
+#### crowbook-text-processing
+
+[![Crates.io](https://img.shields.io/crates/v/crowbook-text-processing.svg)](https://crates.io/crates/crowbook-text-processing)
+[![Crates.io](https://img.shields.io/crates/d/crowbook-text-processing.svg)](https://crates.io/crates/crowbook-text-processing)
+[![Crates.io](https://img.shields.io/crates/l/crowbook-text-processing.svg)](https://crates.io/crates/crowbook-text-processing)
+
+Some text processing functions initially written for Crowbook and
+moved in a separate library (and a more permissive license) so they
+can be used in other projects.
+
+* [Source code on Github](https://github.com/lise-henry/crowbook-text-processing)
+* [Crates.io](https://crates.io/crates/crowbook-text-processing)
+* [Library documentation](https://docs.rs/crowbook-text-processing/)
+
+#### crowbook-localize
+
+[![Crates.io](https://img.shields.io/crates/v/crowbook-localize.svg)](https://crates.io/crates/crowbook-localize)
+[![Crates.io](https://img.shields.io/crates/d/crowbook-localize.svg)](https://crates.io/crates/crowbook-localize)
+[![Crates.io](https://img.shields.io/crates/l/crowbook-localize.svg)](https://crates.io/crates/crowbook-localize)
+
+An attempt at writing a localization library using macros.
+
+* [Source code on Github](https://github.com/lise-henry/crowbook-localize)
+* [Crates.io](https://crates.io/crates/crowbook-localize)
+* [Library documentation](https://docs.rs/crowbook-localize/)
 
 ### Caribon ###
 

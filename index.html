@@ -182,6 +182,47 @@ p.first-para {
 }
 
 /* Default  HTML CSS file includes default EPUB CSS file */
+
+/* Colours for the navigation menu (toc) */
+nav {
+    background: #CFB0D4;
+    color: black;
+}
+
+#nav a:link {
+    color: black;
+}
+
+#nav a:visited {
+    color: black;
+}
+
+/* Colours for top and footer */
+#top {
+    background-color: #444343;
+    color: white;
+}
+
+footer {
+    background-color: #444343;
+    color: white;
+}
+
+footer a, #top a {
+    color: #fc71ff;
+}
+
+footer a:hover, #top a:hover {
+    color: #b743fe;
+}
+
+/* Additional elements */
+/* Grammar error */
+.grammar-error {
+    background: #d966ff;
+}
+
+
 span.initial {
     all: initial;
 }
@@ -197,7 +238,6 @@ p.first-para:first-letter {
 /* The nav element corresponding to the navigation menu */
 nav {
     position: fixed;
-    border-right: solid thin black;
     left: 0;
     top: 0;
     bottom: 0;
@@ -205,8 +245,6 @@ nav {
     overflow-y: auto;
     font-size: 80%;
     margin-left: 0;
-    background: #252525;
-    color: white;
 }
 
 #nav code {
@@ -214,12 +252,10 @@ nav {
 }
 
 #nav a:link {
-    color: white;
     text-decoration: none;
 }
 
 #nav a:visited {
-    color: white;
     text-decoration: none;
 }
 
@@ -355,8 +391,6 @@ blockquote {
     height: 2em;
     width: auto;
     text-align: center;
-    background-color: #252525;
-    color: white;
     transition: left 1s;
 }
 
@@ -367,25 +401,19 @@ blockquote {
     width: 70%;
     text-align: center;
     font-family: "Linux Biolinum";
+    font-weight: bold;
     font-variant: small-caps;
 }
 
 footer {
-    background-color: #252525;
     margin-top: 2em;
     margin-left: 0;
     text-align: center;
-    color: white;
     transition: margin-left 1s;
 }
 
 footer a, #top a {
-    color: #ef68ff;
     text-decoration: none;
-}
-
-footer a:hover, #top a:hover  {
-    color: #ca58d7;
 }
 
 footer p {
@@ -398,7 +426,6 @@ footer p {
 }
 
 
-                 
     </style>
     <style type = "text/css" media = "print">
       #page {
@@ -573,7 +600,7 @@ function toggle() {
 
   </head>
   <body>
-    
+
     <nav id = "nav">
         <div id = "nav-title">
           <h2><a href = "#link-0">Lise Henry's page</a></h2>
@@ -588,13 +615,13 @@ function toggle() {
   <ul>
    <li><a href = "#link-4">Crowbook</a>
    </li>
-   <li><a href = "#link-5">Caribon</a>
+   <li><a href = "#link-7">Caribon</a>
    </li>
-   <li><a href = "#link-6">Rust-ispell</a>
+   <li><a href = "#link-8">Rust-ispell</a>
    </li>
-   <li><a href = "#link-7">Stemmer-rs</a>
+   <li><a href = "#link-9">Stemmer-rs</a>
    </li>
-   <li><a href = "#link-8">Tiny 'Nux Tarot</a>
+   <li><a href = "#link-10">Tiny 'Nux Tarot</a>
    </li>
   </ul>
   </li>
@@ -606,13 +633,12 @@ function toggle() {
     <div id = "content">
       <div id = "page">
         <header>
-          <div id = "top"><p id = "para-14"><a href = "https://lise-henry.github.io/">Webpage</a> | <a href = "https://github.com/lise-henry/">Github Profile</a></p>
+          <div id = "top"><p id = "para-19"><a href = "https://lise-henry.github.io/">Webpage</a> | <a href = "https://github.com/lise-henry/">Github Profile</a></p>
 </div>
           <div id = "menu">
             <img id = "menu-button" onclick="toggle();"
                  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB3aWR0aD0iMjAwbW0iCiAgIGhlaWdodD0iMjAwbW0iCiAgIHZpZXdCb3g9IjAgMCA3MDguNjYxNDIgNzA4LjY2MTQxIgogICBpZD0ic3ZnMiIKICAgdmVyc2lvbj0iMS4xIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIwLjkxIHIxMzcyNSIKICAgc29kaXBvZGk6ZG9jbmFtZT0ibWVudS5zdmciPgogIDxkZWZzCiAgICAgaWQ9ImRlZnM0IiAvPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0iYmFzZSIKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiM2NjY2NjYiCiAgICAgYm9yZGVyb3BhY2l0eT0iMS4wIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp6b29tPSIwLjQ5NDk3NDc1IgogICAgIGlua3NjYXBlOmN4PSIxMDUuNjEyNzUiCiAgICAgaW5rc2NhcGU6Y3k9IjQwNy4wNjM5MSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ibGF5ZXIxIgogICAgIHNob3dncmlkPSJmYWxzZSIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjEzNjYiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iNzA0IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIiAvPgogIDxtZXRhZGF0YQogICAgIGlkPSJtZXRhZGF0YTciPgogICAgPHJkZjpSREY+CiAgICAgIDxjYzpXb3JrCiAgICAgICAgIHJkZjphYm91dD0iIj4KICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD4KICAgICAgICA8ZGM6dHlwZQogICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+CiAgICAgICAgPGRjOnRpdGxlPjwvZGM6dGl0bGU+CiAgICAgIDwvY2M6V29yaz4KICAgIDwvcmRmOlJERj4KICA8L21ldGFkYXRhPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9IkxheWVyIDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTM0My43MDA3OSkiPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjEwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMTA0LjMzMDcxLDQ2OS41MDUxIDUwMCwwIgogICAgICAgaWQ9InBhdGg0MTM2IgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgLz4KICAgIDxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDpub25lO2ZpbGwtcnVsZTpldmVub2RkO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxMDA7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICBkPSJtIDEwNC4zMzA3MSw3MDQuNTA1MSA1MDAsMCIKICAgICAgIGlkPSJwYXRoNDEzNi01IgogICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIKICAgICAgIGlua3NjYXBlOnRyYW5zZm9ybS1jZW50ZXIteD0iNzEuNDI4NTcyIgogICAgICAgaW5rc2NhcGU6dHJhbnNmb3JtLWNlbnRlci15PSItMjQyLjg1NzE2IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7ZmlsbC1ydWxlOmV2ZW5vZGQ7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjEwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMTA0LjMzMDcxLDkzOS41MDUwNiA1MDAsMCIKICAgICAgIGlkPSJwYXRoNDEzNi01LTMiCiAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIgogICAgICAgaW5rc2NhcGU6dHJhbnNmb3JtLWNlbnRlci14PSI3MS40Mjg1NzIiCiAgICAgICBpbmtzY2FwZTp0cmFuc2Zvcm0tY2VudGVyLXk9Ii0yNDIuODU3MTYiIC8+CiAgPC9nPgo8L3N2Zz4K"
                  alt = "Table of contents" title = "Table of contents" />
-            
           </div>
           <h1 id = "link-0" class="title" >Lise Henry's page</h1>
           <h2 class="author"></h2>
@@ -621,6 +647,7 @@ function toggle() {
   <h1 id = "link-1"></h1><p id = "para-1">Not really a webpage or a blog, just a space where I put stuff.</p>
 <h2 id = "link-2">Articles</h2>
 <ul>
+<li><a href = "http://lise-henry.github.io/articles/optimising_strings.html">Optimising string processing in<span class = "nbsp">&#160;</span>Rust</a></li>
 <li><a href = "http://lise-henry.github.io/articles/rust_inheritance.html">Simulating a call to "parent" virtual method in Rust</a></li>
 </ul>
 <h2 id = "link-3">Projects and repositories</h2>
@@ -631,33 +658,50 @@ function toggle() {
 <li><a href = "https://github.com/lise-henry/crowbook">Source code on Github</a></li>
 <li><a href = "https://crates.io/crates/crowbook">Crates.io</a></li>
 </ul>
-<h3 id = "link-5">Caribon</h3>
-<p id = "para-4"><a href = "https://crates.io/crates/caribon"><img src = "https://img.shields.io/crates/v/caribon.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/caribon"><img src = "https://img.shields.io/crates/d/caribon.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/caribon"><img src = "https://img.shields.io/crates/l/caribon.svg" title = "" alt = "Crates.io" /></a> <img src = "https://img.shields.io/travis/lise-henry/caribon.svg" title = "" alt = "Travis" /></p>
-<p id = "para-5">A repetition detector written in Rust. Code is <a href = "https://github.com/lise-henry/caribon">here</a>, but you can also test it <a href = "http://vps184889.ovh.net/caribon/">in your browser</a> because <a href = "https://github.com/lise-henry/caribon-server">caribon-server</a> runs it as a Webservice.</p>
+<p id = "para-4">The development of Crowbook also spawned a number of subprojects, that are available as separate libraries:</p>
+<h4 id = "link-5">crowbook-text-processing</h4>
+<p id = "para-5"><a href = "https://crates.io/crates/crowbook-text-processing"><img src = "https://img.shields.io/crates/v/crowbook-text-processing.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/crowbook-text-processing"><img src = "https://img.shields.io/crates/d/crowbook-text-processing.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/crowbook-text-processing"><img src = "https://img.shields.io/crates/l/crowbook-text-processing.svg" title = "" alt = "Crates.io" /></a></p>
+<p id = "para-6">Some text processing functions initially written for Crowbook and moved in a separate library (and a more permissive license) so they can be used in other projects.</p>
+<ul>
+<li><a href = "https://github.com/lise-henry/crowbook-text-processing">Source code on Github</a></li>
+<li><a href = "https://crates.io/crates/crowbook-text-processing">Crates.io</a></li>
+<li><a href = "https://docs.rs/crowbook-text-processing/">Library documentation</a></li>
+</ul>
+<h4 id = "link-6">crowbook-localize</h4>
+<p id = "para-7"><a href = "https://crates.io/crates/crowbook-localize"><img src = "https://img.shields.io/crates/v/crowbook-localize.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/crowbook-localize"><img src = "https://img.shields.io/crates/d/crowbook-localize.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/crowbook-localize"><img src = "https://img.shields.io/crates/l/crowbook-localize.svg" title = "" alt = "Crates.io" /></a></p>
+<p id = "para-8">An attempt at writing a localization library using macros.</p>
+<ul>
+<li><a href = "https://github.com/lise-henry/crowbook-localize">Source code on Github</a></li>
+<li><a href = "https://crates.io/crates/crowbook-localize">Crates.io</a></li>
+<li><a href = "https://docs.rs/crowbook-localize/">Library documentation</a></li>
+</ul>
+<h3 id = "link-7">Caribon</h3>
+<p id = "para-9"><a href = "https://crates.io/crates/caribon"><img src = "https://img.shields.io/crates/v/caribon.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/caribon"><img src = "https://img.shields.io/crates/d/caribon.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/caribon"><img src = "https://img.shields.io/crates/l/caribon.svg" title = "" alt = "Crates.io" /></a> <img src = "https://img.shields.io/travis/lise-henry/caribon.svg" title = "" alt = "Travis" /></p>
+<p id = "para-10">A repetition detector written in Rust. Code is <a href = "https://github.com/lise-henry/caribon">here</a>, but you can also test it <a href = "http://vps184889.ovh.net/caribon/">in your browser</a> because <a href = "https://github.com/lise-henry/caribon-server">caribon-server</a> runs it as a Webservice.</p>
 <ul>
 <li><a href = "https://github.com/lise-henry/caribon">Source code on Github</a></li>
 <li><a href = "https://crates.io/crates/caribon">Crates.io</a></li>
 <li><a href = "http://vps184889.ovh.net/caribon/">Web service</a></li>
 </ul>
-<h3 id = "link-6">Rust-ispell</h3>
-<p id = "para-6"><a href = "https://crates.io/crates/ispell"><img src = "https://img.shields.io/crates/v/ispell.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/ispell"><img src = "https://img.shields.io/crates/d/ispell.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/ispell"><img src = "https://img.shields.io/crates/l/ispell.svg" title = "" alt = "Crates.io" /></a></p>
-<p id = "para-7">Easily call isell/aspell/hunspell from Rust programs.</p>
+<h3 id = "link-8">Rust-ispell</h3>
+<p id = "para-11"><a href = "https://crates.io/crates/ispell"><img src = "https://img.shields.io/crates/v/ispell.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/ispell"><img src = "https://img.shields.io/crates/d/ispell.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/ispell"><img src = "https://img.shields.io/crates/l/ispell.svg" title = "" alt = "Crates.io" /></a></p>
+<p id = "para-12">Easily call isell/aspell/hunspell from Rust programs.</p>
 <ul>
 <li><a href = "https://github.com/lise-henry/rust-ispell">Source code on Github</a></li>
 <li><a href = "https://crates.io/crates/ispell">Crates.io</a></li>
 <li><a href = "https://lise-henry.github.io/rust-ispell/ispell/">Documentation</a></li>
 </ul>
-<h3 id = "link-7">Stemmer-rs</h3>
-<p id = "para-8"><a href = "https://crates.io/crates/stemmer"><img src = "https://img.shields.io/crates/v/stemmer.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/stemmer"><img src = "https://img.shields.io/crates/d/stemmer.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/stemmer"><img src = "https://img.shields.io/crates/l/stemmer.svg" title = "" alt = "Crates.io" /></a> <img src = "https://img.shields.io/travis/lise-henry/stemmer-rs.svg" title = "" alt = "Travis" /></p>
-<p id = "para-9">Rust bindings to the Snowball C implementation, allowing you to stem a word in various language. Used by Caribon.</p>
+<h3 id = "link-9">Stemmer-rs</h3>
+<p id = "para-13"><a href = "https://crates.io/crates/stemmer"><img src = "https://img.shields.io/crates/v/stemmer.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/stemmer"><img src = "https://img.shields.io/crates/d/stemmer.svg" title = "" alt = "Crates.io" /></a> <a href = "https://crates.io/crates/stemmer"><img src = "https://img.shields.io/crates/l/stemmer.svg" title = "" alt = "Crates.io" /></a> <img src = "https://img.shields.io/travis/lise-henry/stemmer-rs.svg" title = "" alt = "Travis" /></p>
+<p id = "para-14">Rust bindings to the Snowball C implementation, allowing you to stem a word in various language. Used by Caribon.</p>
 <ul>
 <li><a href = "https://github.com/lise-henry/stemmer-rs">Source code on Github</a></li>
 <li><a href = "https://crates.io/crates/stemmer">Crates.io</a></li>
 </ul>
-<h3 id = "link-8">Tiny 'Nux Tarot</h3>
-<p id = "para-10">(Not maintained anymore.)</p>
-<p id = "para-11"><a href = "https://github.com/lise-henry/tnt"><img src = "https://img.shields.io/github/tag/lise-henry/tnt.svg" title = "" alt = "GitHub tag" /></a> <a href = "https://github.com/lise-henry/tnt"><img src = "https://img.shields.io/github/license/lise-henry/tnt.svg" title = "" alt = "GitHub license" /></a></p>
-<p id = "para-12">A tarot game written in Vala, using Gtk+.</p>
+<h3 id = "link-10">Tiny 'Nux Tarot</h3>
+<p id = "para-15">(Not maintained anymore.)</p>
+<p id = "para-16"><a href = "https://github.com/lise-henry/tnt"><img src = "https://img.shields.io/github/tag/lise-henry/tnt.svg" title = "" alt = "GitHub tag" /></a> <a href = "https://github.com/lise-henry/tnt"><img src = "https://img.shields.io/github/license/lise-henry/tnt.svg" title = "" alt = "GitHub license" /></a></p>
+<p id = "para-17">A tarot game written in Vala, using Gtk+.</p>
 <ul>
 <li><a href = "https://github.com/lise-henry/tnt">Source code on Github</a></li>
 <li><a href = "http://tnt.ouvaton.org/">Website</a></li>
@@ -666,7 +710,7 @@ function toggle() {
 </div>
       </div>
     </div>
-    <footer id = "footer"><p id = "para-13">Generated by <a href = "https://github.com/lise-henry/crowbook">Crowbook</a> 0.9.1-unreleased</p>
+    <footer id = "footer"><p id = "para-18">Generated by <a href = "https://github.com/lise-henry/crowbook">Crowbook</a> 0.10.0-unreleased</p>
 </footer>
   </body>
 </html>
