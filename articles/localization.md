@@ -1,6 +1,8 @@
 ---
 import_config: ../common.book
 title: A hacky localization library with macros
+
+output.html: localization.html
 ---
 
 # A hacky localization library with macros
@@ -8,7 +10,8 @@ title: A hacky localization library with macros
 ## Context
 
 I am writing this program called [Crowbook](https://github.com/lise-henry/crowbook) which basically converts
-books written in Markdown to PDF, EPUB or HTML. Now, there are quite a
+books (or, in this case, articles) written in Markdown to PDF, EPUB or
+HTML. Now, there are quite a 
 few similar programs, which might be better than mine, but what I
 think is kind of a specificity of mine is that it does its best, when the book's
 language is french, to generate a correct french typography (because
@@ -23,7 +26,7 @@ to localize it.
 
 To be honest, the two previous paragraphs have little to do with
 the rest of this article, but it explains why the library is called
-[**`crowbook`**`-localize`](https://github.com/lise-henry/crowbook-localize
+[**`crowbook`**`-localize`](https://github.com/lise-henry/crowbook-localize).
 
 ## What I mean by localization
 
