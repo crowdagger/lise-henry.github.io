@@ -15,6 +15,7 @@ Not really a webpage or a blog, just a space where I put stuff.
 
 Articles
 --------
+* [A hacky localization library with macros](http://lise-henry.github.io/articles/localization.html)
 * [Optimising string processing in Rust](http://lise-henry.github.io/articles/optimising_strings.html)
 * [Simulating a call to "parent" virtual method in Rust](http://lise-henry.github.io/articles/rust_inheritance.html)
 
