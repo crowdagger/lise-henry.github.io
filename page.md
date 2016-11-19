@@ -52,17 +52,17 @@ can be used in other projects.
 * [Crates.io](https://crates.io/crates/crowbook-text-processing)
 * [Library documentation](https://docs.rs/crowbook-text-processing/)
 
-#### crowbook-localize
+#### crowbook-intl
 
-[![Crates.io](https://img.shields.io/crates/v/crowbook-localize.svg)](https://crates.io/crates/crowbook-localize)
-[![Crates.io](https://img.shields.io/crates/d/crowbook-localize.svg)](https://crates.io/crates/crowbook-localize)
-[![Crates.io](https://img.shields.io/crates/l/crowbook-localize.svg)](https://crates.io/crates/crowbook-localize)
+[![Crates.io](https://img.shields.io/crates/v/crowbook-intl.svg)](https://crates.io/crates/crowbook-intl)
+[![Crates.io](https://img.shields.io/crates/d/crowbook-intl.svg)](https://crates.io/crates/crowbook-intl)
+[![Crates.io](https://img.shields.io/crates/l/crowbook-intl.svg)](https://crates.io/crates/crowbook-intl)
 
 An attempt at writing a localization library using macros.
 
-* [Source code on Github](https://github.com/lise-henry/crowbook-localize)
-* [Crates.io](https://crates.io/crates/crowbook-localize)
-* [Library documentation](https://docs.rs/crowbook-localize/)
+* [Source code on Github](https://github.com/lise-henry/crowbook-intl)
+* [Crates.io](https://crates.io/crates/crowbook-intl)
+* [Library documentation](https://docs.rs/crowbook-intl/)
 
 ### Caribon ###
 
