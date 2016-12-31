@@ -5,6 +5,7 @@
     <meta name="generator" content="crowbook">
     <meta name="viewport" content="width=device-width">
     <meta name="author" content="Lise Henry">
+    
     <title>A hacky localization library with macros</title>
     <style type = "text/css">
       body {
@@ -50,6 +51,18 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left;
     font-family: Linux Biolinum, sans-serif;
     font-variant: small-caps;
+}
+
+/* Title of a part */
+h1.part {
+    font-size: 250%;
+    text-align: center;
+}
+
+/* The `Part X` section of a part */
+h2.part {
+    font-size: 175%;
+    text-align: center;
 }
 
 /* Title of the book */
@@ -125,7 +138,7 @@ div.notes {
 }
 
 table.notes {
-    bordel-collapse: collapse;
+    border-collapse: collapse;
     border-style: hidden;
 }
 
@@ -181,12 +194,14 @@ p.first-para {
     white-space: nowrap;
 }
 
+
 /* Default  HTML CSS file includes default EPUB CSS file */
 
 /* Colours for the navigation menu (toc) */
 nav {
-    background: #CFB0D4;
+    background: #CBBFCC;
     color: black;
+    border-right-color: black;
 }
 
 #nav a:link {
@@ -216,16 +231,12 @@ footer a:hover, #top a:hover {
     color: #b743fe;
 }
 
-/* Additional elements */
+/* Additional elements, only use for proofreading */
 /* Grammar error */
 .grammar-error {
     background: #d966ff;
 }
 
-
-span.initial {
-    all: initial;
-}
 
 p.first-para:first-letter {
     font-size: 300%;
@@ -237,6 +248,7 @@ p.first-para:first-letter {
 
 /* The nav element corresponding to the navigation menu */
 nav {
+    z-index: 2;
     position: fixed;
     left: 0;
     top: 0;
@@ -245,6 +257,8 @@ nav {
     overflow-y: auto;
     font-size: 80%;
     margin-left: 0;
+    border-right-width: 2px;
+    border-right-style: dashed;
 }
 
 #nav code {
@@ -312,16 +326,17 @@ nav {
 
 /* Hide navigation bar */
 #nav {
-    left: -20%;
+    left: -21%;
     transition: left 1s;
 }
 
 /* The main content of the book */
 #content {
-/*    position: absolute;*/
     overflow-y: auto;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     transition: margin-left 1s;
 }
 
@@ -382,32 +397,27 @@ blockquote {
     cursor: pointer;
 }
 
+footer {
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+
 #top {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2em;
-    width: auto;
-    text-align: center;
-    transition: left 1s;
+    margin-top: 0;
+    margin-bottom: 1em;
 }
 
 #top p {
-    margin-top: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    text-align: center;
     font-family: "Linux Biolinum";
     font-weight: bold;
     font-variant: small-caps;
 }
 
-footer {
-    margin-top: 2em;
+footer, #top {
+    padding-top: .25em;
+    padding-bottom: .25em;
     margin-left: 0;
+    margin-right: 0;
     text-align: center;
     transition: margin-left 1s;
 }
@@ -416,13 +426,13 @@ footer a, #top a {
     text-decoration: none;
 }
 
-footer p {
+footer p, #top p {
     text-indent: 0;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-    width: 70%;
+    max-width: 33em;
 }
 
 
@@ -570,26 +580,26 @@ var display_menu = false;
 function toggle() {
     if (display_menu == true) {
         display_menu = false;
-        document.getElementById("nav").style.left = "-20%";
-        document.getElementById("content").style.marginLeft = "10%";
+        document.getElementById("nav").style.left = "-21%";
+        document.getElementById("content").style.marginLeft = "0%";
         document.getElementById("menu").style.left = "1em";
-        if(document.getElementById("top")) {
+/*        if(document.getElementById("top")) {
             document.getElementById("top").style.left = "0";
         }
         if(document.getElementById("footer")) {
             document.getElementById("footer").style.marginLeft = "0%";
-        }
+        }*/
     } else {
         display_menu = true;
         document.getElementById("nav").style.left = "0";
-        document.getElementById("content").style.marginLeft = "30%";
+        document.getElementById("content").style.marginLeft = "20%";
         document.getElementById("menu").style.left = "20%";
-        if(document.getElementById("top")) {
+/*        if(document.getElementById("top")) {
             document.getElementById("top").style.left = "20%";
         }
         if(document.getElementById("footer")) {
             document.getElementById("footer").style.marginLeft = "20%";
-        }
+        }*/
     }
 }
 
@@ -603,49 +613,51 @@ function toggle() {
 
 
     <div id = "content">
+      <div id = "top"><p id = "para-56"><a href = "https://lise-henry.github.io/">Webpage</a> | <a href = "https://github.com/lise-henry/">Github Profile</a></p>
+</div>
       <div id = "page">
         <header>
-          <div id = "top"><p id = "para-56"><a href = "https://lise-henry.github.io/">Webpage</a> | <a href = "https://github.com/lise-henry/">Github Profile</a></p>
-</div>
+
           <div id = "menu">
           </div>
           <h1 id = "link-0" class="title" >A hacky localization library with macros</h1>
           <h2 class="author">Lise Henry</h2>
         </header>
+
         <div id = "chapter-0" class = "chapter">
   <h1 id = "link-1"></h1><h2 id = "link-2">Context</h2>
-<p id = "para-1">I am writing this program called <a href = "https://github.com/lise-henry/crowbook">Crowbook</a> which basically converts books (or, in this case, articles) written in Markdown to PDF, EPUB or HTML. Now, there are quite a few similar programs, which might be better than mine, but what I think is kind of a specificity of mine is that it does its best, when the book's language is french, to generate a correct french typography (because french typography has some rules about non-breaking spaces and stuff and it can be painful to insert them manually in your Markdown files).</p>
-<p id = "para-2">Except Crowbook was only in english, which felt a bit stupid for a program that, in my mind, was currently more useful to french people (and if you ever heard the accent of French, you know that the average french person isn't that good at english). So, I decided to localize it.</p>
-<p id = "para-3">To be honest, the two previous paragraphs have little to do with the rest of this article, but it explains why the library is called <a href = "https://github.com/lise-henry/crowbook-localize"><b><code>crowbook</code></b><code>-localize</code></a>.</p>
+<p id = "para-1">I am writing this program called <a href = "https://github.com/lise-henry/crowbook">Crowbook</a> which basically converts books (or, in this case, articles) written in Markdown to PDF, EPUB or HTML. Now, there are quite a few similar programs, which might be better than mine, but what I think is kind of a specificity of mine is that it does its best, when the book’s language is french, to generate a correct french typography (because french typography has some rules about non-breaking spaces and stuff and it can be painful to insert them manually in your Markdown files).</p>
+<p id = "para-2">Except Crowbook was only in english, which felt a bit stupid for a program that, in my mind, was currently more useful to french people (and if you ever heard the accent of French, you know that the average french person isn’t that good at english). So, I decided to localize it.</p>
+<p id = "para-3">To be honest, the two previous paragraphs have little to do with the rest of this article, but it explains why the library is called <a href = "https://github.com/lise-henry/crowbook-intl"><b><code>crowbook</code></b><code>-localize</code></a> (<b>Edit</b>: it has since been renamed <a href = "httsp://github.com/lise-henry/crowbook-intl">crowbook-intl</a>).</p>
 <h2 id = "link-3">What I mean by localization</h2>
-<p id = "para-7">Now, I'm really not an expert in the domain of correctly doing localization, and to be honest I'm not even sure that I correctly get the difference between <code>localization</code> and <code>internationalization</code><a href = "#note-dest-1"><sup id = "note-source-1">[1]</sup></a> (a.k.a <code>l10n</code> and <code>i18n</code> because, you know, people in computer science like to make things clearer and easier to understand<a href = "#note-dest-2"><sup id = "note-source-2">[2]</sup></a>). So, to be clear, by "localization", here I mean one, and <em>only one</em> feature :</p>
+<p id = "para-7">Now, I’m really not an expert in the domain of correctly doing localization, and to be honest I’m not even sure that I correctly get the difference between <code>localization</code> and <code>internationalization</code><a href = "#note-dest-1"><sup id = "note-source-1">[1]</sup></a> (a.k.a <code>l10n</code> and <code>i18n</code> because, you know, people in computer science like to make things clearer and easier to understand<a href = "#note-dest-2"><sup id = "note-source-2">[2]</sup></a>). So, to be clear, by “localization”, here I mean one, and <em>only one</em> feature :</p>
  <ul>
-<li>displaying the text of my program in a language set by the user of the program (obviously, if this translation exists; it's not a translating software).</li>
+<li>displaying the text of my program in a language set by the user of the program (obviously, if this translation exists; it’s not a translating software).</li>
 </ul>
- <p id = "para-9">I'm aware that localization can also mean other things, such as switching the way dates are printed, or what's the decimal mark, or timezone stuff, but I tend to think that those are less urgent features<a href = "#note-dest-3"><sup id = "note-source-3">[3]</sup></a> than making my program understandable by someone who doesn't speak english.</p>
- <p id = "para-10">Now I'm not saying it wouldn't be nice if there was a library to do that, if possible in an intelligent manner, but I don't think it's as important as being able to provide an actual translation for people who are not fluent in english.</p>
+ <p id = "para-9">I’m aware that localization can also mean other things, such as switching the way dates are printed, or what’s the decimal mark, or timezone stuff, but I tend to think that those are less urgent features<a href = "#note-dest-3"><sup id = "note-source-3">[3]</sup></a> than making my program understandable by someone who doesn’t speak english.</p>
+ <p id = "para-10">Now I’m not saying it wouldn’t be nice if there was a library to do that, if possible in an intelligent manner, but I don’t think it’s as important as being able to provide an actual translation for people who are not fluent in english.</p>
 <h2 id = "link-4">The state in Rust</h2>
-<p id = "para-11">As an ecosystem, Rust has areas where it is pretty good. I'm sorry to say it, but internationalization/localization is not where it shines the most. To begin with, I didn't even find a way to get the language that the user is using. On Unix, it's an environment variable; on Windows, if I understood correctly, some registry key. That's quite of a problem for a command-line application, because you can't have the "choose language" as an option in the menu, and you probably don't want the user to have to run your program with</p>
+<p id = "para-11">As an ecosystem, Rust has areas where it is pretty good. I’m sorry to say it, but internationalization/localization is not where it shines the most. To begin with, I didn’t even find a way to get the language that the user is using. On Unix, it’s an environment variable; on Windows, if I understood correctly, some registry key. That’s quite of a problem for a command-line application, because you can’t have the “choose language” as an option in the menu, and you probably don’t want the user to have to run your program with</p>
 <pre><code class = "language-bash">$ myprogram --lang foo &lt;OPTIONS&gt;
 </code></pre>
 <p id = "para-12">every single time.</p>
-<p id = "para-13">(For now, I don't have a solution for that, except getting the <code>LANG</code> environment variable and, if it doesn't work, sorry for Windows users, you'll have to speak english because I have no idea how to get that on Windows.)</p>
+<p id = "para-13">(For now, I don’t have a solution for that, except getting the <code>LANG</code> environment variable and, if it doesn’t work, sorry for Windows users, you’ll have to speak english because I have no idea how to get that on Windows.)</p>
 <p id = "para-14">Now, are there libraries to actually translate the strings? Good news, is, I found two (well, three, but one had only one version published and it has been yanked):</p>
 <ul>
 <li><a href = "https://crates.io/crates/l20n">l20n</a>, an implementation of <a href = "http://l20n.org/">l20n</a>;</li>
 <li><a href = "https://crates.io/crates/message-format">message-format</a>, an implementation of <a href = "http://userguide.icu-project.org/formatparse/messages">ICU message formats</a></li>
 </ul>
-<p id = "para-16">As I said, I'm not a specialist on internationalization and localization, so I'm not sure what I am going to say about <code>l20n</code><a href = "#note-dest-4"><sup id = "note-source-4">[4]</sup></a> is really relevant, but I'm going to do it anyway. To me, the <a href = "http://l20n.org">l20n</a> approach seems nice for the Web, but I'm not sure it's what I want for a command line application. Basically, the problem is I feel it requires quite substantial transformation from my existing source code. Even if I found <code>gettext</code> quite painful to use every time I had to (partly because it needed to be integrated with autoconf/automake), I quite liked the minimal modification that was needed to the <code>.c</code> files (basically, writing <code>printf(_("foo"))</code> instead of <code>printf("foo")</code>.</p>
- <p id = "para-17">And, well, the thing is, to be honest, even if I'm not good at it, I somewhat know a little about using gettext and <code>msgmerge</code> to update a documentation, so it seemed to me that if I could use this format, it would be neat.</p>
+<p id = "para-16">As I said, I’m not a specialist on internationalization and localization, so I’m not sure what I am going to say about <code>l20n</code><a href = "#note-dest-4"><sup id = "note-source-4">[4]</sup></a> is really relevant, but I’m going to do it anyway. To me, the <a href = "http://l20n.org">l20n</a> approach seems nice for the Web, but I’m not sure it’s what I want for a command line application. Basically, the problem is I feel it requires quite substantial transformation from my existing source code. Even if I found <code>gettext</code> quite painful to use every time I had to (partly because it needed to be integrated with autoconf/automake), I quite liked the minimal modification that was needed to the <code>.c</code> files (basically, writing <code>printf(_(“foo”))</code> instead of <code>printf(“foo”)</code>.</p>
+ <p id = "para-17">And, well, the thing is, to be honest, even if I’m not good at it, I somewhat know a little about using gettext and <code>msgmerge</code> to update a documentation, so it seemed to me that if I could use this format, it would be neat.</p>
 <p id = "para-18">So, because of that, and also because I wanted to play with some Rust concepts that I had, until this point, stayed away from, I decided to try and write my own library to translate strings.</p>
-<h2 id = "link-5">The "problem" of Rust</h2>
-<p id = "para-19">The problem with Rust, in this case, is the way <code>format!</code> (and its family: <code>print!</code>, <code>println!</code> and so on) works. I mean, it has puzzled me when I learned Rust: why did the most basic "Hello, World!" example <em>already need a fracking macro</em> for <code>println!</code>? But, with time, I've come to like how arguments are checked at compile time. Except, when you want to have the format string set at runtime, it can cause difficulties. Consider the following:</p>
+<h2 id = "link-5">The “problem” of Rust</h2>
+<p id = "para-19">The problem with Rust, in this case, is the way <code>format!</code> (and its family: <code>print!</code>, <code>println!</code> and so on) works. I mean, it has puzzled me when I learned Rust: why did the most basic “Hello, World!” example <em>already need a fracking macro</em> for <code>println!</code>? But, with time, I’ve come to like how arguments are checked at compile time. Except, when you want to have the format string set at runtime, it can cause difficulties. Consider the following:</p>
 <pre><code class = "language-rust">println!("Hi, {}, how are you?", name);
 </code></pre>
-<p id = "para-20">Easy, simple. Now, let's say you want to translate this string. You can't have</p>
+<p id = "para-20">Easy, simple. Now, let’s say you want to translate this string. You can’t have</p>
 <pre><code class = "language-rust">println!(get_translation("Hi, {}, how are you?"), name);
 </code></pre>
-<p id = "para-21">because the first argument must be a string literal. Now most of the times I like that, but when I'm in this kind of situation, I must admit the rigidity of Rust is a bit painful. It's not like there is a <code>format-runtime!</code> macro, so basically the solution is using some kind of runtime templating library (and, if I understood correctly, the two localization/internationalization libraries I mentioned earlier work by providing you such a library), which I find nice for translating webpages but not when you have a thousand small strings to translate. Of course, this is not a problem for strings that <em>don't</em> have this kind of arguments, in which case you can just type:</p>
+<p id = "para-21">because the first argument must be a string literal. Now most of the times I like that, but when I’m in this kind of situation, I must admit the rigidity of Rust is a bit painful. It’s not like there is a <code>format-runtime!</code> macro, so basically the solution is using some kind of runtime templating library (and, if I understood correctly, the two localization/internationalization libraries I mentioned earlier work by providing you such a library), which I find nice for translating webpages but not when you have a thousand small strings to translate. Of course, this is not a problem for strings that <em>don’t</em> have this kind of arguments, in which case you can just type:</p>
 <pre><code class = "language-rust">println!("{}", get_translation("foo");
 </code></pre>
 <p id = "para-22">Except, looking at my program, I have:</p>
@@ -656,9 +668,9 @@ function toggle() {
 <p id = "para-23">so knowing that only around 70% cause problem might not really be a relief.</p>
 <h2 id = "link-6">Macro rules!</h2>
 <p id = "para-24">When I learned Rust, I read about macros, and I thought:</p>
-<blockquote><p id = "para-25">Hell, that's complicated! Code that generate code at compile-time? This looks like black magic. I guess I'll never have to use that anyway.</p>
+<blockquote><p id = "para-25">Hell, that’s complicated! Code that generate code at compile-time? This looks like black magic. I guess I’ll never have to use that anyway.</p>
 </blockquote>
-<p id = "para-26">But in this case, using a macro didn't seem like a bad way to handle this. So I tried very hard not to be scared, fumbled a bit, cried a little when it didn't work, but finally came with a working example:</p>
+<p id = "para-26">But in this case, using a macro didn’t seem like a bad way to handle this. So I tried very hard not to be scared, fumbled a bit, cried a little when it didn’t work, but finally came with a working example:</p>
 <pre><code class = "language-rust">#[macro_export] macro_rules! my_format {
     ("hello, {}", $($arg:tt)*) =&gt; ({
         match lang {
@@ -683,10 +695,10 @@ println!("{}", my_format!("hello, {}", name));
 <pre><code class = "language-rust">my_format!("other string")
 </code></pre>
 <p id = "para-29">it fall back to calling <code>format!</code> directly.</p>
-<p id = "para-30">This was what I wanted. I didn't have to modify my existing code besides replacing the <code>format!</code> macro with <code>my_format!</code> (or adding it for some strings that were not using <code>format!</code>). And it would check at compile time that my translation had the correct number of arguments.</p>
+<p id = "para-30">This was what I wanted. I didn’t have to modify my existing code besides replacing the <code>format!</code> macro with <code>my_format!</code> (or adding it for some strings that were not using <code>format!</code>). And it would check at compile time that my translation had the correct number of arguments.</p>
 <h2 id = "link-7">Generating the macro</h2>
-<p id = "para-31">Now, obviously, it wasn't very nice to hard-code all my strings in a macro, and to ask potential translators to edit a giant macro. So I decided that, at build-time, my library would read <code>.po</code> files containing the translation in a gettext-like format and generate this macro.</p>
-<p id = "para-32">At this point, honestly, like Bruce Willis when he's about to throw a car to an helicopter, I told myself: <em>"This is a bad idea"</em>. I mean, macros were already black magic: code that generate code, seriously? So a build script that generated a macro that would generate code felt a bit like reciting unknown words from the Necronomicon and hoping for the best.</p>
+<p id = "para-31">Now, obviously, it wasn’t very nice to hard-code all my strings in a macro, and to ask potential translators to edit a giant macro. So I decided that, at build-time, my library would read <code>.po</code> files containing the translation in a gettext-like format and generate this macro.</p>
+<p id = "para-32">At this point, honestly, like Bruce Willis when he’s about to throw a car to an helicopter, I told myself: <em>“This is a bad idea”</em>. I mean, macros were already black magic: code that generate code, seriously? So a build script that generated a macro that would generate code felt a bit like reciting unknown words from the Necronomicon and hoping for the best.</p>
 <p id = "para-33">A bit to my surprise, it turned out to not be that bad. I quickly had some library that was enough for my initial needs (providing a french translation of my program). I simply had to replace <code>format!</code> to <code>lformat!</code> and actually do the translation, and, well, it worked:</p>
 <pre><code class = "language-bash">$ ./target/debug/crowbook guide.book 
 Error: LaTeX (README.md): image 'https://travis-ci.org/lise-henry/crowbook.svg?branch=master' doesn't seem to be local; ignoring it.
@@ -705,8 +717,8 @@ Info : Fichier ODT généré avec succès : docs/book/book.odt
 Info : Fichier PDF généré avec succès: docs/book/book.pdf
 </code></pre>
 <h2 id = "link-8">The cost of black magic</h2>
-<p id = "para-34">But, well, I had read enough supernatural novels to know that black magic comes with a cost, so I wondered what I, now, had to pay, and hoped it wasn't my soul.</p>
-<p id = "para-35">I looked at <code>localized_macros.rs</code>, the file generated at compile time, and it was a bit frightening to see a thousand-line macro. While my initial reaction was to grab the closest crucifix and shout <em>Vade retro satanas!</em> I rationalised that it wasn't as horrifying at it looked like. The macro (now called <code>lformat!</code> and using a global <code>RWLock</code> variable to get the language), looked like this:</p>
+<p id = "para-34">But, well, I had read enough supernatural novels to know that black magic comes with a cost, so I wondered what I, now, had to pay, and hoped it wasn’t my soul.</p>
+<p id = "para-35">I looked at <code>localized_macros.rs</code>, the file generated at compile time, and it was a bit frightening to see a thousand-line macro. While my initial reaction was to grab the closest crucifix and shout <em>Vade retro satanas!</em> I rationalised that it wasn’t as horrifying at it looked like. The macro (now called <code>lformat!</code> and using a global <code>RWLock</code> variable to get the language), looked like this:</p>
 <pre><code class = "language-rust">#[macro_export] macro_rules! lformat {
     ("rendering {}:{}", $($arg:tt)*) =&gt; ({
         let __guard = $crate::localize_macros::__get_lang();
@@ -731,8 +743,8 @@ Info : Fichier PDF généré avec succès: docs/book/book.pdf
 <li>if the string was in one of the <code>.po</code> file, a <code>match</code> statement;</li>
 <li>else, a direct call to <code>format!</code>.</li>
 </ul>
-<p id = "para-37">The compile time was a few seconds slower (55s instead of 45s in release mode), which is always bad news but wasn't as bad as I had thought it would be (expanding a thousand-line macro a thousand of times). The binary was a bit larger (3.926MB instead of 3.795MB), but again, not as much as I had feared.</p>
-<p id = "para-38">But how would it look like with not one, but ten translations? Or one hundred? I wasn't gonna translate my program in a hundred languages, but I could pretend I had by loading the french translation a hundred times with different languages codes. The result I got where the following:</p>
+<p id = "para-37">The compile time was a few seconds slower (55s instead of 45s in release mode), which is always bad news but wasn’t as bad as I had thought it would be (expanding a thousand-line macro a thousand of times). The binary was a bit larger (3.926MB instead of 3.795MB), but again, not as much as I had feared.</p>
+<p id = "para-38">But how would it look like with not one, but ten translations? Or one hundred? I wasn’t gonna translate my program in a hundred languages, but I could pretend I had by loading the french translation a hundred times with different languages codes. The result I got where the following:</p>
 <div class = "table">
     <table>
 <tr>
@@ -746,12 +758,12 @@ Info : Fichier PDF généré avec succès: docs/book/book.pdf
 
     </table>
 </div>
-<p id = "para-39">Again, not as bad as I had feared. Yes, the compile time for 100 languages is quite atrociously long, but when you get to 100 languages you probably can have some <code>#[cfg(foo)]</code> to include the 100 translations only when you're about to build a new release and not on each debug build. Obviously, the binary has become quite big for 100 languages, but it's only around half a meg larger than the non-localized binary plus the 100 <code>.po</code> files you'd have to distribute anyway.</p>
-<p id = "para-40">(And, well, currently <a href = "https://crates.io/">Cargo</a> makes it pretty easy to distribute a single binary with <code>cargo install</code>, but less to distribute a binary <em>plus</em> some resources files, so I tend to not bother and put all my resources in the binary anyway, which might explain why the non-localized binary is already quite big: it includes some HTML and LaTeX templates, some <code>svg</code> files, and even an <code>ODT</code> file. I'm not sure it is the good thing to do, but I'm not sure it is really a bad one either and, at this time, it definitely looks like the easy way.)</p>
-<p id = "para-42">I didn't talk about runtime performances because I don't think they really matter in that case, as typically this macro is called only for strings that will be displayed to the user, so unless your program writes a million messages per second on <code>stdout</code> (or more plausibly in a log file) it's probably not where it will take time<a href = "#note-dest-5"><sup id = "note-source-5">[5]</sup></a>. I guess this implementation via a macro could be argued to be faster than the equivalent localization involving a runtime check of the arguments, but again I don't think it's really important except for very specific cases.</p>
+<p id = "para-39">Again, not as bad as I had feared. Yes, the compile time for 100 languages is quite atrociously long, but when you get to 100 languages you probably can have some <code>#[cfg(foo)]</code> to include the 100 translations only when you’re about to build a new release and not on each debug build. Obviously, the binary has become quite big for 100 languages, but it’s only around half a meg larger than the non-localized binary plus the 100 <code>.po</code> files you’d have to distribute anyway.</p>
+<p id = "para-40">(And, well, currently <a href = "https://crates.io/">Cargo</a> makes it pretty easy to distribute a single binary with <code>cargo install</code>, but less to distribute a binary <em>plus</em> some resources files, so I tend to not bother and put all my resources in the binary anyway, which might explain why the non-localized binary is already quite big: it includes some HTML and LaTeX templates, some <code>svg</code> files, and even an <code>ODT</code> file. I’m not sure it is the good thing to do, but I’m not sure it is really a bad one either and, at this time, it definitely looks like the easy way.)</p>
+<p id = "para-42">I didn’t talk about runtime performances because I don’t think they really matter in that case, as typically this macro is called only for strings that will be displayed to the user, so unless your program writes a million messages per second on <code>stdout</code> (or more plausibly in a log file) it’s probably not where it will take time<a href = "#note-dest-5"><sup id = "note-source-5">[5]</sup></a>. I guess this implementation via a macro could be argued to be faster than the equivalent localization involving a runtime check of the arguments, but again I don’t think it’s really important except for very specific cases.</p>
  <h2 id = "link-9">Macro quirks</h2>
 <h3 id = "link-10">Error messages</h3>
-<p id = "para-43">An advantage of this approach is that it checks that the format of the translation is correct at compile-time, which avoid runtime errors. A disadvantage is that error messages aren't really obvious. E.g., on a few occasions I had strings that were fuzzily matched by <code>msgmerge</code> that was being a bit too fuzzy, which led to something like this in the <code>fr.po</code> file:</p>
+<p id = "para-43">An advantage of this approach is that it checks that the format of the translation is correct at compile-time, which avoid runtime errors. A disadvantage is that error messages aren’t really obvious. E.g., on a few occasions I had strings that were fuzzily matched by <code>msgmerge</code> that was being a bit too fuzzy, which led to something like this in the <code>fr.po</code> file:</p>
 <pre><code>#: /home/lise/Progs/rust/crowbook/src/lib/html_dir.rs:89
 msgid "could not create HTML directory {}:{}"
 msgstr "impossible de créer le répertoire HTML {}"
@@ -762,31 +774,31 @@ msgstr "impossible de créer le répertoire HTML {}"
    |
 89 |                                         lformat!("could not create HTML directory {}:{}", &amp;dest_path, e))));
 </code></pre>
-<p id = "para-45">Though I guess the library could check that the arguments match and print a more useful error, so maybe it could be enhanced. On the other hand, it's quite possible this library has a few bugs that will be generate yet more confusing error messages, so, to be clear, I'm not saying you should use it right now.</p>
+<p id = "para-45">Though I guess the library could check that the arguments match and print a more useful error, so maybe it could be enhanced. On the other hand, it’s quite possible this library has a few bugs that will be generate yet more confusing error messages, so, to be clear, I’m not saying you should use it right now.</p>
 <h3 id = "link-11">Strings handling</h3>
-<p id = "para-46">A bit more confusing to me is how strings are matched in macros and at which points they are expanded. I mean, I can't write the following macro, to have a localized variant of <code>println!</code>:</p>
+<p id = "para-46">A bit more confusing to me is how strings are matched in macros and at which points they are expanded. I mean, I can’t write the following macro, to have a localized variant of <code>println!</code>:</p>
 <pre><code class = "language-rust">#[macro_export] macro_rules! lprintln {
     ($fmt:expr) =&gt; (println!("{}", lformat!($fmt)));
     ($fmt:expr, $($arg:tt)*) =&gt; (println!("{}", lformat!($fmt, $($arg)*)));
 }
 </code></pre>
-<p id = "para-47">or, more exactly, I <em>can</em>, but it won't work, as <code>lformat!</code> will always be expanded to the default case, directly calling <code>format!</code>:</p>
+<p id = "para-47">or, more exactly, I <em>can</em>, but it won’t work, as <code>lformat!</code> will always be expanded to the default case, directly calling <code>format!</code>:</p>
 <pre><code class = "language-rust">($($arg:tt)*) =&gt; (format!($($arg)*));
 </code></pre>
 <p id = "para-48">and, thus, displaying an untranslated string.</p>
-<p id = "para-49">I'm not sure why. I guess it's black magic.</p>
+<p id = "para-49">I’m not sure why. I guess it’s black magic.</p>
 <h2 id = "link-12">Limitations (but they could be lifted)</h2>
-<p id = "para-50">This approach has a few limitations. Obviously, you can't had support for a new language at runtime, which might or might not be a feature you need. On the other hand, I think the code generation approach might actually provide more flexibility:</p>
+<p id = "para-50">This approach has a few limitations. Obviously, you can’t had support for a new language at runtime, which might or might not be a feature you need. On the other hand, I think the code generation approach might actually provide more flexibility:</p>
 <ul>
-<li>It can provide this 'hybrid' approach between runtime and compile-time, where translations resources are parsed at compile time but the language can be set at runtime.</li>
-<li>It could also provide a "full compile-time" approach, generating different binaries for every different language. This would probably not make sense for most programs, but for some where the text is actually predominant (e.g., an interactive fiction?) it might be useful.</li>
-<li>At the opposite, it could also provide a "full runtime" approach, by replacing <code>lformat!</code> (or whatever the name of this macro would be in this fictional library) calls with functions/methods calls that would do the formatting and getting the appropriate resources at runtime.</li>
+<li>It can provide this ‘hybrid’ approach between runtime and compile-time, where translations resources are parsed at compile time but the language can be set at runtime.</li>
+<li>It could also provide a “full compile-time” approach, generating different binaries for every different language. This would probably not make sense for most programs, but for some where the text is actually predominant (e.g., an interactive fiction?) it might be useful.</li>
+<li>At the opposite, it could also provide a “full runtime” approach, by replacing <code>lformat!</code> (or whatever the name of this macro would be in this fictional library) calls with functions/methods calls that would do the formatting and getting the appropriate resources at runtime.</li>
 </ul>
-<p id = "para-51">Obviously, the current implementation of my library doesn't do that, and it also has many more limitations, such as not supporting plurals or gender variants (because I don't know how to do it and I didn't need it), incomplete compatibility with <code>gettext</code>'s po format, and probably a ton of bugs.</p>
+<p id = "para-51">Obviously, the current implementation of my library doesn’t do that, and it also has many more limitations, such as not supporting plurals or gender variants (because I don’t know how to do it and I didn’t need it), incomplete compatibility with <code>gettext</code>’s po format, and probably a ton of bugs.</p>
 <h2 id = "link-13">Conclusion</h2>
-<p id = "para-52">When I started writing this library, I felt it was hacky and a terrible idea that I had to try anyway. Now, I still feels it is quite hacky, but I'm not sure if that's really a bad idea <em>per se</em> (yet I wonder if I feel that way because I have been corrupted by the use of black magic).</p>
-<p id = "para-53">I certainly would not recommend using this library yet, but I might actually merge the changes I made to my program to the <code>master</code> branch and hope that I don't regret it later on.</p>
-<p id = "para-54">To be honest, I still half expect people to tell me "oh my, you really shouldn't do that!", but in any case, it was fun playing with macro generation.</p>
+<p id = "para-52">When I started writing this library, I felt it was hacky and a terrible idea that I had to try anyway. Now, I still feels it is quite hacky, but I’m not sure if that’s really a bad idea <em>per se</em> (yet I wonder if I feel that way because I have been corrupted by the use of black magic).</p>
+<p id = "para-53">I certainly would not recommend using this library yet, but I might actually merge the changes I made to my program to the <code>master</code> branch and hope that I don’t regret it later on.</p>
+<p id = "para-54">To be honest, I still half expect people to tell me “oh my, you really shouldn’t do that!”, but in any case, it was fun playing with macro generation.</p>
 
 </div><div class = "notes">
  <h2 class = "notes">Notes</h2>
@@ -828,7 +840,7 @@ msgstr "impossible de créer le répertoire HTML {}"
 
  </td>
  <td class = "note">
-  <aside id = "note-dest-3"><p id = "para-8">And honestly, in some cases, features the user might not really want that much; personally, even though I'm french, I <em>hate</em> it when a program decides that <code>3.14</code> should no longer be written <code>3.14</code> but <code>3,14</code> because I set the language to french. I mean, yeah, when I write on paper I would write <code>3,14</code> but I've integrated that when I'm typing on a keyboard I should translate it to <code>3.14</code>, in the same way that <code>7</code> lacks a bar in the middle and <code>4</code> has a vertical bar that goes all the way to the top. More importantly, when I copy/paste a formula on the Internet, I expect it to keep working even if my locale is not the same as the one of the user that wrote the formula.</p>
+  <aside id = "note-dest-3"><p id = "para-8">And honestly, in some cases, features the user might not really want that much; personally, even though I’m french, I <em>hate</em> it when a program decides that <code>3.14</code> should no longer be written <code>3.14</code> but <code>3,14</code> because I set the language to french. I mean, yeah, when I write on paper I would write <code>3,14</code> but I’ve integrated that when I’m typing on a keyboard I should translate it to <code>3.14</code>, in the same way that <code>7</code> lacks a bar in the middle and <code>4</code> has a vertical bar that goes all the way to the top. More importantly, when I copy/paste a formula on the Internet, I expect it to keep working even if my locale is not the same as the one of the user that wrote the formula.</p>
 </aside>
   </td>
 </tr>
@@ -840,7 +852,7 @@ msgstr "impossible de créer le répertoire HTML {}"
 
  </td>
  <td class = "note">
-  <aside id = "note-dest-4"><p id = "para-15">I only discovered about <a href = "https://crates.io/crates/message-format">message-format</a> when writing this article, so I really didn't investigate it properly for my needs. Oops.</p>
+  <aside id = "note-dest-4"><p id = "para-15">I only discovered about <a href = "https://crates.io/crates/message-format">message-format</a> when writing this article, so I really didn’t investigate it properly for my needs. Oops.</p>
 </aside>
   </td>
 </tr>
@@ -852,16 +864,17 @@ msgstr "impossible de créer le répertoire HTML {}"
 
  </td>
  <td class = "note">
-  <aside id = "note-dest-5"><p id = "para-41">Since I saw macros as black magic I still ran a performance check to verify that the localization had not turned my program twice slower, but unsurprisingly there weren't any real difference.</p>
+  <aside id = "note-dest-5"><p id = "para-41">Since I saw macros as black magic I still ran a performance check to verify that the localization had not turned my program twice slower, but unsurprisingly there weren’t any real difference.</p>
 </aside>
   </td>
 </tr>
 </table>
 </div>
 
+
       </div>
-    </div>
-    <footer id = "footer"><p id = "para-55">Generated by <a href = "https://github.com/lise-henry/crowbook">Crowbook</a> 0.10.0-unreleased</p>
+      <footer id = "footer"><p id = "para-55">Generated by <a href = "https://github.com/lise-henry/crowbook">Crowbook</a> 0.11.0</p>
 </footer>
+    </div>
   </body>
 </html>

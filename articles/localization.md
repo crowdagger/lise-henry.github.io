@@ -5,7 +5,7 @@ title: A hacky localization library with macros
 output.html: localization.html
 ---
 
-# A hacky localization library with macros
+# A hacky internationalization/localization library with macros
 
 ## Context
 
@@ -26,7 +26,7 @@ to localize it.
 
 To be honest, the two previous paragraphs have little to do with
 the rest of this article, but it explains why the library is called
-[**`crowbook`**`-localize`](https://github.com/lise-henry/crowbook-localize).
+[**`crowbook`**`-localize`](https://github.com/lise-henry/crowbook-intl) (**Edit**: it has since been renamed [crowbook-intl](httsp://github.com/lise-henry/crowbook-intl)).
 
 ## What I mean by localization
 
