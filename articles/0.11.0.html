@@ -624,11 +624,11 @@ function toggle() {
         </header>
 
         <div id = "chapter-0" class = "chapter">
-  <h1 id = "link-1"></h1><p id = "para-1">I’m pleased to announce the <a href = "https://github.com/lise-henry/crowbook/releases/tag/v0.11.0">0.11.0</a> release of <a href = "https://github.com/lise-henry/crowbook">Crowbook</a>, a converter from books written in Markdown to PDF, EPUB and HTML!</p>
+  <h1 id = "link-1"></h1><p id = "para-1">I’m pleased to announce the <a href = "https://github.com/lise-henry/crowbook/releases/tag/v0.11.0">0.11.0</a> release of <a href = "https://github.com/lise-henry/crowbook">Crowbook</a>, a converter from Markdown books to PDF, EPUB and HTML.</p>
 <p id = "para-2">Since I never made a proper blog post to talk about Crowbook (in english at least) (the first release was announced on the <a href = "https://www.reddit.com/r/rust/comments/46xla6/crowbook_yet_another_converter_from_markdown_to/">Rust reddit</a> but didn’t go into much detail), and it’s a good time in the year to pause a little and look at what has been done in the last 12 months, I thought it would be a good occasion to do so.</p>
 <h2 id = "link-2">What is crowbook?</h2>
-<p id = "para-3">So, what is Crowbook? It’s yet another tool that takes Markdown files and convert them to HTML, PDF and EPUB. The format is quite simple, e.g. looking not further than this very document, the code looks like this:</p>
-<pre><code class = "language-markdown">---
+<p id = "para-3">So, what is Crowbook? It’s yet another tool that takes Markdown files and convert them to HTML, PDF and EPUB. The format is quite simple, e.g. looking not further than <a href = "http://lise-henry.github.io/articles/0.11.0.md">this very document</a>, the code looks like this:</p>
+<pre><code>---
 author: Lise Henry
 title: Announcing Crowbook 0.11.0!
 
@@ -639,15 +639,69 @@ output.pdf: 0.11.0.pdf
 Annoucing Crowbook 0.11.0!
 ================================
 
-I'm pleased to announce
-the
-[0.11.0](https://github.com/lise-henry/crowbook/releases/tag/v0.11.0) release
-of [Crowbook](https://github.com/lise-henry/crowbook), a converter
-from books written in Markdown to PDF, EPUB and HTML! 
-
+I'm pleased to announce the
+[0.11.0](https://github.com/lise-henry/crowbook/releases/tag/v0.11.0) 
+release of [Crowbook](https://github.com/lise-henry/crowbook), a
+converter from Markdown books to PDF, EPUB and HTML. 
 [...]
 </code></pre>
-<p id = "para-4">So, yeah, it’s Markdown, plus some options to set title, author, and the ouput files that must be generated (here, PDF and HTML).</p>
+<p id = "para-4">So, yeah, it’s Markdown, plus some options to set title, author, and the ouput files that must be generated (here, PDF and HTML). With this, you can then run</p>
+<pre><code>$ crowbook -s 0.11.0.md
+</code></pre>
+<p id = "para-5">and it will generate an <a href = "http://lise-henry.github.io/articles/0.11.0.html">HTML</a> and a <a href = "http://lise-henry.github.io/articles/0.11.0.pdf">PDF</a> file. The <code>-s</code> argument is short for <code>--single</code>, and it simply tells <code>crowbook</code> that it is processing a Markdown file embedding some additional options. The other way of calling Crowbook is without with argument and with a full book configuration file, listing all Markdown chapters that are part of the book:</p>
+<pre><code class = "language-yaml">author: Jane Doe
+title: A great novel
+lang: en
+cover: some_cover.png
+
+output.html: great_novel.html
+output.pdf: great_novel.pdf
+output.epub: great_novel.epub
+
+- intro.md
++ chapter_01.md
++ chapter_02.md
+</code></pre>
+<p id = "para-6">So, that’s basically a list of key/value pairs in a YAML syntax (you can run <code>crowbook --list-options</code> to get the full list of valid options), followed by the lisf of chapter names, prefixed by <code>-</code> (if they are not numbered), <code>+</code> (if they are numbered) or <code>!</code> (if the title should be hidden).</p>
+<p id = "para-7">I won’t go too much into the details here, you can look at the <a href = "https://github.com/lise-henry/crowbook">Github page</a> and the <a href = "http://lise-henry.github.io/crowbook/book/book.html">user guide</a> for more information. There is also an <a href = "http://vps.crowdagger.fr/crowbook/">online demo here</a> if you want to quickly test how it looks without insalling anything.</p>
+<h2 id = "link-3">Current features</h2>
+<p id = "para-8">The current features of Crowbook are the following:</p>
+<ul>
+<li>It should be able to generate valid HTML, EPUB and LaTeX files, and can transform the later to PDF if you have a working installation of LaTeX. There was the beginning of a work on rendering to ODT but it is nowhere yet.</li>
+<li>It tries to make your document “typographically correct”: in english (or other languages) this mostly means this so-called “smart quote” feature, in french it also involves quite a lot of work on non-breaking spaces (there is currently no other supported languages for this feature, though I’m open to it if there are some needs).</li>
+<li>There’s this weird feature where it can generate proofread copies, connecting to a local <a href = "https://languagetool.org/">LanguageTool</a> server for grammar checking, and it can also detect repetition (using another library I developed, <a href = "https://github.com/lise-henry/caribon">Caribon</a>).</li>
+<li>It’s localized in english (the default) and french.</li>
+</ul>
+<h2 id = "link-4">Why did I start Crowbook?</h2>
+<p id = "para-9">Well, first, honestly, because I could and it was fun. But there were some other reasons, too. The thing is, I’m french, and I’m a somewhat semi-professional (whatever that means) fantasy writer, and I found the support of correct french typography in other tools (except LaTeX, but it’s no good at exporting to EPUB) quite lacking.</p>
+<blockquote><p id = "para-10">(Really, french typography is quite a pain. In english, you just stick e.g. a question mark to the last word, don’t you? In french, we add a space. But it should be a non-breaking space, so the <code>?</code> doesn’t end at the beginning of the newline. Except it shouldn’t just be (though these days it is more and more used because really few tools do it right) the “standard” <code>U+0020</code> non-breaking space, but a narrow one, so the questionmark doesn’t end too far away from the actual question.)</p>
+</blockquote>
+<p id = "para-11">Of course, I could only have written some kind of “pre-processor” and continued using e.g. <a href = "http://pandoc.org/">pandoc</a> (which was what I used before), but well, Rust was so cool to program in that I felt I should rather somewhat reinvent the wheel.</p>
+<blockquote><p id = "para-12">(I did, somewhat later, move these “formatting” functions to a separate crate, <a href = "https://crates.io/crates/crowbook-text-processing">crowbook-text-processing</a>, which while being name-prefixed by “crowbook-” can be used elsewhere if you need some automatic french typographic formatter (or smart quotes, actually)).</p>
+</blockquote>
+<h2 id = "link-5">Comparison, and why didn’t I rather contribute to mdBook?</h2>
+<p id = "para-13">So, compared to other similar tools, I think <a href = "https://github.com/lise-henry/crowbook">Crowbook</a> is more focused on:</p>
+<ul>
+<li>novels and fiction than technical books (code blocks or tables should work but they will certainly not look as nice as with other converters, and there is no support for e.g. mathematics or inline HTML);</li>
+<li>correct typographical settings (without requiring any work from the writer), than not ever breaking some quote that should have stayed straight because it can no longer be copy/pasted on your terminal (though it’s possible to disable it);</li>
+<li>EPUB and PDF than HTML (HTML should still be valid and hopefully not too ugly, but comparatively there is probably less relative work on it than other tools);</li>
+<li>french (the github pages, code, and even currently the docs are still (only) in english, but it tries to respect french typography when <code>lang</code> is set to french, and it is localized in french).</li>
+</ul>
+<p id = "para-14">I won’t really talk about why I didn’t contribute to other tools instead, and rather link to <a href = "https://www.reddit.com/r/rust/comments/5l2uc6/me_irl/">this wonderful picture posted on the Rust Reddit</a>, but will focus on “Why not contribute to <a href = "https://github.com/azerupi/mdBook/">mdBook</a> instead?", since it is also written in Rust and is a quite similar tool.</p>
+<p id = "para-15">There are some not-really-good reasons, and I don’t want to evacuate them:</p>
+<ul>
+<li>creating a new project is fun, contributing to an existing project is hard;</li>
+<li>having to work with other people can be time-consuming but also a bit frightening: when I push a commit to my own Github project, I don’t have to worry about people rejecting it and saying it’s horrible (I’m not saying this kind of reaction happens often in the Rust community, but I mean, I think it requires a bit more self-confidence).</li>
+</ul>
+<p id = "para-16">But I also think the two projects really have different focus, and trying to merge too different approaches might lead to more friction than do any good (e.g., as a writer, I enjoy the proofreading features, but they might seem ludicrous to insert into a converter). Maybe trying to make features usable as independent libraries can be a better way to ensure a bit of code reuse? I already separated the formatting part to <a href = "https://crates.io/crates/crowbook-text-processing">crowbook-text-processing</a>; I’m thinking about doing the same for the EPUB building part (though doing it cleanly might require a bit more work and thinking).</p>
+<h2 id = "link-6">What I learned</h2>
+<p id = "para-17">When I started developing Crowbook, it was more as a toy project than a serious thing, and I didn’t expect to invest that much time in it. But then I started using it for my books, which gave me more motivation to add features or fix bugs. So I guess dogfooding is good (though I don’t like the term, I’m more of a cat person).</p>
+<p id = "para-18">When I chose the Rust language for this project, it was only because I liked this language and wanted to get a bit deeper into it; not because I felt it was the more appropriate. Clearly, there is nothing low-level or that is “systems programming” stuff or even that requires that much safety or performances (anyway in most of my usage the call to LaTeX will take an order of magnitude longer to complete). I still found it really enjoyable, and I really think that Rust is relevant to even non-really-that-low-level projects.</p>
+<p id = "para-19">There are various aspects of Rust that I thought I would never get into, but still did: e.g. I started being like “I can clone anything I really don’t care about performances”, yet I still wrote an article about <a href = "http://lise-henry.github.io/articles/optimising_strings.html">Optimizing string performances</a> (I guess the attention to performances is quite contagious in the Rust community). I also got deeper into macros than I thought I would because I wrote <a href = "http://lise-henry.github.io/articles/localization.html">a somewhat hacky internationalization library</a>.</p>
+<p id = "para-20">I really enjoyed the type system of Rust and the impression it gave me that the compiler would do a lot of work to make sure that my code was correct. I don’t think I have ever been that confident writing code: it’s still astonishing to me when I make some substantial modifications to my code, and the compiler point me to some problems, but when it does compile, it works correctly on the first try. I was not used to that. Obviously, now I know that there are other more high-level languages that can have similar guarantees (e.g. OCaml), but while there <em>was</em> some friction induced by the low-levelness of Rust (namely the borrow checker), once I had learned it it was on a whole rather minimal.</p>
+<p id = "para-21">I also found the Rust community quite nice, and I think that it’s also because of its atmosphere that I ended up digging into things that I didn’t know that well to begin with.</p>
+<p id = "para-22">This isn’t to say that everything is perfect in the Rust world: most notably, I think the ecosystem is still immature on certain aspects. E.g., if I ended up writing another internationalization libary, it’s because there isn’t a current standard on how to do it; actually, looking at the reverse dependencies of internationalization libraries on crates.io, I think Crowbook might very well be the first Rust program that is localized in another language than english. There are libraries that work just fine but are terribly undocumented (though there are also wonderful documentations, such as <a href = "https://crates.io/crates/clap">clap</a> and <a href = "https://crates.io/crates/regex">regex</a>). And, of course, there are libraries that I would love to exist in Rust but still are not here (yet?) (e.g. I’d love a grammar checking library in Rust instead of Java or Python, or a Rust equivalent to PyPdf). Still, on a whole, it’s pretty nice, and Cargo and Rustup are wonderful tools.</p>
+<p id = "para-23">To sum it up, I’m quite pleased that I was able to develop a program that at least fits my needs (if it fits other people’s ones too that would obviously be great). It’s probably not great code but thanks to Rust I’m quite confident that all hell won’t break loose if I try to add a new feature or fix a bug. If I had to choose a word to describe Rust (which is a current thread), I’d definitely would feel “empowering”.</p>
 
 </div>
 
