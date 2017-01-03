@@ -1,6 +1,5 @@
 ---
-import_config: common.book
-author: ""
+import: common.book
 title: Lise Henry's page
 lang: en
 rendering.num_depth: 3
@@ -15,6 +14,7 @@ Not really a webpage or a blog, just a space where I put stuff.
 
 Articles
 --------
+* [Announcing Crowbook 0.11.0](http://lise-henry.github.io/articles/0.11.0.html)
 * [A hacky localization library with macros](http://lise-henry.github.io/articles/localization.html)
 * [Optimising string processing in Rust](http://lise-henry.github.io/articles/optimising_strings.html)
 * [Simulating a call to "parent" virtual method in Rust](http://lise-henry.github.io/articles/rust_inheritance.html)
@@ -37,6 +37,18 @@ this software.
 * [Crates.io](https://crates.io/crates/crowbook)
 
 The development of Crowbook also spawned a number of subprojects, that are available as separate libraries:
+
+#### epub-builder
+
+[![Crates.io](https://img.shields.io/crates/v/epub-builder.svg)](https://crates.io/crates/epub-builder)
+[![Crates.io](https://img.shields.io/crates/d/epub-builder.svg)](https://crates.io/crates/epub-builder)
+[![Crates.io](https://img.shields.io/crates/l/epub-builder.svg)](https://crates.io/crates/epub-builder)
+
+A library that makes it easier to generate EPUB files.
+
+* [Source code on Github](https://github.com/lise-henry/epub-builder)
+* [Crates.io](https://crates.io/crates/epub-builder)
+* [Library documentation](https://docs.rs/epub-builder/)
 
 #### crowbook-text-processing
 
