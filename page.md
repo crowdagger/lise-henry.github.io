@@ -1,5 +1,6 @@
 ---
 import: common.book
+author: " "
 title: Lise Henry's page
 lang: en
 rendering.num_depth: 3
