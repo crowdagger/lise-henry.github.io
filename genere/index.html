@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+  </head>
+  <body>
+    <h1>Un compte-rendu</h1>
+
+    	    <p id = "result">
+	    </p>    
+    <form>
+                  <p><textarea name = "json" id = "json" rows = "5" cols = 40">
+{
+   "source": ["une amie[f]", "un pote[m]", "un collègue[m]", "une source anonyme[f]"],
+   "lieu": ["école maternelle[m]", "spa[f]", "collège[m]"],
+   "evt": ["tombola[f]", "kermesse[f]", "bingo[m]"],
+   "initial": ["Hier, {source} m'a raconté la réunion pour préparer un·e[evt] {evt} pour son/sa[lieu] {lieu}."],
+   "commentaire": ["Cela montre bien les dérives de notre société.", "Ce n'était pas piqué des hannetons !", "Un grand moment !"],
+   "intervpos": ["un prof[m]", "un papa[m]", "une maman[m]", "une maîtresse[f]",  "une mamie[f]", "un ado[m]", "une ado[f]"],
+   "intervneg": ["une veille aigrie[f]", "un jeune con[m]", "un écolo[m]", "une écolo[f]"],
+   "pos[intervpos]": ["motivé·e", "enthousiaste", "bien habillé·e"],
+   "neg[intervneg]": ["à lunettes", "barbu/en~ chandail", "à l'allure bobo", "avec un keffieh"],
+  "perso1": ["{intervpos} {pos}"],
+  "perso2": ["{intervneg} {neg}"],
+  "proposition": ["un gateau[m]", "un cake[m]", "une sangria[f]", "un boudin blanc[m]"],
+   "aquoi[proposition]": ["aromatisé·e à la vodka", "au miel", "au Nutella"],
+  "comm2": ["Pas assez écolo !", "Mais certains n'aiment pas cela!", "Oui mais... et les intolérances alimentaires ?"],
+  "main": ["{initial} {commentaire} {Perso1} propose de faire {proposition} {aquoi}. {Perso2} le/la[intervpos] rabroue. {comm2}"]
+}
+</textarea>
+</p>
+            <p><input type="text" id = "symbol" name="symbol" value="main" /></p>
+            <p><input type = "button" name = "button" id = "button" value = "Générer !"/></p>
+
+    </form>
+
+    <!-- Note the usage of `type=module` here as this is an ES6 module -->
+    <script type="module">
+      // Use ES module import syntax to import functionality from the module
+      // that we have compiled.
+      //
+      // Note that the `default` import is an initialization function which
+      // will "boot" the module and make it ready to use. Currently browsers
+      // don't support natively imported WebAssembly as an ES module, but
+      // eventually the manual initialization won't be required!
+      import { Genere, add, default as init } from './pkg/wasm_genere.js';
+      init('./pkg/wasm_genere_bg.wasm');
+
+      function pouet() {
+          var json = document.getElementById("json");
+          var symbol = document.getElementById("symbol");
+          var gen = new Genere();
+          gen.add_json(json.value);
+      var res = gen.instantiate(symbol.value);
+          document.getElementById("result").innerHTML = res;
+      }
+      var button = document.getElementById("button");
+      button.onclick = function(){pouet();};
+    </script>
+
+  </body>
+</html>
